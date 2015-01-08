@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost.localdomain" name="biz.calavera.TestClass1" skipped="0" tests="1" time="0.148" timestamp="2015-01-05T20:20:33">
+<testsuite errors="0" failures="0" hostname="manos" name="biz.calavera.TestClass1" skipped="0" tests="1" time="0.058" timestamp="2015-01-08T15:31:36">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
@@ -29,7 +29,7 @@
     <property name="user.country" value="US" />
     <property name="java.home" value="/usr/share/jdk1.8.0_25/jre" />
     <property name="java.vm.info" value="mixed mode" />
-    <property name="ant.file" value="/vagrant/build.xml" />
+    <property name="ant.file" value="/home/calavera/hijo/build.xml" />
     <property name="os.version" value="2.6.32-431.el6.i686" />
     <property name="deploy" value="/usr/share/apache-tomcat-8.0.15/webapps/ROOT/WEB-INF/classes" />
     <property name="path.separator" value=":" />
@@ -62,10 +62,10 @@
     <property name="os.arch" value="i386" />
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
     <property name="java.ext.dirs" value="/usr/share/jdk1.8.0_25/jre/lib/ext:/usr/java/packages/lib/ext" />
-    <property name="user.dir" value="/vagrant" />
+    <property name="user.dir" value="/home/calavera/hijo" />
     <property name="line.separator" value="&#xa;" />
     <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
-    <property name="basedir" value="/vagrant" />
+    <property name="basedir" value="/home/calavera/hijo" />
     <property name="ant.java.version" value="1.8" />
     <property name="ant.core.lib" value="/usr/share/apache-ant-1.9.4/lib/ant.jar" />
     <property name="file.encoding" value="UTF-8" />
@@ -74,7 +74,7 @@
     <property name="ant.project.invoked-targets" value="main" />
     <property name="junit.fork" value="true" />
   </properties>
-  <testcase classname="biz.calavera.TestClass1" name="testTrue" time="0.002" />
+  <testcase classname="biz.calavera.TestClass1" name="testTrue" time="0.003" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

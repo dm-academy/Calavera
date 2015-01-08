@@ -1,13 +1,8 @@
 #! /usr/bin/env bash
+# Espina instance
 # this script is for provisioning a new Vagrant CentOS 6.5 instance for the calavera project.
-# this instance for the manos project represents an end developer instance, with:
-#   Java
-#   ant
-#   junit
-#   git
-#   tomcat
+# this build is for the espina project centered on Jenkins. 
 
-#   Todo: it should download the skeleton Java/Tomcat project, and do an initial build.
 
 ###############################################################################
 ###########################  YUM UPDATE  ######################################
@@ -53,6 +48,7 @@ echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> /home/vagrant/.bashrc
 #############################  TOMCAT  ########################################
 ###############################################################################
 
+
 # install apache tomcat
 # doing this before some other stuff so that the server is solidly running
 # before we attempt the Ant build that restarts it
@@ -66,44 +62,6 @@ tar xzf apache-tomcat-8.0.15.tar.gz
 rm -f apache-tomcat-8.0.15.tar.gz 
 echo "export CATALINA_HOME=\"/usr/share/apache-tomcat-8.0.15\"" >> ~/.bashrc # leaving this as restricted to root
 
-#Need a better approach. But better this than su'ing to root to build.
-#Default install has Tomcat running as root. 
-#Note chmod across Tomcat directory at bottom after build, that needs to be fixed as well
-
-#start tomcat
-/usr/share/apache-tomcat-8.0.15/bin/startup.sh
-
-###############################################################################
-#############################    ANT   ########################################
-###############################################################################
-
-#install ant
-echo "installing Ant..."
-#yum -y install ant   # Yum install of ant was not working correctly. outdated & other issues.
-cd /usr/share
-wget http://mirror.nexcess.net/apache//ant/binaries/apache-ant-1.9.4-bin.tar.gz
-tar xzf apache-ant-1.9.4-bin.tar.gz
-rm -f apache-ant-1.9.4-bin.tar.gz
-
-# tried to put these in /etc/profile.d but 1) didn't work for "non-login shells"
-# (even shells I was logging in with) and 2) found advice against it
-echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" >> /home/vagrant/.bashrc
-echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> /home/vagrant/.bashrc
-
-###############################################################################
-#############################    JUNIT   ######################################
-###############################################################################
-
-echo "installing jUnit"
-# yum -y install junit # Yum install again outdated
-
-mkdir /usr/share/java
-cd /usr/share/java
-wget http://search.maven.org/remotecontent?filepath=junit/junit/4.12/junit-4.12.jar
-wget http://search.maven.org/remotecontent?filepath=org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
-# for some reason these do not download cleanly, wind up named as full URL - ugh
-mv *junit-4.12.jar junit-4.12.jar
-mv *hamcrest-core-1.3.jar hamcrest-core-1.3.jar
 
 ###############################################################################
 #############################    GIT     ######################################
@@ -111,26 +69,41 @@ mv *hamcrest-core-1.3.jar hamcrest-core-1.3.jar
 
 echo "installing git"
 yum -y install git # assuming git is stable enough that yum is ok
+# need to init bare repo
+# project directory is /home/calavera
+cd /home/calavera
+mkdir hijo.git
+cd hijo.git
+git --bare init
+
+# 1/8 next up: change the main user name from vagrant to calavera
 
 
 ###############################################################################
-###########################    BUILD APP     ##################################
+#############################    JENKINS     ##################################
 ###############################################################################
+#reflecting recommendations from https://wiki.jenkins-ci.org/display/JENKINS/Tomcat
 
-echo "initial build &, deploy, restart Tomcat..."
-cd /vagrant
-/usr/share/apache-ant-1.9.4/bin/ant   #big assumption that the Java project is co-resident in the Vagrant file.
-                                        #./bin/ant not in path yet, I suppose I could fix this above
-                                        #note that build is running as root
-                                        
-# need to update permissions once more after build
-# otherwise non root will not be able to run build
-chmod -R 777 /usr/share/apache-tomcat-8.0.15/ 
-echo "point your browser at localhost:8081/MainServlet"
+# sudo wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+# sudo rpm --import http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key
+# yum -y install jenkins
+cd /usr/share   
+echo "downloading & installing Jenkins..."
+wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+#FIX THESE NEXT 2
+export CATALINA_OPTS="-DJENKINS_HOME=/usr/share/apache-tomcat-8.0.15/ -Xmx512m"
+echo "export CATALINA_OPTS=\"-DJENKINS_HOME=/usr/share/apache-tomcat-8.0.15/ -Xmx512m\"" >> ~/.bashrc 
+
+cd /usr/share/apache-tomcat-8.0.15/webapps
+rm -rf *
+mv /usr/share/jenkins.war ./ROOT.war
+
+#start tomcat
+/usr/share/apache-tomcat-8.0.15/bin/startup.sh
 
 
+echo "Jenkins should now be available at http://localhost:8183"
 
-
-
-
-
+###############################################################################
+#############################   PACKAGE REPO     ##############################
+###############################################################################
