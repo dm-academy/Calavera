@@ -61,8 +61,7 @@ tar xzf apache-tomcat-8.0.15.tar.gz
 rm -f apache-tomcat-8.0.15.tar.gz 
 echo "export CATALINA_HOME=\"/usr/share/apache-tomcat-8.0.15\"" >> ~/.bashrc # leaving this as restricted to root
 
-#Need a better approach. But better this than su'ing to root to build.
-#Default install has Tomcat running as root. 
+
 
 
 
@@ -72,6 +71,41 @@ echo "export CATALINA_HOME=\"/usr/share/apache-tomcat-8.0.15\"" >> ~/.bashrc # l
 
 echo "installing git"
 yum -y install git # assuming git is stable enough that yum is ok
+
+#init bare git repo for servlet app
+#ok.. how do I do this. 
+#the directory is /vagrant
+#unless I specify otherwise
+#the slave ... the same
+# do I initialize the slave or the master first? 
+# wrapper shell script at the calavera root level? 
+# So, I cannot put the code into /espina that becomes /vagrant. 
+# it will not then be a bare repository
+# i have to initialize it from the manos instance
+# so espina needs to exist first, with a bare repo
+# then init manos, which checks into the bare repo
+# what if espina is destroyed? what if manos is destroyed? going to have to 
+# test both cases. This IS going to get complex. 
+# default happy path: 
+# espina exists
+# bare repo inited 
+# manos instantiated
+# checks in software
+# that kicks off jenkins
+# which builds, tests, and deploys
+# to the production environment
+# which therefore also needs to exist first
+# but how can it
+# have to have a manual step in here somewhere
+# or deploy compiled software
+# wait - prod can exist 
+# without anything deployed... 
+# so order is
+# instantiate empty prod ("corazon"?)
+# instantiate espina
+# instantiate manos
+#   - push
+#   - jenkins builds & deploys
 
 ###############################################################################
 #############################    JENKINS     ##################################
