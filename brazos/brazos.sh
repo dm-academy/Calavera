@@ -118,14 +118,9 @@ yum -y install git # assuming git is stable enough that yum is ok
 ###########################    BUILD APP     ##################################
 ###############################################################################
 
-echo "initial build &, deploy, restart Tomcat..."
-cd /vagrant
-# /usr/share/apache-ant-1.9.4/bin/ant   #big assumption that the Java project is co-resident in the Vagrant file.
-                                        #./bin/ant not in path yet, I suppose I could fix this above
-                                        #note that build is running as root
-                                        
-# need to update permissions once more after build
-# otherwise non root will not be able to run build
+# the initial build is initiated when manos pushes to espina and jenkins detects
+
+
 
 
 

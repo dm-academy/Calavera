@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="manos" name="biz.calavera.TestClass1" skipped="0" tests="1" time="0.058" timestamp="2015-01-08T15:31:36">
+<testsuite errors="0" failures="0" hostname="manos" name="biz.calavera.TestClass1" skipped="0" tests="1" time="0.062" timestamp="2015-01-08T21:57:05">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
@@ -74,7 +74,7 @@
     <property name="ant.project.invoked-targets" value="main" />
     <property name="junit.fork" value="true" />
   </properties>
-  <testcase classname="biz.calavera.TestClass1" name="testTrue" time="0.003" />
+  <testcase classname="biz.calavera.TestClass1" name="testTrue" time="0.002" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

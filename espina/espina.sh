@@ -72,6 +72,7 @@ yum -y install git # assuming git is stable enough that yum is ok
 # need to init bare repo
 # project directory is /home/calavera
 cd /home/calavera
+rm -rf hijo.git   # in case it is already there from previous shared directory interactions
 mkdir hijo.git
 cd hijo.git
 git --bare init
@@ -103,6 +104,8 @@ mv /usr/share/jenkins.war ./ROOT.war
 
 
 echo "Jenkins should now be available at http://localhost:8183"
+
+#now, configure brazos as slave... 
 
 ###############################################################################
 #############################   PACKAGE REPO     ##############################

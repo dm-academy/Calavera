@@ -133,6 +133,8 @@ echo "http://localhost:8184/MainServlet"
 # push to git repo??
 # this means that this script will be dependent on the repo, but I guess that is fine
 # after all this is supposed to be a complete system
+# 
+
 
 
 
