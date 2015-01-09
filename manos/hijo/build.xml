@@ -3,8 +3,8 @@
 	<property name="buildName"	value="CalaveraMain"/>
 	<property name="message" 	value="built and deployed to Tomcat."/>
 	<property name="testsOK" 	value="tested OK"/>
-	<property name="src" 		value="./src/main/java/biz/Calavera"/>
-	<property name="test" 		value="./src/test/java/biz/Calavera"/>
+	<property name="src" 		value="./src/main/java/biz/calavera"/>
+	<property name="test" 		value="./src/test/java/biz/calavera"/>
 	<property name="config"		value="./src/main/config"/>
 	<property name="output" 	value="./target"/>
 	<property name="results" 	value="./target"/>	

@@ -113,13 +113,23 @@ mv *hamcrest-core-1.3.jar hamcrest-core-1.3.jar
 echo "installing git"
 yum -y install git # assuming git is stable enough that yum is ok
 
+# we'll see when we need these
+# introduces the issue of security & identity within the sandbox
+# git config --global user.name
+# git config --global user.email
+
 
 ###############################################################################
 ###########################    BUILD APP     ##################################
 ###############################################################################
 
 echo "initial build &, deploy, restart Tomcat..."
-cd /home/calavera/hijo
+rm -rf /home/hijo
+cp -rf /home/calavera/hijo /home # by doing this then it's no longer in the shared directory, preventing github backup
+                                # Notice this did NOT copy .vagrant because it's hidden. Good thing.
+
+
+cd /home/hijo
 /usr/share/apache-ant-1.9.4/bin/ant   #
                                         # ./bin/ant not in path yet, I suppose I could fix this above
                                         # note that build is running as root
@@ -130,10 +140,27 @@ chmod -R 777 /usr/share/apache-tomcat-8.0.15/
 echo "point your browser at "
 echo "http://localhost:8184/MainServlet"
 
-# push to git repo??
+# now to initialize git
+cd /home/hijo           # just to be safe
+mv /home/hijo/INTERNAL_gitignore /home/hijo/.gitignore 
+git init
+git add .
+git commit -m "initial commit"
+git remote add espina.hijo ssh://vagrant@192.168.33.13/home/calavera/hijo.git
+git push espina.hijo master
+#...and, now I think it would be better to have hijo's master on espina, and then remotely clone from manos -
+# more idiomatic
+# and then build & deploy
+
+
+
+
+# now how to push this to espina??
+
+
+
 # this means that this script will be dependent on the repo, but I guess that is fine
 # after all this is supposed to be a complete system
-# 
 
 
 

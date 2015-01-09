@@ -1,0 +1,8 @@
+# this is a tricky file
+# we don't want a gitignore here in terms of calavera github
+# but when manos is instantiated and hijo is moved over to its own home directory
+# then we need a gitignore
+# so this file is correctly renamed as part of the move process
+.vagrant/   # probably don't need to worry about this
+target/    # things built on dev workstation do not go in source control
+
