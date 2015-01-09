@@ -77,6 +77,15 @@ mkdir hijo.git
 cd hijo.git
 git --bare init
 
+# from http://git-scm.com/book/it/v2/Git-on-the-Server-Setting-Up-the-Server
+adduser git
+su git
+cd ~
+mkdir .ssh && chmod 700 .ssh
+# touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+# cat /vagrant/calavera-shared/calavera.key.pub > ~/.ssh/authorized_keys
+# OK now how do I get the authorized key from manos over??
+
 # 1/8 next up: change the main user name from vagrant to calavera
 
 

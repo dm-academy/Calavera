@@ -118,6 +118,10 @@ yum -y install git # assuming git is stable enough that yum is ok
 # git config --global user.name
 # git config --global user.email
 
+# generate key and get it over to espina. chicken and egg problem.
+# perhaps should be generated outside of simulation
+# ssh-keygen -t rsa -N "" -f calavera.key  # this generates a public key
+
 
 ###############################################################################
 ###########################    BUILD APP     ##################################
@@ -140,28 +144,20 @@ chmod -R 777 /usr/share/apache-tomcat-8.0.15/
 echo "point your browser at "
 echo "http://localhost:8184/MainServlet"
 
-# now to initialize git
+# now to initialize git locally and remotely
+# this means that manos script will be dependent on espina, but I guess that is fine
+# after all this is supposed to be a complete system
+
 cd /home/hijo           # just to be safe
 mv /home/hijo/INTERNAL_gitignore /home/hijo/.gitignore 
 git init
 git add .
 git commit -m "initial commit"
-git remote add espina.hijo ssh://vagrant@192.168.33.13/home/calavera/hijo.git
-git push espina.hijo master
-#...and, now I think it would be better to have hijo's master on espina, and then remotely clone from manos -
-# more idiomatic
-# and then build & deploy
+# git remote add espina.hijo ssh://vagrant@192.168.33.13/home/calavera/hijo.git
+# git push espina.hijo master  #and... of course this won't work non-interactively. time to figure out keys. 
 
-
-
-
-# now how to push this to espina??
-
-
-
-# this means that this script will be dependent on the repo, but I guess that is fine
-# after all this is supposed to be a complete system
-
+#...considered whether it would be more "idiomatic" to pull & build, but the problem is that I have to
+# push from somewhere to the bare repo. so it really does start on manos.
 
 
 
