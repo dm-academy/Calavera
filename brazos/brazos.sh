@@ -48,7 +48,7 @@ alternatives --set java /usr/share/jdk1.8.0_25/bin/java
 
 rm -f /usr/share/jdk-8u25-linux-i586.tar.gz
 
-echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> /home/vagrant/.bashrc
+echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> ~/.bashrc
 
 ###############################################################################
 #############################  TOMCAT  ########################################
@@ -88,8 +88,8 @@ rm -f apache-ant-1.9.4-bin.tar.gz
 
 # tried to put these in /etc/profile.d but 1) didn't work for "non-login shells"
 # (even shells I was logging in with) and 2) found advice against it
-echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" >> /home/vagrant/.bashrc
-echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> /home/vagrant/.bashrc
+echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" >> ~/.bashrc
+echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> ~/.bashrc
 
 ###############################################################################
 #############################    JUNIT   ######################################
@@ -117,6 +117,8 @@ yum -y install git # assuming git is stable enough that yum is ok
 ###############################################################################
 ###########################    BUILD APP     ##################################
 ###############################################################################
+
+mkdir /home/jenkins
 
 # the initial build is initiated when manos pushes to espina and jenkins detects
 

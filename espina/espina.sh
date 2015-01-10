@@ -42,7 +42,7 @@ alternatives --set java /usr/share/jdk1.8.0_25/bin/java
 
 rm -f /usr/share/jdk-8u25-linux-i586.tar.gz
 
-echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> /home/vagrant/.bashrc
+echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> ~/.bashrc
 
 ###############################################################################
 #############################  TOMCAT  ########################################
@@ -78,16 +78,14 @@ cd hijo.git
 git --bare init
 
 # from http://git-scm.com/book/it/v2/Git-on-the-Server-Setting-Up-the-Server
-adduser git
-su git
+#adduser git # doing this all as root for now. identities are in version 2
+#su git
+
 cd ~
 mkdir .ssh && chmod 700 .ssh
-# touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
-# cat /vagrant/calavera-shared/calavera.key.pub > ~/.ssh/authorized_keys
-# OK now how do I get the authorized key from manos over??
-
-# 1/8 next up: change the main user name from vagrant to calavera
-
+touch .ssh/authorized_keys && chmod 600 .ssh/authorized_keys
+cp /mnt/public/id_rsa*  ~/.ssh/
+cat /mnt/public/id_rsa.pub >> ~/.ssh/authorized_keys
 
 ###############################################################################
 #############################    JENKINS     ##################################

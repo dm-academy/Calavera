@@ -17,6 +17,15 @@
 # plus my head is already buried in jenkins & git
 # i am really not sure mac air is going to handle 4 instances
 
+#mount -t vboxsf public /mnt/public for temp VBox share
+
+# to do: identities
+# Developer: "hijodev"
+# Tomcat
+# Sysadmin: "jefe"
+# Let's get Puppet running for this
+
+
 Vagrant.configure(2) do |config|
 
 	config.vm.box = "chef/centos-6.5-i386"
@@ -34,6 +43,7 @@ Vagrant.configure(2) do |config|
 		piernas.vm.network 		"forwarded_port", guest: 80, host: 8080
 		piernas.vm.network		"forwarded_port", guest: 8080, host: 8180
 		piernas.vm.synced_folder "./piernas", "/home/calavera"
+		piernas.vm.synced_folder "./calavera-shared", "/mnt/public"
 		piernas.vm.provision 	:shell, 	path: "./piernas/piernas.sh" 
 	end	
 
@@ -49,6 +59,7 @@ Vagrant.configure(2) do |config|
 		cara.vm.network 			"forwarded_port", guest: 80, host: 8081
 		cara.vm.network			"forwarded_port", guest: 8080, host: 8181
 		cara.vm.synced_folder  	"./cara", "/home/calavera"
+		cara.vm.synced_folder 	"./calavera-shared", "/mnt/public"
 		cara.vm.provision 		:shell, path: "./cara/cara.sh" 
 	end
 	
@@ -64,6 +75,7 @@ Vagrant.configure(2) do |config|
 		brazos.vm.network 		"forwarded_port", guest: 80, host: 8082
 		brazos.vm.network			"forwarded_port", guest: 8080, host: 8182
 		brazos.vm.synced_folder "./brazos", "/home/calavera"
+		brazos.vm.synced_folder 	"./calavera-shared", "/mnt/public"		
 		brazos.vm.provision 		:shell, path: "./brazos/brazos.sh"
 	end
 
@@ -85,6 +97,7 @@ Vagrant.configure(2) do |config|
 		espina.vm.network 		"forwarded_port", guest: 80, host: 8083
 		espina.vm.network			"forwarded_port", guest: 8080, host: 8183
 		espina.vm.synced_folder "./espina", "/home/calavera"
+		espina.vm.synced_folder "./calavera-shared", "/mnt/public"	
 		espina.vm.provision 		:shell, path: "./espina/espina.sh"
 	end
 	
@@ -105,6 +118,7 @@ Vagrant.configure(2) do |config|
 		manos.vm.network 			"forwarded_port", guest: 80, host: 8084
 		manos.vm.network			"forwarded_port", guest: 8080, host: 8184
 		manos.vm.synced_folder 	"./manos", "/home/calavera"
+		manos.vm.synced_folder 	"./calavera-shared", "/mnt/public"	
 		manos.vm.provision 		:shell, path: "./manos/manos.sh"
 	end
 

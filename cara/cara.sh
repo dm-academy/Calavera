@@ -48,7 +48,7 @@ alternatives --set java /usr/share/jdk1.8.0_25/bin/java
 
 rm -f /usr/share/jdk-8u25-linux-i586.tar.gz
 
-echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> /home/vagrant/.bashrc
+echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> ~/.bashrc
 
 ###############################################################################
 #############################  TOMCAT  ########################################

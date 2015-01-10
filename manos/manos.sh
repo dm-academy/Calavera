@@ -48,7 +48,7 @@ alternatives --set java /usr/share/jdk1.8.0_25/bin/java
 
 rm -f /usr/share/jdk-8u25-linux-i586.tar.gz
 
-echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> /home/vagrant/.bashrc
+echo "export JAVA_HOME=\"/usr/share/jdk1.8.0_25\"" >> ~/.bashrc
 
 ###############################################################################
 #############################  TOMCAT  ########################################
@@ -88,8 +88,8 @@ rm -f apache-ant-1.9.4-bin.tar.gz
 
 # tried to put these in /etc/profile.d but 1) didn't work for "non-login shells"
 # (even shells I was logging in with) and 2) found advice against it
-echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" >> /home/vagrant/.bashrc
-echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> /home/vagrant/.bashrc
+echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" >> ~/.bashrc
+echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> ~/.bashrc
 
 ###############################################################################
 #############################    JUNIT   ######################################
@@ -107,23 +107,6 @@ mv *junit-4.12.jar junit-4.12.jar
 mv *hamcrest-core-1.3.jar hamcrest-core-1.3.jar
 
 ###############################################################################
-#############################    GIT     ######################################
-###############################################################################
-
-echo "installing git"
-yum -y install git # assuming git is stable enough that yum is ok
-
-# we'll see when we need these
-# introduces the issue of security & identity within the sandbox
-# git config --global user.name
-# git config --global user.email
-
-# generate key and get it over to espina. chicken and egg problem.
-# perhaps should be generated outside of simulation
-# ssh-keygen -t rsa -N "" -f calavera.key  # this generates a public key
-
-
-###############################################################################
 ###########################    BUILD APP     ##################################
 ###############################################################################
 
@@ -131,7 +114,6 @@ echo "initial build &, deploy, restart Tomcat..."
 rm -rf /home/hijo
 cp -rf /home/calavera/hijo /home # by doing this then it's no longer in the shared directory, preventing github backup
                                 # Notice this did NOT copy .vagrant because it's hidden. Good thing.
-
 
 cd /home/hijo
 /usr/share/apache-ant-1.9.4/bin/ant   #
@@ -148,13 +130,36 @@ echo "http://localhost:8184/MainServlet"
 # this means that manos script will be dependent on espina, but I guess that is fine
 # after all this is supposed to be a complete system
 
+###############################################################################
+#############################    GIT    #######################################
+###############################################################################
+echo "installing git"
+yum -y install git # assuming git is stable enough that yum is ok
+
+# we'll see when we need these
+# introduces the issue of security & identity within the sandbox
+# git config --global user.name
+# git config --global user.email
+
+# generate key and get it over to espina. chicken and egg problem.
+# perhaps should be generated outside of simulation
+# at least, should ideally be generated on piernas
+# ssh-keygen -t rsa -N "" -f ~/.ssh/id-rsa  # this generates a public key. but we pre-generated.
+cp /mnt/public/id-rsa  ~/.ssh/
+ssh-keyscan -H 192.168.33.13 >> ~/.ssh/known_hosts
+
 cd /home/hijo           # just to be safe
-mv /home/hijo/INTERNAL_gitignore /home/hijo/.gitignore 
+mv /home/hijo/INTERNAL_gitignore /home/hijo/.gitignore #tricky. we cannot have this named .gitignore when
+                                                        # it is under Github source control!
 git init
 git add .
 git commit -m "initial commit"
-# git remote add espina.hijo ssh://vagrant@192.168.33.13/home/calavera/hijo.git
-# git push espina.hijo master  #and... of course this won't work non-interactively. time to figure out keys. 
+#note that espina/hijo.git is ignored in GitHub .gitignore file
+git remote add /home/hijo/espina.hijo ssh://root@192.168.33.13/home/calavera/hijo.git 
+git push espina.hijo master
+
+# git push espina.hijo master  #and... of course this won't work non-interactively.
+# time to figure out keys. 
 
 #...considered whether it would be more "idiomatic" to pull & build, but the problem is that I have to
 # push from somewhere to the bare repo. so it really does start on manos.
