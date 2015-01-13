@@ -16,7 +16,10 @@ rm -f apache-ant-1.9.4-bin.tar.gz
 #echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> ~/.bashrc
 
 rm -rf /etc/profile.d/ant.sh
-echo "export ANT_HOME=\"/usr/share/apache-ant-1.9.4\"" > /etc/profile.d/ant.sh
-echo "export PATH=\"/usr/share/apache-ant-1.9.4/bin:\"$PATH" >> /etc/profile.d/ant.sh
+echo export ANT_HOME=/usr/share/apache-ant-1.9.4\ > /etc/profile.d/ant.sh
+echo export PATH=/usr/share/apache-ant-1.9.4/bin:'$PATH'>>/etc/profile.d/ant.sh
+echo export ANT_HOME=/usr/share/apache-ant-1.9.4\ >> ~/.bashrc
+echo export PATH=/usr/share/apache-ant-1.9.4/bin:'$PATH'>> ~/.bashrc
+
 chmod +x /etc/profile.d/ant.sh
 source /etc/profile.d/ant.sh

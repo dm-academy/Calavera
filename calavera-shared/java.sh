@@ -34,10 +34,11 @@ cd /usr/lib/jvm
 rm -f /usr/lib/jvm/*.tar.gz
 
 rm -rf /etc/profile.d/java.sh
-echo "export JAVA_HOME=\"/usr/lib/jvm/jdk1.8.0_25\"" >> /etc/profile.d/java.sh
-echo "export PATH=\"/usr/lib/jvm/jdk1.8.0_25/bin:\"$PATH" >> /etc/profile.d/java.sh
-echo "export JAVA_HOME=\"/usr/lib/jvm/jdk1.8.0_25\"" >> ~/.bashrc
+echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25\ >> /etc/profile.d/java.sh
+echo export PATH=/usr/lib/jvm/jdk1.8.0_25/bin:'$PATH' >> /etc/profile.d/java.sh
+echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25\ >> ~/.bashrc
+echo export PATH=/usr/lib/jvm/jdk1.8.0_25/bin:'$PATH' >> ~/.bashrc
 
 chmod +x /etc/profile.d/java.sh
-source ~/.bashrc
-export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25 # this should have been taken care of by the one above
+source /etc/profile.d/java.sh
+#export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25 # this should have been taken care of by the one above, but tomcat install fails w/o

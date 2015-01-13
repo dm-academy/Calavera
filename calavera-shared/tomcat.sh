@@ -16,9 +16,10 @@ tar xzf apache-tomcat-8.0.15.tar.gz 1>/dev/null
 rm -f apache-tomcat-8.0.15.tar.gz
 
 rm -rf /etc/profile.d/tomcat.sh
-echo "export CATALINA_HOME=\"/usr/share/apache-tomcat-8.0.15\"" >> /etc/profile.d/tomcat.sh
-echo "export CATALINA_HOME=\"/usr/share/apache-tomcat-8.0.15\"" >> ~/.bashrc
-# echo "/usr/share/apache-tomcat-8.0.15/bin/startup.sh" >> /etc/profile.d/tomcat.sh  #start tomcat on boot
+echo export CATALINA_HOME=/usr/share/apache-tomcat-8.0.15 >> /etc/profile.d/tomcat.sh
+echo export CATALINA_HOME=/usr/share/apache-tomcat-8.0.15 >> ~/.bashrc 
+# echo "/usr/share/apache-tomcat-8.0.15/bin/startup.sh" >> /etc/profile.d/tomcat.sh  #start tomcat on boot?
 chmod +x /etc/profile.d/tomcat.sh
-source ~/.bashrc
+source /etc/profile.d/tomcat.sh
+
 /usr/share/apache-tomcat-8.0.15/bin/startup.sh

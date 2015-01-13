@@ -3,13 +3,21 @@
 # everything always needs Java and Tomcat, so we bake these in as well as an update. 
 # path dependent on being run from the CalaveraShared directory.
 
+# this script needs to be ported to Windows as well. 
+
 # prerequisites:
-# vagrant locally with the Guest Additions addin
+# vagrant locally with the vbguest plugin
 # virtualbox locally
+
+echo "it is highly recommended you do a complete vagrant destroy before running this script"
+echo "as it destroys and rebuilds the base box all your systems depend on"
+# need to make this prettier either with options or a prompt, or at least a wait so they can control-c
 
 mkdir -p initCalavera # make it, stay silent if it already exists
 cd initCalavera
+echo "---Do not worry about a 'machine not found' error below.---"
 vagrant destroy initCalavera --force  # cleanly destroy any previous vagrant
+echo "---Do not worry about a 'machine not found' error above.---"
 rm -rf *   # now blow it all away
 
 # create provision.sh with update, java and tomcat
@@ -37,11 +45,14 @@ echo "end" >> VagrantFile
 
 
 # create a vagrant file
-echo "---Do not worry about the 'already exists' error.---"
+echo "---Do not worry about an 'already exists' error below.---"
 vagrant box add  ubuntu/trusty32  https://atlas.hashicorp.com/ubuntu/boxes/trusty32
-echo "---Do not worry about the 'already exists' error.---"
+echo "---Do not worry about an 'already exists' error above.---"
+
 vagrant up
+ 
 vagrant package
+
 mv package.box calavera.box   #would be nice to vagrant package -name but bug at time of writing this
 vagrant box remove calavera -f
 vagrant box add calavera calavera.box -f
@@ -51,4 +62,5 @@ cd ..
 rm -rf initCalavera
 
 # now the rest of the vagrant up can be run in the main directory
+
 
