@@ -1,23 +1,7 @@
-#init bare git repo for servlet app
-#
-# order is
-# instantiate empty prod ("cara"?)
-# instantiate espina & brazos
-# instantiate manos
-#  	- build locally
-#   - push to git
-#   - jenkins builds on brazos & deploys on cara
-#
-# and now, it is becoming clear that I need to instantiate piernas 
-# because already config.sh  across these multiple instances
-# is becoming unmanageable
-# but let's keep going down this path
-# because when I am done I will really understand 
-# my requirements for piernas.
-# plus my head is already buried in jenkins & git
-# i am really not sure mac air is going to handle 4 instances
-
-#mount -t vboxsf public /mnt/public for temp VBox share
+# Main issue right now is that I have baked Java and Tomcat into the "calavera" box image.
+# Vagrant up will not work unless this is done first.
+# Currently using 32-bit Ubuntu 14
+# I need to create a script to automatically bake this. 
 
 # to do: identities
 # Developer: "hijodev"
@@ -54,7 +38,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "cara" do | cara |
 		cara.vm.host_name			="cara"
 	   cara.vm.network 			"private_network", ip: "192.168.33.11"
-		cara.vm.network 			:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+		cara.vm.network 			"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		cara.vm.network 			"forwarded_port", guest: 22, host: 2201, auto_correct: true		
 		cara.vm.network 			"forwarded_port", guest: 80, host: 8081
 		cara.vm.network			"forwarded_port", guest: 8080, host: 8181
