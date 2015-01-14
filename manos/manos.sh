@@ -10,14 +10,8 @@
 
 #   Todo: it should download the skeleton Java/Tomcat project, and do an initial build.
 
-# Yum update
-#source /mnt/public/yum.sh
+source /mnt/public/ssh.sh
 
-# Java install
-#source /mnt/public/java.sh
-
-# Tomcat install
-#source /mnt/public/tomcat.sh
 
 # Ant install
 source /mnt/public/ant.sh

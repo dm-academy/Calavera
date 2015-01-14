@@ -1,8 +1,15 @@
 #################
+## calavera
+#################
+espina/hijo.git
+.ssh
+id_rsa*
+
+#################
 ## vagrant
 #################
 .vagrant/
-espina/hijo.git
+
 
 #################
 ## Eclipse
