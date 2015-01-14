@@ -45,7 +45,7 @@ wget --quiet http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 rm -rf /etc/profile.d/tomcat.sh
 touch  /etc/profile.d/tomcat.sh
 chmod 777 /etc/profile.d/tomcat.sh
-echo "export CATALINA_OPTS=\"-DJENKINS_HOME=/usr/share/apache-tomcat-8.0.15/ -Xmx512m\"" > /etc/profile.d/tomcat.sh
+echo "export CATALINA_OPTS=\"-DJENKINS_HOME=/usr/share/apache-tomcat-8.0.15/ -Xmx512m\"" >> /etc/profile.d/tomcat.sh
 chmod 755 /etc/profile.d/tomcat.sh
 source /etc/profile.d/tomcat.sh
 
