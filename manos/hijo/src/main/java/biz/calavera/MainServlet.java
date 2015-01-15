@@ -15,7 +15,7 @@ public class MainServlet extends HttpServlet {
 	  {
 	      // Edit this message, save the file, and rebuild with Ant
               // to see it reflected on the Web page at http://localhost:8081/MainServlet
-	      message = "This is a skeleton application to test the end to end Calavera delivery framework.";
+	      message = "This is a skeleton application-- to test the end to end Calavera delivery framework.";
 	  }
 
 	  public void doGet(HttpServletRequest request,

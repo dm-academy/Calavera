@@ -4,6 +4,8 @@
 espina/hijo.git
 .ssh
 id_rsa*
+result.txt
+result.xml
 
 #################
 ## vagrant
@@ -227,3 +229,7 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+manos/hijo/target/result.xml
+
+manos/hijo/target/result.txt

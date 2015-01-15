@@ -1,15 +1,15 @@
 #! /usr/bin/env bash
 # piernas instance
 # this script is for provisioning a new Vagrant CentOS 6.5 instance for the calavera project.
+# this instance represents the infrastructure engineering instance and will host chef and perhaps an image store
 
-# Yum update
-#source /mnt/public/yum.sh
+#network configuration (at this time, just localhosts for cluster)
+source /mnt/public/netconf.sh
 
-# Java install
-#source /mnt/public/java.sh
+# generate ssh keys
+source /mnt/public/ssh.sh
 
-# Tomcat install
-#source /mnt/public/tomcat.sh
+
 
 # Git install
 source /mnt/public/git.sh

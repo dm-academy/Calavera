@@ -8,8 +8,11 @@
 #   git
 #   tomcat
 
-#   Todo: it should download the skeleton Java/Tomcat project, and do an initial build.
 
+#network configuration (at this time, just localhosts for cluster)
+source /mnt/public/netconf.sh
+
+# generate ssh keys
 source /mnt/public/ssh.sh
 
 
@@ -62,14 +65,20 @@ echo "http://localhost:8184/MainServlet"
 
 cd /home/hijo           # just to be safe
 mv /home/hijo/INTERNAL_gitignore /home/hijo/.gitignore #tricky. we cannot have this named .gitignore when
-                                                        # it is under Github source control!
+                                                        # it is under Github source control! This is the .gitignore
+                                                        # for the created git repository WITHIN the simulation. Not Github. 
 git init
 git add .
 git commit -m "initial commit"
 
 ####remote commit - assumes espina is configured. 
 
-#note that espina/hijo.git is ignored in GitHub .gitignore file
+# note that espina/hijo.git is ignored in GitHub .gitignore file
+
+
+# would like hosts to resolve by name - /private/etc/hosts on the mac, not sure windows 
+# looks like time for sed
+# 
 #cp /mnt/public/id-rsa  ~/.ssh/
 #ssh-keyscan -H 192.168.33.13 >> ~/.ssh/known_hosts
 #git remote add /home/hijo/espina.hijo ssh://root@192.168.33.13/home/calavera/hijo.git 

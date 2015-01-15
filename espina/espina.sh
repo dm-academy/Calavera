@@ -1,17 +1,14 @@
 #! /usr/bin/env bash
 # Espina instance
 # this script is for provisioning a new Vagrant CentOS 6.5 instance for the calavera project.
-# this build is for the espina project centered on Jenkins. 
+# this build is for the espina project centered on Jenkins, which is the control & choreography instance (application level).
 
+#network configuration (at this time, just localhosts for cluster)
+source /mnt/public/netconf.sh
 
-# Yum update
-#source /mnt/public/yum.sh
+# generate ssh keys
+source /mnt/public/ssh.sh
 
-# Java install
-#source /mnt/public/java.sh
-
-# Tomcat install
-#source /mnt/public/tomcat.sh
 
 # Git install
 source /mnt/public/git.sh
@@ -21,8 +18,8 @@ source /mnt/public/git.sh
 ##############################################################################
 # from http://git-scm.com/book/it/v2/Git-on-the-Server-Setting-Up-the-Server
 
-cp /mnt/public/id_rsa*  /home/vagrant/.ssh/
-cat /mnt/public/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+cp /mnt/public/keys/id_rsa*  /home/vagrant/.ssh/
+cat /mnt/public/keys/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
 
 # need to init bare repo
 # project directory is /home/calavera
@@ -31,6 +28,7 @@ rm -rf hijo.git   # in case it is already there from previous shared directory i
 mkdir hijo.git
 cd hijo.git
 git --bare init
+
 
 ###############################################################################
 #############################    JENKINS     ##################################
