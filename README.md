@@ -5,6 +5,10 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. 
 
+2015-01-15 release update:
+========
+Created a new include ssh.sh which creates public/private key pair (just one for cluster) and imports it throughout, as well as adding local host names for the 5 hosts. Now, within the cluster, one can simply "ssh <hostname> from any to any and get access with no password. (First time, one has to concur w/ the fingerprint; this can be automated away if need be.)
+
 2015-01-13 release update:
 ========
 
