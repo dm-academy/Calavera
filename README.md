@@ -3,7 +3,7 @@ calavera
 
 This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes, using git, Vagrant, Java, JUnit, Ant, Jenkins, Chef, and a package repository still to be selected.  
 
-See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. 
+See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for initial motivation. 
 
 2015-01-17 directional update:
 ========
