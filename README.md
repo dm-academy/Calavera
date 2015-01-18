@@ -5,6 +5,17 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. 
 
+2015-01-17 directional update:
+========
+On to Chef! I have to recast all the provisioning shell scripts into Chef recipes. Why didn't I start with this? It would have been better in hindsight. But I have refreshed my shell scripting abilities which is good. Basically, I had two choices: build the project from an application-centric view, tracking the pipeline, vs. building it up from infrastructure. I chose the former, and am now paying the price. Digging into the very steep Chef learning curve... 
+Some may ask "why not puppet" and I have two responses, one strategic, the other tactical. 
+
+Strategically, it seems to me that Chef is a bit "closer to the metal" and less "magic" than Puppet, which is how I want my students to learn. 
+
+Tactically, I see a Chef recipe that is capable of auto-provisioning Jenkins nodes. I spent a very frustrating day yesterday trying to get the Jenkins CLI to auto-provision and credential new slave nodes (it was the credentialing where things fell apart.) Doesn't seem to be possible without getting much further into the Jenkins class model than I wanted to deal with. The only people that seem to have done it are Chef and a Python plugin. 
+
+Looking for guidance, if anyone can point to something I have missed. 
+
 2015-01-15 release update:
 ========
 Created a new include ssh.sh which creates public/private key pair (just one for cluster) and imports it throughout, as well as adding local host names for the 5 hosts. Now, within the cluster, one can simply "ssh <hostname> from any to any and get access with no password. (First time, one has to concur w/ the fingerprint; this can be automated away if need be.)
