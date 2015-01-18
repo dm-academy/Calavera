@@ -7,7 +7,7 @@ See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki p
 
 2015-01-18 directional update:
 ========
-To this point, all of the infrastructure was running well on default-sized Vagrant VMs (512m) and I could have it all on my Mac Air. This was making it possible to consider that any student with a 2-4gb laptop would be able to run the whole thing, especially if I tuned some of the machines down even further. (This is different from what the architecture diagram suggests, which is that the students only running the Manos workstation locally.)
+To this point, all of the infrastructure was running well on default-sized Vagrant VMs (512m) and I could have it all on my Mac Air. This was making it possible to consider that any student with a 2-4gb laptop would be able to run the whole thing, especially if I tuned some of the machines down even further. (This is different from what the architecture diagram suggests, which is that the student is only running the Manos workstation locally.)
 
 Enter Chef Server. Attempting to install it on anything less than a VM with its own 4gb of RAM gives unpredictable results (that weren't immediately capacity-related). So, it will not be possible for students to run Chef Server on their own laptops. 
 
