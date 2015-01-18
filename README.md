@@ -5,6 +5,14 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for initial motivation. 
 
+2015-01-18 directional update:
+========
+To this point, all of the infrastructure was running well on default-sized Vagrant VMs (512m) and I could have it all on my Mac Air. This was making it possible to consider that any student with a 2-4gb laptop would be able to run the whole thing, especially if I tuned some of the machines down even further. (This is different from what the architecture diagram suggests, which is that the students only running the Manos workstation locally.)
+
+Enter Chef Server. Attempting to install it on anything less than a VM with its own 4gb of RAM gives unpredictable results (that weren't immediately capacity-related). So, it will not be possible for students to run Chef Server on their own laptops. 
+
+I am therefore going down the road of Chef Zero (formerly Solo), but will still run Chef Server in the lab. I have not yet sorted out pedgogically the relationship between the larger, presumably more stable lab instance of the pipeline versus a more disposable laptop instance of the entire thing. It would be nice if the students did not have to ssh into school, which imposes certain overheads I'd like to avoid. In either case the pipeline needs to be something that can be bootstrapped using Infrastructure as Code from a source repository. 
+
 2015-01-17 directional update:
 ========
 On to Chef! I have to recast all the provisioning shell scripts into Chef recipes. Why didn't I start with this? It would have been better in hindsight. But I have refreshed my shell scripting abilities which is good. Basically, I had two choices: build the project from an application-centric view, tracking the pipeline, vs. building it up from infrastructure. I chose the former, and am now paying the price. Digging into the very steep Chef learning curve... 
