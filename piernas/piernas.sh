@@ -9,8 +9,7 @@ source /mnt/public/netconf.sh
 # generate ssh keys
 source /mnt/public/ssh.sh
 
-
-
 # Git install
 source /mnt/public/git.sh
 
+    

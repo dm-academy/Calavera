@@ -23,7 +23,11 @@ echo "---disregard mv warning if it appears---"
 
 cd /usr/lib/jvm
 
-# alternative to setting more path variables - RedHat
+ln -s /usr/lib/jvm/jdk1.8.0_25/bin/java /usr/bin/java
+ln -s /usr/lib/jvm/jdk1.8.0_25/bin/jar /usr/bin/jar
+ln -s /usr/lib/jvm/jdk1.8.0_25/bin/javac /usr/bin/javac
+
+# alternative to setting more path variables 
 #alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_25/bin/java 2
 #alternatives --install /usr/bin/jar jar /usr/lib/jvm/jdk1.8.0_25/bin/jar 2
 #alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.8.0_25/bin/javac 2
@@ -34,9 +38,9 @@ cd /usr/lib/jvm
 rm -f /usr/lib/jvm/*.tar.gz
 
 rm -rf /etc/profile.d/java.sh
-echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25\ >> /etc/profile.d/java.sh
+echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25 >> /etc/profile.d/java.sh
 echo export PATH=/usr/lib/jvm/jdk1.8.0_25/bin:'$PATH' >> /etc/profile.d/java.sh
-echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25\ >> ~/.bashrc
+echo export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_25 >> ~/.bashrc
 echo export PATH=/usr/lib/jvm/jdk1.8.0_25/bin:'$PATH' >> ~/.bashrc
 
 chmod +x /etc/profile.d/java.sh

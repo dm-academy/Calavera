@@ -7,7 +7,7 @@
 # Developer: "hijodev"
 # Tomcat
 # Sysadmin: "jefe"
-# Let's get Puppet running for this
+# Let's get Chef running for this
 
 
 Vagrant.configure(2) do |config|
