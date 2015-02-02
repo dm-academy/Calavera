@@ -7,6 +7,8 @@ id_rsa*
 result.txt
 result.xml
 
+*.gz
+
 #################
 ## vagrant
 #################
@@ -233,3 +235,5 @@ pip-log.txt
 manos/hijo/target/result.xml
 
 manos/hijo/target/result.txt
+.kitchen/
+.kitchen.local.yml

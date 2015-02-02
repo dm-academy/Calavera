@@ -1,0 +1,134 @@
+<?xml version="1.0"?> 
+<project default="main"> 
+	<property name="buildName"	value="CalaveraMain"/>
+	<property name="message" 	value="built and deployed to Tomcat."/>
+	<property name="testsOK" 	value="tested OK"/>
+	<property name="src" 		value="./src/main/java/biz/calavera"/>
+	<property name="test" 		value="./src/test/java/biz/calavera"/>
+	<property name="config"		value="./src/main/config"/>
+	<property name="output" 	value="./target"/>
+	<property name="results" 	value="./target"/>	
+	<!--property name="jars" 		value="./jars"/-->
+	<property name="classDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/classes"/>
+	<property name="deploy"		value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/lib"/>
+	<property name="configDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/"/>	
+
+	<property name="junit.fork" value="true"/>		
+
+	<path id="JUnit 4.libraryclasspath">
+	    <pathelement location="/usr/bin/junit-4.12.jar"/>
+	    <pathelement location="/usr/bin/hamcrest-core-1.3.jar"/>
+	</path>
+	<path id="Calavera.classpath">
+		<pathelement location="."/>
+		<pathelement location="/usr/share/tomcat6/lib/servlet-api.jar"/>
+		<path refid="JUnit 4.libraryclasspath"/>
+	</path>
+		
+	<target name="main" depends="init, compile, test, compress, deploy"> 
+
+		<echo> 
+			${message}
+		</echo> 
+	</target> 
+	
+	<target name="init">
+		<echo>
+			Computer name is ${my_env.COMPUTERNAME}
+                        User name is ${user.name}
+			Building from ${ant.file}
+			Java is version ${ant.java.version}
+			Project is ${ant.project.name}
+			Ant is ${ant.version}
+			Basedir is ${basedir}
+			Source is ${src}
+			Build target is ${output}
+			Deployment target is ${deploy}
+		</echo>
+		<mkdir dir="${output}"/>
+		<mkdir dir="${results}"/>
+	</target>
+
+	<target name="compile"> 
+		<javac includeantruntime="false" 
+			srcdir="${src}" 
+			destdir="${output}"
+			classpathref="Calavera.classpath"
+		/>
+		<javac includeantruntime="false" 
+			srcdir="${test}" 
+			destdir="${output}"
+			classpathref="Calavera.classpath"
+		/>
+	</target> 
+
+	<target name="test" depends="compile"> 
+		<echo>
+			entering test
+		</echo>
+		<junit printsummary="on" haltonfailure="yes"> 
+			<classpath refid="JUnit 4.libraryclasspath" /> 
+			<classpath> 
+				<pathelement location="${output}"/> 
+			</classpath> 
+
+		    	<test name="biz.calavera.TestClass1" haltonfailure="yes" todir="${results}" outfile="result">
+				<formatter type="xml" /> 
+				<formatter type="plain" /> 
+			</test>	
+		</junit> 
+
+	</target> 
+
+
+	<target name="compress"> 
+		<jar destfile="${output}/${buildName}.jar" basedir="${output}">
+			<include name="**/*.class"/> 
+			<manifest>
+			  <attribute name="MainServlet" value="biz.calavera.MainServlet"/>
+			</manifest>
+		</jar>
+	</target> 
+	
+	
+	<target name="deploy" > 
+		<delete dir="${deploy}"/>
+		<mkdir dir="${deploy}"/>
+		
+		<copy todir="${deploy}">
+			<fileset dir="${output}">
+				<include name="**/*.jar"/>
+				<exclude name="**/Test*"/>
+			</fileset>
+		</copy>
+		
+		<copy todir="${configDeploy}">
+			<fileset dir="${config}">
+				<include name="web.xml"/>
+			</fileset>
+		</copy>
+		
+
+		
+		<echo>
+			Attempting Tomcat restart. 
+		</echo>
+		
+		<!-- !!!! need to add test if this is running -->
+		<!-- if run too quickly in succession, will fail with unpredictable results-->
+		<!-- could not get preferred syntax to work
+		<exec executable="sh">
+			<arg value = "service"/>
+			<arg value = "tomcat6"/>
+			<arg value = "stop"/>			
+		</exec-->
+		
+		<!-- deprecated -->		
+		<exec command="service tomcat6 stop"/>		
+		<exec command="service tomcat6 start"/>
+	
+	</target>
+
+</project>
+
+

@@ -1,0 +1,109 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+    #- name: ubuntu-chef-java-14.04  #baked this with chef, java, curl, tree, apt-get update. funny, opscode prepends "opscode" to box name
+    - name: ubuntu-14.04
+        
+suites:
+  - name: piernas  # engineering server
+    driver:
+      vm_hostname: piernas.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.10"}]
+      
+      # need to customize RAM if I can here, otherwise have to take a different approach
+      
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      #- recipe[calavera::default]
+      - recipe[calavera::test]
+  
+  - name: cara  # production server
+    # depends on all else being run including build
+    driver:
+      vm_hostname: cara.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.11"}]
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]
+      - recipe[java::default]
+      - recipe[tomcat::default]
+      - recipe[calavera::cara]  
+
+  - name: brazos  # build server
+    driver:
+      vm_hostname: brazos.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.12"}]   #tomcat: http://192.168.33.12:8080
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]
+      - recipe[java::default]
+      - recipe[tomcat::default]
+      - recipe[ant::default]
+      - recipe[calavera::junit]
+      - recipe[calavera::brazos]
+       
+  - name: espina  # package repo
+    driver:
+      vm_hostname: espina.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.13"}]                      
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]       
+      - recipe[artifactory::default]
+
+  - name: manos   # developer workstation
+   # depends on cerebro to do initial push
+    driver:
+      vm_hostname: manos.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.14"}]
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]
+      
+      - recipe[java::default]
+      - recipe[tomcat::default]
+      - recipe[git::default]    #how to config name & email?
+      - recipe[ant::default]
+      - recipe[calavera::junit] 
+      - recipe[calavera::manos]
+
+  - name: hombros    # Jenkins instance
+    driver:
+      vm_hostname: hombros.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.15"}]
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]
+      - recipe[git::default]     #git must be installed on hombros for jenkins to be able to pull from cerebro       
+      - recipe[jenkins::master]      # jetty install - not tomcat
+      - recipe[calavera::hombros]
+      
+
+  - name: cerebro  # central git
+    driver:
+      vm_hostname: cerebro.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.16"}]
+      synced_folders:
+      - ["./files", "/mnt/public"]
+    run_list:
+      - recipe[calavera::default]
+      - recipe[git::default]
+      - recipe[calavera::cerebro]

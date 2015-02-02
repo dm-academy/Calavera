@@ -1,0 +1,1 @@
+#node.default['tomcat']['base_version'] = 7

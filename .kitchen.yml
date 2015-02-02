@@ -1,0 +1,37 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  cookbook_path: "./chef-repo/cookbooks"
+
+platforms:
+  - name: ubuntu-14.04
+    attributes:
+      calavera:
+        manos:
+          fqdn: manos.calavera.biz
+          ipaddress: 192.168.33.14
+        cara:
+          fqdn: cara.calavera.biz
+          ipaddress: 192.168.33.11
+
+suites:
+  - name: cara
+    driver:
+      vm_hostname: cara.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.11"}]
+    run_list:
+    
+  - name: manos
+    driver:
+      vm_hostname: manos.calavera.biz
+      network:
+      - ["private_network", {ip: "192.168.33.14"}]
+    run_list:
+      - recipe[apt::default]
+      #- recipe[java::default]  # took a manual apt-get update to succeed
+    
+
