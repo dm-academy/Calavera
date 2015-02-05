@@ -1,0 +1,2 @@
+To install Artifactory behind nginx please refer to:
+http://wiki.jfrog.org/confluence/display/RTF/Running+Behind+Nginx

@@ -7,7 +7,7 @@ long_description 'Installs/Configures calavera'
 version          '0.1.0'
 
 depends           'apt'
-depends           'java'
+#depends           'java'
 depends           'tomcat'
 depends           'curl'
 #depends           'nexus'

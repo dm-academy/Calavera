@@ -80,7 +80,6 @@
 
 	</target> 
 
-
 	<target name="compress"> 
 		<jar destfile="${output}/${buildName}.jar" basedir="${output}">
 			<include name="**/*.class"/> 
@@ -88,6 +87,11 @@
 			  <attribute name="MainServlet" value="biz.calavera.MainServlet"/>
 			</manifest>
 		</jar>
+		<copy todir="${output}">
+			<fileset dir="${config}">
+				<include name="web.xml"/>
+			</fileset>
+		</copy>	
 	</target> 
 	
 	

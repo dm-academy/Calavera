@@ -12,8 +12,8 @@ execute 'duplicate keys' do
 end
 
 execute 'correct Jenkins directory ownership' do
-  command ' chown -R jenkins /var/lib/jenkins &&  \
-            chgrp -R jenkins /var/lib/jenkins'          
+  command 'chown -R jenkins /var/lib/jenkins &&  \
+          chgrp -R jenkins /var/lib/jenkins'  
 end
 
 # create credential
@@ -79,6 +79,8 @@ jenkins_ssh_slave 'brazos' do
   credentials 'jenkins'
 end
 
+#ESSENTIAL - set master to 0 executors
+
 
 #jenkins_plugin 'git-client' do
 #  action :uninstall
@@ -93,6 +95,7 @@ jenkins_plugin 'artifactory' do   #install artifactory plugin
   #action :uninstall
   notifies :restart, 'service[jenkins]', :immediately
 end
+
 
 cookbook_file "hijoInit.xml" do    # downloaded from manually defined job. todo: convert this to erb file
   path "#{Chef::Config[:file_cache_path]}/hijoInit.xml"

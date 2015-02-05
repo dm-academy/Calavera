@@ -1,0 +1,17 @@
+## This is a template file for ha-node.properties. ##
+## Once edited properly, it should be located under the etc/ folder of an Artifactory HA instance ##
+
+# Unique descriptive name of this server.
+node.id=art1
+
+# The location of $CLUSTER_HOME that you set up on your NFS.
+cluster.home=/mnt/shared/artifactory/clusterhome
+
+# The context url that should be used to communicate with this server within the cluster.
+context.url=http://10.0.0.121:8081/artifactory/
+
+# The port that should be used to communicate with this server within the cluster. (Optional)
+membership.port=10001
+
+# Indicates if this is the primary server. (Optional)
+primary=true

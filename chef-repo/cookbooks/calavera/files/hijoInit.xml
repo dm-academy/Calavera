@@ -21,17 +21,47 @@
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <canRoam>true</canRoam>
+  <assignedNode>brazos</assignedNode>
+  <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec></spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Ant plugin="ant@1.2">
-      <targets>init compile test</targets>
+      <targets>init compile test compress</targets>
+      <antName>(Default)</antName>
     </hudson.tasks.Ant>
   </builders>
   <publishers/>
-  <buildWrappers/>
+  <buildWrappers>
+    <org.jfrog.hudson.generic.ArtifactoryGenericConfigurator plugin="artifactory@2.2.7">
+      <details>
+        <artifactoryName>-655347167@1423096366581</artifactoryName>
+        <repositoryKey>ext-release-local</repositoryKey>
+        <snapshotsRepositoryKey>ext-release-local</snapshotsRepositoryKey>
+        <artifactoryUrl>http://192.168.33.13:8081/artifactory</artifactoryUrl>
+        <stagingPlugin/>
+      </details>
+      <deployPattern>**/target/*.jar=&gt;Calavera
+**/target/web.xml=&gt;Calavera</deployPattern>
+      <resolvePattern></resolvePattern>
+      <matrixParams></matrixParams>
+      <deployBuildInfo>true</deployBuildInfo>
+      <includeEnvVars>false</includeEnvVars>
+      <envVarsPatterns>
+        <includePatterns></includePatterns>
+        <excludePatterns>*password*,*secret*</excludePatterns>
+      </envVarsPatterns>
+      <discardOldBuilds>false</discardOldBuilds>
+      <discardBuildArtifacts>true</discardBuildArtifacts>
+      <multiConfProject>false</multiConfProject>
+    </org.jfrog.hudson.generic.ArtifactoryGenericConfigurator>
+  </buildWrappers>
 </project>

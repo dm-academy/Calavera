@@ -20,10 +20,11 @@ end
   directory name  do
     mode 00775
     action :create
+    user "vagrant"
+    group "git"
     recursive true
   end
 end
-
 
 file_map = {
   "INTERNAL_gitignore" => "/home/hijo/.gitignore",
@@ -45,13 +46,11 @@ file_map.each do | fileName, pathName |
 end
 
 execute 'correct dev directory permissions' do
-  command 'chown -R vagrant /home/hijo/* &&  \
-           chgrp -R git /home/hijo/*'          # Chef does not have an easy way to do this. 
+  command 'chown -R vagrant /home/hijo/ && chgrp -R git /home/hijo/'          # Chef does not have an easy way to do this. 
 end
 
 execute 'correct tomcat webapps permissions' do
-  command   'chown -R vagrant /var/lib/tomcat6/webapps/* &&     \
-             chgrp -R vagrant /var/lib/tomcat6/webapps/*'    #
+  command   'chown -R vagrant /var/lib/tomcat6/webapps/ && chgrp -R vagrant /var/lib/tomcat6/webapps/'    #
 end
 
 execute 'initial build & dev deploy' do
@@ -89,7 +88,7 @@ end
 execute 'define remote' do
   user "vagrant"
   cwd '/home/hijo'
-  command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server
+  command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server. high priority to make idempotent.
 end
 
 execute 'push to remote' do

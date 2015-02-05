@@ -8,11 +8,18 @@
 
 group 'git'
 
+group 'jenkins'
+
 user 'git' do
   group 'git'
 end
 
 user 'vagrant' do
+  group 'git'
+end
+
+user 'jenkins' do
+  group 'jenkins'
   group 'git'
 end
 
@@ -24,6 +31,23 @@ directory "/home/hijo.git/"  do
     recursive true
 end
 
+directory "/home/jenkins/.ssh"  do
+    mode 00775
+    owner "jenkins"
+    group "git"
+    action :create
+    recursive true
+end
+
+execute 'Jenkins keys' do
+  cwd '/home/vagrant/.ssh'
+  command 'cp id_rsa* /home/jenkins/.ssh'
+end
+
+execute 'correct Jenkins ssh keys ownership' do
+  command 'chown -R jenkins /home/jenkins &&  \
+          chgrp -R jenkins /home/jenkins'  
+end
 
 execute 'init git' do
   user "git"
@@ -35,7 +59,7 @@ end
 # that means manos is dependent on havng cerebro done in terms of ordering
 
 cookbook_file "post-receive" do
-    path "/home/hijo.git/hooks"
+    path "/home/hijo.git/hooks/post-receive"
     user "jenkins"
     group "jenkins"
     mode 00755    # must be executable

@@ -33,7 +33,7 @@ file_map.each do | fileName, pathName |
   end
 end
 
-# convert next 2 commands to the hostsfile cookbook
+# convert next 2 commands to the hostsfile cookbook?
 
 execute 'configure host file' do
   command 'cat /tmp/calaverahosts >> /etc/hosts'   # REALLY not idempotent
