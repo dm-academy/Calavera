@@ -110,7 +110,7 @@ suites:
     driver:
       vm_hostname: hombros.calavera.biz
       network:
-      - ["private_network", {ip: "192.168.33.15"}]
+      - ["private_network", {ip: " "}]
       synced_folders:
       - ["./files", "/mnt/public"]
     run_list:
