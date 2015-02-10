@@ -10,17 +10,42 @@ Vagrant.configure(2) do |config|
 #          virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
 #        end
         
+        
+###############################################################################
+###################################    cerebro   ##############################
+###############################################################################
+
+	config.vm.define "cerebro" do | cerebro |
+		cerebro.vm.host_name		="cerebro.calavera.biz"	
+		cerebro.vm.network 		"private_network", ip: "192.168.33.30"
+		cerebro.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+		cerebro.vm.network 		"forwarded_port", guest: 22, host: 2230, auto_correct: true
+		cerebro.vm.network 		"forwarded_port", guest: 80, host: 8030
+		cerebro.vm.network		"forwarded_port", guest: 8080, host: 8130
+                cerebro.vm.synced_folder        ".", "/home/cerebro"
+                cerebro.vm.synced_folder        "./files", "/mnt/public"                
+		#cerebro.vm.provision 	    :shell, path: "./shell/cerebro.sh"
+		cerebro.vm.provision :chef_zero do |chef|
+                    chef.cookbooks_path = ["./cookbooks/"]
+                    chef.add_recipe "git::default"
+                    chef.add_recipe "cerebro::default"
+                  #chef.roles_path = "./chef/roles"
+                end
+	end
+end
+
+        
 ###############################################################################
 ###################################    manos     ##############################
 ###############################################################################
 
 	config.vm.define "manos" do | manos |
 		manos.vm.host_name		="manos.calavera.biz"	
-		manos.vm.network 		"private_network", ip: "192.168.33.40"
+		manos.vm.network 		"private_network", ip: "192.168.33.35"
 		manos.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
-		manos.vm.network 		"forwarded_port", guest: 22, host: 2230, auto_correct: true
-		manos.vm.network 		"forwarded_port", guest: 80, host: 8030
-		manos.vm.network		"forwarded_port", guest: 8080, host: 8130
+		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
+		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
+		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
                 manos.vm.synced_folder           ".", "/home/manos"
                 manos.vm.synced_folder           "./files", "/mnt/public"                
 		#manos.vm.provision 	    :shell, path: "./shell/manos.sh"
