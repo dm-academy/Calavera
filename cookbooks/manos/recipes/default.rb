@@ -103,18 +103,23 @@ end
 
 execute 'register server' do
   user "vagrant"
+  group "git"
+  cwd '/home/hijo'
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})  
   command 'ssh-keyscan cerebro >> ~/.ssh/known_hosts'   # prevents interactive dialog
 end
 
 execute 'define remote' do
   user "vagrant"
   cwd '/home/hijo'
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})  
   command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server. high priority to make idempotent.
 end
 
 execute 'push to remote' do
   user "vagrant"
   cwd '/home/hijo'
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})  
   command 'git push origin master'   # push to master git server
 end
 
