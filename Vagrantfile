@@ -100,7 +100,7 @@ Vagrant.configure(2) do |config|
 		espina.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java7::default"   # artifactory needs Java 7
+                    chef.add_recipe "java7::manual"   # artifactory needs Java 7
                     chef.add_recipe "espina::default"
                 end
 	end
