@@ -11,9 +11,9 @@ VirtualBox
 
 Vagrant
 
-    Vagrant Berkshelf plugin https://github.com/berkshelf/vagrant-berkshelf
+   [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
     
-    Vagrant VBoxGuest plugin https://github.com/dotless-de/vagrant-vbguest
+   [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
     
 ChefDK
 
@@ -22,9 +22,7 @@ Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core prefe
 
 At least 4 GB of RAM and a computer capable of running 64-bit VMs
 
-You may need to enable hardware acceleration:
-
-    http://www.sysprobs.com/disable-enable-virtualization-technology-bios
+You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
 
 
 2015-02-09 update:
