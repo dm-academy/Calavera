@@ -8,14 +8,22 @@ See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki p
 Prerequisites
 ========
 VirtualBox
+
 Vagrant
+
     Vagrant Berkshelf plugin https://github.com/berkshelf/vagrant-berkshelf
+    
     Vagrant VBoxGuest plugin https://github.com/dotless-de/vagrant-vbguest
+    
 ChefDK
 
-Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable. 
+
+Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable.
+
 At least 4 GB of RAM and a computer capable of running 64-bit VMs
+
 You may need to enable hardware acceleration:
+
     http://www.sysprobs.com/disable-enable-virtualization-technology-bios
 
 
