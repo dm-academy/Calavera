@@ -12,6 +12,8 @@ I have been heads down in R&D and admittedly lax in checking things in. Since I 
 
 BUT... I do not want to tightly couple Calavera to Chef. So, I do not want a .kitchen.yml file driving everything. I therefore am going to (as "third time's the charm") go back to a Vagrantfile as the prime mover, using Chef Solo as appropriate for expedited, dependency-aware configuration and automation. 
 
+I also have created two branches. Version 0.1 is the original version based solely on a shell provisioner. Version 0.2 is the completed Chef version. Going to clean house thoroughly for the v0.3 master. 
+
 2015-01-18 directional update:
 ========
 To this point, all of the infrastructure was running well on default-sized Vagrant VMs (512m) and I could have it all on my Mac Air. This was making it possible to consider that any student with a 2-4gb laptop would be able to run the whole thing, especially if I tuned some of the machines down even further. (This is different from what the architecture diagram suggests, which is that the student is only running the Manos workstation locally.)
