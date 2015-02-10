@@ -6,6 +6,7 @@ espina/hijo.git
 id_rsa*
 result.txt
 result.xml
+Berksfile.lock
 
 *.gz
 
