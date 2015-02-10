@@ -5,11 +5,35 @@ Vagrant.configure(2) do |config|
 
 	config.vm.box = "ubuntu/trusty64"  # updated only with VirtualBox addin at this point
         config.berkshelf.enabled = true
-#        config.vm.provider :virtualbox do |virtualbox|
-#          virtualbox.customize ["modifyvm", :id, "--memory", "4096"]   # e.g. for Chef Server
+        config.vm.provider :virtualbox do |virtualbox|
+          virtualbox.customize ["modifyvm", :id, "--memory", "1024"]   # e.g. for Chef Server
 #          virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-#        end
-        
+        end
+ 
+###############################################################################
+###################################    base   #################################
+###############################################################################
+
+# Recommendation: run this image and exit to command line, repackage and upload to ubuntu/trusty64a.
+# saves a lot of time if you are working with the cluster
+# (eliminates chef & java downloads, also apt-get updates & installs tree & curl)
+
+	config.vm.define "base" do | base |
+		base.vm.host_name		="base.calavera.biz"	
+		base.vm.network 		"private_network", ip: "192.168.33.29"
+		base.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+		base.vm.network 		"forwarded_port", guest: 22, host: 2229, auto_correct: true
+		base.vm.network 		"forwarded_port", guest: 80, host: 8029
+		base.vm.network		        "forwarded_port", guest: 8080, host: 8129
+                base.vm.synced_folder           ".", "/home/base"
+                base.vm.synced_folder           "./shared", "/mnt/shared"                
+		#base.vm.provision 	        :shell, path: "./shell/base.sh"
+		base.vm.provision :chef_zero do |chef|
+                    chef.cookbooks_path = ["./cookbooks/"]
+                    chef.add_recipe "shared::default"
+		    chef.add_recipe "java7::default"
+                end
+	end        
         
 ###############################################################################
 ###################################    cerebro   ##############################
@@ -27,7 +51,7 @@ Vagrant.configure(2) do |config|
 		#cerebro.vm.provision 	    :shell, path: "./shell/cerebro.sh"
 		cerebro.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "shared::default"                    
+                    chef.add_recipe "shared::default"
                     chef.add_recipe "git::default"
                     chef.add_recipe "cerebro::default"
                 end
@@ -50,7 +74,7 @@ Vagrant.configure(2) do |config|
 		brazos.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
                     chef.add_recipe "shared::default" 
-		    chef.add_recipe "java::default"
+		    chef.add_recipe "java7::default"
                     chef.add_recipe "ant::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "shared::_junit"
@@ -73,10 +97,9 @@ Vagrant.configure(2) do |config|
                 espina.vm.synced_folder           "./shared", "/mnt/shared"                
 		#espina.vm.provision 	    :shell, path: "./shell/espina.sh"
 		espina.vm.provision :chef_zero do |chef|
-		    
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java::default"
+                    chef.add_recipe "java7::default"   # artifactory needs Java 7
                     chef.add_recipe "espina::default"
                 end
 	end

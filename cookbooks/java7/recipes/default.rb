@@ -17,6 +17,4 @@
 #end
 #
 
-run_list(
-  "recipe[java]"
-)
+include_recipe "java::default"

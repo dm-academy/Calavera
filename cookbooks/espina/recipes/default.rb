@@ -1,9 +1,9 @@
 
-
 #artifactory
 # get from http://bit.ly/Hqvfi9  (the zip file. use unzip.)
 
-#create users 
+#create users
+
 
 group 'artifactory'
 
