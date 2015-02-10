@@ -1,0 +1,4 @@
+<Context path="/artifactory" docBase="${artifactory.home}/webapps/artifactory.war" processTlds="false">
+    <Manager pathname="" />
+</Context>
+
