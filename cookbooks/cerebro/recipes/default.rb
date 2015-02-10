@@ -40,7 +40,7 @@ directory "/home/jenkins/.ssh"  do
 end
 
 execute 'Jenkins keys' do
-  cwd '/home/vagrant/.ssh'
+  cwd 'home/vagrant/.ssh'
   command 'cp id_rsa* /home/jenkins/.ssh'
 end
 

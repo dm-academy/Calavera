@@ -23,16 +23,17 @@ Vagrant.configure(2) do |config|
 		cerebro.vm.network 		"forwarded_port", guest: 80, host: 8030
 		cerebro.vm.network		"forwarded_port", guest: 8080, host: 8130
                 cerebro.vm.synced_folder        ".", "/home/cerebro"
-                cerebro.vm.synced_folder        "./files", "/mnt/public"                
+                cerebro.vm.synced_folder        "./shared", "/mnt/shared"                
 		#cerebro.vm.provision 	    :shell, path: "./shell/cerebro.sh"
 		cerebro.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
+                    chef.add_recipe "shared::default"                    
                     chef.add_recipe "git::default"
                     chef.add_recipe "cerebro::default"
                   #chef.roles_path = "./chef/roles"
                 end
 	end
-end
+
 
         
 ###############################################################################
@@ -47,7 +48,7 @@ end
 		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
 		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
                 manos.vm.synced_folder           ".", "/home/manos"
-                manos.vm.synced_folder           "./files", "/mnt/public"                
+                manos.vm.synced_folder           "./shared", "/mnt/shared"                
 		#manos.vm.provision 	    :shell, path: "./shell/manos.sh"
 		manos.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]

@@ -1,9 +1,9 @@
-name             'manos'
+name             'brazos'
 maintainer       'Charles Betz'
 maintainer_email 'char@erp4it.com'
 license          'MIT'
-description      'Installs/Configures manos dev wks'
-long_description 'Installs/Configures manos dev wks'
+description      'cookbook for Jenkins slave server'
+long_description ''
 version          '0.3.0'
 
 depends           'apt'

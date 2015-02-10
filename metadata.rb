@@ -6,8 +6,6 @@ description      'Installs/Configures calavera'
 long_description 'Installs/Configures calavera'
 version          '0.3.0'
 
-depends           'apt'
-depends           'java'
-depends           'curl'
+
 
 

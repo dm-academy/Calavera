@@ -101,22 +101,22 @@ execute 'initialize git 5' do
   command 'git commit -m "initial commit"'   # needs to be idempotent
 end
 
-#execute 'register server' do
-#  user "vagrant"
-#  command 'ssh-keyscan cerebro >> ~/.ssh/known_hosts'   # prevents interactive dialog
-#end
-#
-#execute 'define remote' do
-#  user "vagrant"
-#  cwd '/home/hijo'
-#  command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server. high priority to make idempotent.
-#end
-#
-#execute 'push to remote' do
-#  user "vagrant"
-#  cwd '/home/hijo'
-#  command 'git push origin master'   # push to master git server
-#end
+execute 'register server' do
+  user "vagrant"
+  command 'ssh-keyscan cerebro >> ~/.ssh/known_hosts'   # prevents interactive dialog
+end
+
+execute 'define remote' do
+  user "vagrant"
+  cwd '/home/hijo'
+  command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server. high priority to make idempotent.
+end
+
+execute 'push to remote' do
+  user "vagrant"
+  cwd '/home/hijo'
+  command 'git push origin master'   # push to master git server
+end
 
 
 

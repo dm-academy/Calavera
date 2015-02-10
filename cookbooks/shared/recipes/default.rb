@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: calavera
+# Cookbook Name:: shared
 # Recipe:: default - run on every node
 #
 # Copyright (c) 2015 The Authors, All Rights Reserved.
@@ -18,8 +18,8 @@ end
 # from files directory
 
 file_map = {
- "calaverahosts" => "/tmp/calaverahosts",
- "ssh.sh" => "/tmp/ssh.sh"      # copy script down
+ "calaverahosts" => "/home/vagrant/calaverahosts",
+ "ssh.sh" => "/home/vagrant/ssh.sh"      # copy script down
 }
 
 # download each file and place it in right directory
@@ -36,18 +36,20 @@ end
 # convert next 2 commands to the hostsfile cookbook?
 
 execute 'configure host file' do
-  command 'cat /tmp/calaverahosts >> /etc/hosts'   # REALLY not idempotent
+  command 'cat /home/vagrant/calaverahosts >> /etc/hosts'   # REALLY not idempotent. just put a touch x guard
 end
 
 execute 'remove host file' do
-  command 'rm /tmp/calaverahosts'
+  command 'rm /home/vagrant/calaverahosts'
 end
 
 # convert next command to appropriate cookbook. 
 
 execute 'configure ssh' do
-  command '/tmp/ssh.sh' # configure SSH - also not idempotent
-  #command '/tmp/test.sh'
+  user "vagrant"
+  group "vagrant"
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'}) 
+  command "/home/vagrant/ssh.sh" # configure SSH - also not idempotent
 end
 
 
