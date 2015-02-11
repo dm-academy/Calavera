@@ -4,14 +4,18 @@
 ###############################################################################
 #
 
-# echo "installing Java 7"
-
-# need to source this
-# may just have to go w/Oracle, as openJDK seems hard to find
 
 #remote_file "/mnt/public/jdk-7u40-fcs-bin-b40-linux-x64-16_aug_2013.tar.gz" do
 #    source 'http://www.java.net/download/jdk7u40/archive/b40/binaries/jdk-7u40-fcs-bin-b40-linux-x64-16_aug_2013.tar.gz'
 #end
+
+directory '/usr/lib/jvm/'  do
+    mode 00775
+    action :create
+    user "root"
+    group "root"
+    recursive true
+end
 
 cookbook_file 'jdk-7u40-fcs-bin-b40-linux-x64-16_aug_2013.tar.gz' do
     path '/usr/lib/jvm/jdk-7u40-fcs-bin-b40-linux-x64-16_aug_2013.tar.gz'

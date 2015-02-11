@@ -1,23 +1,35 @@
 #Berksfile tweak needed per https://github.com/berkshelf/vagrant-berkshelf/issues/237  **/.git
 
+# dependencies:
+  # manos => cerebro
+  # manos => hombros
+  # hombros => brazos
+  # hombros => espina
+  # hombros => cerebro
+  # cara => espina
+# resolved order: cerebro, brazos, espina, hombros, manos, cara 
 
 Vagrant.configure(2) do |config|
-
-	config.vm.box = "ubuntu/trusty64"
- 	#config.vm.box = "ubuntu/trusty64a"       #if you run base and repackage this will speed things up condid
+	config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
+	#config.vm.box = "opscode-ubuntu-14.04" # if you run base and repackage this will speed things up considerably	
         config.berkshelf.enabled = true
         #config.vm.provider :virtualbox do |virtualbox|
           #virtualbox.customize ["modifyvm", :id, "--memory", "1024"]   # e.g. for Chef Server
-#          virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+	  #virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
         #end
  
 ###############################################################################
 ###################################    base   #################################
 ###############################################################################
 
-# Recommendation: run this image and exit to command line, repackage and upload to ubuntu/trusty64a.
+# Recommendation: run this image and exit to command line, repackage and upload to opscode-ubuntu-14.04a.
+# 
+# $ vagrant package base
+# $ vagrant box add opscode-ubuntu-14.04a package.box
+# $ rm package.box
+# 
 # saves a lot of time if you are working with the cluster
-# (eliminates chef & java downloads, also apt-get updates & installs tree & curl)
+# (eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl)
 
 	config.vm.define "base" do | base |
 		base.vm.host_name		="base.calavera.biz"	
@@ -57,6 +69,8 @@ Vagrant.configure(2) do |config|
                     chef.add_recipe "cerebro::default"
                 end
 	end
+
+# need a git test
 
 ###############################################################################
 ###################################    brazos     ##############################
@@ -100,7 +114,7 @@ Vagrant.configure(2) do |config|
 		espina.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java7::manual"   # artifactory needs Java 7
+                    chef.add_recipe "java7::default"   # artifactory needs Java 7
                     chef.add_recipe "espina::default"
                 end
 	end
@@ -147,13 +161,15 @@ Vagrant.configure(2) do |config|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
                     chef.add_recipe "git::default"
-                    chef.add_recipe "java::default"
+                    chef.add_recipe "java7::default"
                     chef.add_recipe "ant::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "shared::_junit"
                     chef.add_recipe "manos::default"
                 end
 	end
+	
+	# test: http://192.168.33.30:8134/MainServlet
 	
 ###############################################################################
 ###################################    cara     ##############################
@@ -172,7 +188,7 @@ Vagrant.configure(2) do |config|
 		cara.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java::default"
+                    chef.add_recipe "java7::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "cara::default"
                 end
