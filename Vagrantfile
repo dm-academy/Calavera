@@ -22,10 +22,10 @@ Vagrant.configure(2) do |config|
 ###################################    base   #################################
 ###############################################################################
 
-# Recommendation: run this image and exit to command line, repackage and upload to opscode-ubuntu-14.04a.
+# Recommendation: run this image and exit to command line, repackage and upload to opscode-ubuntu-14.04a:
 # 
 # $ vagrant package base
-# $ vagrant box add opscode-ubuntu-14.04a package.box
+# $ vagrant box add opscode-ubuntu-14.04a package.box -f
 # $ rm package.box
 # 
 # saves a lot of time if you are working with the cluster
@@ -91,11 +91,12 @@ Vagrant.configure(2) do |config|
                     chef.add_recipe "shared::default" 
 		    chef.add_recipe "java7::default"
                     chef.add_recipe "ant::default"
-                    chef.add_recipe "tomcat::default"
                     chef.add_recipe "shared::_junit"
                     chef.add_recipe "brazos::default"
                 end
 	end
+	
+	# 
 
 ###############################################################################
 ###################################    espina     ##############################
@@ -118,6 +119,8 @@ Vagrant.configure(2) do |config|
                     chef.add_recipe "espina::default"
                 end
 	end
+	
+	# test: http://192.168.33.32:8081
 	
 ###############################################################################
 ###################################    hombros     ##############################

@@ -9,6 +9,7 @@ result.xml
 Berksfile.lock
 
 *.gz
+*.box
 
 #################
 ## vagrant
