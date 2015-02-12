@@ -15,7 +15,12 @@ end
 
 execute 'duplicate keys' do
   cwd '/home/vagrant/.ssh'
-  command 'cp * /home/jenkins/.ssh'   # includes authorized hosts
+  command 'cp id_rsa* /home/jenkins/.ssh'   # includes authorized hosts
+end
+
+execute 'authorize jenkins public key' do
+  cwd '/home/jenkins/.ssh'
+  command 'cat id_rsa.pub >> authorized_keys'   # includes authorized hosts
 end
 
 execute 'correct Jenkins directory ownership' do
@@ -23,7 +28,7 @@ execute 'correct Jenkins directory ownership' do
             chgrp -R jenkins /home/jenkins'          
 end
 
-execute 'correct tomcat webapps permissions' do
-  command   'chown -R jenkins /var/lib/tomcat6/webapps/* &&     \
-             chgrp -R jenkins /var/lib/tomcat6/webapps/*'    #
-end
+#execute 'correct tomcat webapps permissions' do
+#  command   'chown -R jenkins /var/lib/tomcat6/webapps &&     \
+#             chgrp -R jenkins /var/lib/tomcat6/webapps'    #
+#end

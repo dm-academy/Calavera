@@ -1,10 +1,4 @@
-# set up developer workstation
-
-# assuming Chef has set up Java, Tomcat, ant and junit
-# need to establish directory structure
-# move source code over
-# run Ant # OR... have Jenkins do? Or do manually? 
-# remote push Git?
+# set up central git repository server
 
 group 'git'
 
@@ -18,7 +12,7 @@ user 'vagrant' do
   group 'git'
 end
 
-user 'jenkins' do
+user 'jenkins' do   # jenkins will need to ssh in to retrieve files to build
   group 'jenkins'
   group 'git'
 end
@@ -41,10 +35,10 @@ end
 
 execute 'Jenkins keys' do
   cwd 'home/vagrant/.ssh'
-  command 'cp id_rsa* /home/jenkins/.ssh'
+  command 'cp * /home/jenkins/.ssh'  # this should include authorized keys. 
 end
 
-execute 'correct Jenkins ssh keys ownership' do
+execute 'correct Jenkins ssh files ownership' do
   command 'chown -R jenkins /home/jenkins &&  \
           chgrp -R jenkins /home/jenkins'  
 end

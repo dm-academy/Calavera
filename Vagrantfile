@@ -198,5 +198,25 @@ Vagrant.configure(2) do |config|
                     chef.add_recipe "cara::default"
                 end
 	end
-end
 
+
+###############################################################################
+###################################    test     ##############################
+###############################################################################
+
+	config.vm.define "test" do | test |
+		test.vm.host_name		="test.calavera.biz"	
+		test.vm.network 		"private_network", ip: "192.168.33.99"
+		test.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+		test.vm.network 		"forwarded_port", guest: 22, host: 2299, auto_correct: true
+		test.vm.network 		"forwarded_port", guest: 80, host: 8099
+		test.vm.network		"forwarded_port", guest: 8080, host: 8199
+                test.vm.synced_folder           ".", "/home/test"
+                test.vm.synced_folder           "./shared", "/mnt/shared"                
+		#test.vm.provision 	    :shell, path: "./shell/test.sh"
+		test.vm.provision :chef_zero do |chef|
+                    chef.cookbooks_path = ["./cookbooks/"]
+                    chef.add_recipe "test::default"
+                end
+	end
+end
