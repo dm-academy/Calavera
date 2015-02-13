@@ -116,6 +116,14 @@ execute 'define remote' do
   command 'git remote add origin ssh://cerebro/home/hijo.git'   # define master git server. high priority to make idempotent.
 end
 
+
+execute 'push to remote' do
+  user "vagrant"
+  cwd '/home/hijo'
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})  
+  command 'git push origin --mirror'   # erase master - if rebuilding manos, assume this is desired. may want to reconsider.
+end
+
 execute 'push to remote' do
   user "vagrant"
   cwd '/home/hijo'

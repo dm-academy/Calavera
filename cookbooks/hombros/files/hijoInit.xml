@@ -36,17 +36,16 @@
   <builders>
     <hudson.tasks.Ant plugin="ant@1.2">
       <targets>init compile test compress</targets>
-      <antName>(Default)</antName>
     </hudson.tasks.Ant>
   </builders>
   <publishers/>
   <buildWrappers>
     <org.jfrog.hudson.generic.ArtifactoryGenericConfigurator plugin="artifactory@2.2.7">
       <details>
-        <artifactoryName>-655347167@1423096366581</artifactoryName>
+        <artifactoryName>-1347218556@1423792935024</artifactoryName>
         <repositoryKey>ext-release-local</repositoryKey>
         <snapshotsRepositoryKey>ext-release-local</snapshotsRepositoryKey>
-        <artifactoryUrl>http://espina/artifactory</artifactoryUrl>
+        <artifactoryUrl>http://espina:8081/artifactory</artifactoryUrl>
         <stagingPlugin/>
       </details>
       <deployPattern>**/target/*.jar=&gt;Calavera

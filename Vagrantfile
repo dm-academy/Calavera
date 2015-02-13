@@ -7,7 +7,7 @@
   # hombros => espina
   # hombros => cerebro
   # cara => espina
-# resolved order: cerebro, brazos, espina, hombros, manos, cara 
+# resolved order: cerebro, brazos, espina, hombros, **manually setup artifactory**, manos, cara 
 
 Vagrant.configure(2) do |config|
 	config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
@@ -44,7 +44,7 @@ Vagrant.configure(2) do |config|
 		base.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
                     chef.add_recipe "shared::default"
-		    chef.add_recipe "java7::default"
+		    chef.add_recipe "java7::default"   # everything needs java except cerebro and having it there is fine, may be useful. 
                 end
 	end        
         
@@ -89,7 +89,6 @@ Vagrant.configure(2) do |config|
 		brazos.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
                     chef.add_recipe "shared::default" 
-		    chef.add_recipe "java7::default"
                     chef.add_recipe "git::default"		    
                     chef.add_recipe "ant::default"
                     chef.add_recipe "shared::_junit"
@@ -116,12 +115,15 @@ Vagrant.configure(2) do |config|
 		espina.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java7::default"   # artifactory needs Java 7
                     chef.add_recipe "espina::default"
                 end
 	end
 	
-	# test: http://192.168.33.32:8081
+	# test: http://192.168.33.32:8081, admin/password
+	
+	# currently need to manually configure Artifactory url and login/pw in Jenkins main setup
+	# select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
+	
 	
 ###############################################################################
 ###################################    hombros     ##############################
@@ -167,7 +169,6 @@ Vagrant.configure(2) do |config|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
                     chef.add_recipe "git::default"
-                    chef.add_recipe "java7::default"
                     chef.add_recipe "ant::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "shared::_junit"
@@ -194,7 +195,6 @@ Vagrant.configure(2) do |config|
 		cara.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
-                    chef.add_recipe "java7::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "cara::default"
                 end
@@ -217,7 +217,7 @@ Vagrant.configure(2) do |config|
 		#test.vm.provision 	    :shell, path: "./shell/test.sh"
 		test.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "test::default"
+                    chef.add_recipe "ant::default"
                 end
 	end
 end

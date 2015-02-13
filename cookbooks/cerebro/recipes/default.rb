@@ -49,6 +49,12 @@ execute 'init git' do
   command 'git init --bare --shared=group /home/hijo.git'
 end
 
+execute 'init git' do
+  user "git"
+  group "git"
+  cwd '/home/hijo.git'
+  command "git config receive.denynonfastforwards false"    # this way we can force wipe from manos if manos is rebuilt after cerebro
+end
 #configure post receive hook
 # that means manos is dependent on havng cerebro done in terms of ordering
 

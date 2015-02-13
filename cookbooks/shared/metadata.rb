@@ -6,7 +6,7 @@ description      'cookbook for shared calavera configs'
 long_description ''
 version          '0.3.0'
 
+depends           'java7'
 depends           'apt'
-depends           'java'
 depends           'curl'
 

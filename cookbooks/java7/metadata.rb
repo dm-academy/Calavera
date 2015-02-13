@@ -6,6 +6,6 @@ description      'wrapper cookbook to install java 7'
 long_description 'overrides default settings for 6'
 version          '0.3.0'
 
-depends           'java'
+depends           'java'   # this is the only place a dependency on the base java cookbook should appear
 
 

@@ -6,6 +6,5 @@ description      'Installs/Configures production server'
 long_description ''
 version          '0.3.0'
 
-depends           'java'
 depends           'tomcat'
 

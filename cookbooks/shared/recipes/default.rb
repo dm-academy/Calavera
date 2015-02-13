@@ -9,6 +9,7 @@
 
 include_recipe "apt::default"
 include_recipe "curl::default"
+include_recipe "java7::default"
 
 execute 'install tree' do
   command 'apt-get -q install tree'   # REALLY not idempotent
