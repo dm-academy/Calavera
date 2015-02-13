@@ -7,7 +7,6 @@ long_description 'Installs/Configures manos dev wks'
 version          '0.3.0'
 
 depends           'apt'
-#depends           'java'
 depends           'tomcat'
 depends           'ant'
 depends           'git'

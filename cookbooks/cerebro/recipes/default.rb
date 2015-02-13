@@ -26,7 +26,7 @@ directory "/home/hijo.git/"  do
 end
 
 directory "/home/jenkins/.ssh"  do
-    mode 00775
+    mode 00700      # this will fail with other permissions
     owner "jenkins"
     group "git"
     action :create

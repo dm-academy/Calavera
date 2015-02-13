@@ -8,7 +8,7 @@ end
 
 execute 'duplicate keys' do
   cwd '/home/vagrant/.ssh'
-  command 'cp id_rsa* /var/lib/jenkins/.ssh'   
+  command 'cp * /var/lib/jenkins/.ssh'   # this includes authorized_keys, don't think it does any good there
 end
 
 execute 'correct Jenkins directory ownership' do

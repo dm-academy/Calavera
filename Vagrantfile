@@ -90,6 +90,7 @@ Vagrant.configure(2) do |config|
                     chef.cookbooks_path = ["./cookbooks/"]
                     chef.add_recipe "shared::default" 
 		    chef.add_recipe "java7::default"
+                    chef.add_recipe "git::default"		    
                     chef.add_recipe "ant::default"
                     chef.add_recipe "shared::_junit"
                     chef.add_recipe "brazos::default"

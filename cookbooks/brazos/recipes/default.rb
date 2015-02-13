@@ -1,4 +1,4 @@
-# set up
+# set up remote slave build server
 
 group 'jenkins'
 
