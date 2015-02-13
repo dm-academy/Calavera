@@ -217,7 +217,7 @@ Vagrant.configure(2) do |config|
 		#test.vm.provision 	    :shell, path: "./shell/test.sh"
 		test.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "ant::default"
+                    chef.add_recipe "_ant::default"
                 end
 	end
 end
