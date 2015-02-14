@@ -7,26 +7,12 @@
 
 # from files directory
 
-# standard config, factor out
-
-#include_recipe "apt::default"
-#include_recipe "curl::default"
-#include_recipe "java7::default"
-
-#execute 'apt update' do
-#  command 'apt-get -q update'   
-#end
-
-#execute 'install tree' do
-#  command 'apt-get -q install tree'   
-#end
-
 #ssh and network setup
 
 # from files directory
 
 file_map = {
- "calaverahosts" => "/home/vagrant/calaverahosts",
+ "calaverahosts" => "/home/vagrant/calaverahosts",  # there is now a recipe for managing hosts
  "ssh.sh" => "/home/vagrant/ssh.sh"      # copy script down. yes, would be good to rewrite it entirely in Chef/Ruby
 }
 
