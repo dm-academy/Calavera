@@ -32,3 +32,5 @@ end
 #  command   'chown -R jenkins /var/lib/tomcat6/webapps &&     \
 #             chgrp -R jenkins /var/lib/tomcat6/webapps'    #
 #end
+
+# when rebuilding brazos it would be nice to let Jenkins know, if Jenkins is running. 

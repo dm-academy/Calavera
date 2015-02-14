@@ -8,5 +8,5 @@ version          '0.3.0'
 
 depends           'apt'
 depends           'tomcat'
-depends           'ant'
+depends           'localAnt'
 depends           'git'

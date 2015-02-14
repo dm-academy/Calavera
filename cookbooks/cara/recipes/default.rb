@@ -11,24 +11,17 @@
 end
 
 remote_file "/var/lib/tomcat6/webapps/ROOT/WEB-INF/lib/CalaveraMain.jar" do
-  source "http://192.168.33.13:8081/artifactory/simple/ext-release-local/Calavera/target/CalaveraMain.jar"
+  source "http://espina:8081/artifactory/simple/ext-release-local/Calavera/target/CalaveraMain.jar"
   mode '0755'
   #checksum "3a7dac00b1" # A SHA256 (or portion thereof) of the file.
 end
 
 remote_file "/var/lib/tomcat6/webapps/ROOT/WEB-INF/web.xml" do
-  source "http://192.168.33.13:8081/artifactory/simple/ext-release-local/Calavera/target/web.xml"
+  source "http://espina:8081/artifactory/simple/ext-release-local/Calavera/target/web.xml"
   mode '0755'
   #checksum "3a7dac00b1" # A SHA256 (or portion thereof) of the file.
 end
 
-#execute 'download 1' do   # make idempotent
-#  command 'wget http://192.168.33.13:8081/artifactory/simple/ext-release-local/Calavera/target/CalaveraMain.jar -O /var/lib/tomcat6/webapps/ROOT/WEB-INF/lib/CalaveraMain.jar'  #not idempotent
-#end
-#
-#execute 'download 2' do   # make idempotent
-#  command 'wget http://192.168.33.13:8081/artifactory/simple/ext-release-local/Calavera/target/web.xml -O /var/lib/tomcat6/webapps/ROOT/WEB-INF/web.xml'  #not idempotent
-#end
 
 #execute 'env' do   # make idempotent
 #  command 'echo export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64 >> /etc/profile.d/java.sh'  #not idempotent

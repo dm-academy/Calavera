@@ -6,7 +6,6 @@ description      'cookbook for Jenkins slave server'
 long_description ''
 version          '0.3.0'
 
-depends           'apt'
 depends           'tomcat'
 depends           'ant'
 depends           'git'

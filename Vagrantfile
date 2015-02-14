@@ -10,9 +10,15 @@
 # resolved order: cerebro, brazos, espina, hombros, **manually setup artifactory**, manos, cara 
 
 Vagrant.configure(2) do |config|
-	config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
-	#config.vm.box = "opscode-ubuntu-14.04" # if you run base and repackage this will speed things up considerably	
+	if ARGV[1]='base'
+		config.vm.box = "opscode-ubuntu-14.04" # if you run base and repackage this will speed things up considerably	
+	else
+		config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
+	end
+	
         config.berkshelf.enabled = true
+	
+	# how to boost capacity
         #config.vm.provider :virtualbox do |virtualbox|
           #virtualbox.customize ["modifyvm", :id, "--memory", "1024"]   # e.g. for Chef Server
 	  #virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
@@ -23,10 +29,12 @@ Vagrant.configure(2) do |config|
 ###############################################################################
 
 # Recommendation: run this image and exit to command line, repackage and upload to opscode-ubuntu-14.04a:
-# 
+#
+# $ vagrant up base
 # $ vagrant package base
 # $ vagrant box add opscode-ubuntu-14.04a package.box -f
 # $ rm package.box
+# $ vagrant destroy base
 # 
 # saves a lot of time if you are working with the cluster
 # (eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl)
@@ -43,7 +51,7 @@ Vagrant.configure(2) do |config|
 		#base.vm.provision 	        :shell, path: "./shell/base.sh"
 		base.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "shared::default"
+                    chef.add_recipe "shared::default"  # we need to refactor. this should install tree & curl at this time. probably not ssh.
 		    chef.add_recipe "java7::default"   # everything needs java except cerebro and having it there is fine, may be useful. 
                 end
 	end        
@@ -90,8 +98,10 @@ Vagrant.configure(2) do |config|
                     chef.cookbooks_path = ["./cookbooks/"]
                     chef.add_recipe "shared::default" 
                     chef.add_recipe "git::default"		    
-                    chef.add_recipe "ant::default"
+                    chef.add_recipe "localAnt::default"
                     chef.add_recipe "shared::_junit"
+		    chef.add_recipe "java7::default"
+                    chef.add_recipe "tomcat::default"
                     chef.add_recipe "brazos::default"
                 end
 	end
@@ -169,14 +179,18 @@ Vagrant.configure(2) do |config|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
                     chef.add_recipe "git::default"
-                    chef.add_recipe "ant::default"
+                    chef.add_recipe "localAnt::default"
+		    chef.add_recipe "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "shared::_junit"
                     chef.add_recipe "manos::default"
                 end
 	end
 	
-	# test: http://192.168.33.30:8134/MainServlet
+	# test: http://192.168.33.34:8080/MainServlet  # why port is not forwarding?
+	# git add .
+	# git commit -m "some message"
+	# git push origin master
 	
 ###############################################################################
 ###################################    cara     ##############################
@@ -195,11 +209,12 @@ Vagrant.configure(2) do |config|
 		cara.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
 		    chef.add_recipe "shared::default"
+		    chef.add_recipe "java7::default"
                     chef.add_recipe "tomcat::default"
                     chef.add_recipe "cara::default"
                 end
 	end
-
+	# test: http://192.168.33.35:8080/MainServlet  # why port is not forwarding?
 
 ###############################################################################
 ###################################    test     ##############################
@@ -211,13 +226,14 @@ Vagrant.configure(2) do |config|
 		test.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
 		test.vm.network 		"forwarded_port", guest: 22, host: 2299, auto_correct: true
 		test.vm.network 		"forwarded_port", guest: 80, host: 8099
-		test.vm.network		"forwarded_port", guest: 8080, host: 8199
+		test.vm.network			"forwarded_port", guest: 8080, host: 8199
                 test.vm.synced_folder           ".", "/home/test"
                 test.vm.synced_folder           "./shared", "/mnt/shared"                
 		#test.vm.provision 	    :shell, path: "./shell/test.sh"
 		test.vm.provision :chef_zero do |chef|
                     chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "_ant::default"
+		    chef.add_recipe "java7::default"
+                    chef.add_recipe "tomcat::default"
                 end
 	end
 end

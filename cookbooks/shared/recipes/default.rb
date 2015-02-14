@@ -7,20 +7,27 @@
 
 # from files directory
 
-include_recipe "apt::default"
-include_recipe "curl::default"
-include_recipe "java7::default"
+# standard config, factor out
 
-execute 'install tree' do
-  command 'apt-get -q install tree'   # REALLY not idempotent
-end
+#include_recipe "apt::default"
+#include_recipe "curl::default"
+#include_recipe "java7::default"
 
+#execute 'apt update' do
+#  command 'apt-get -q update'   
+#end
+
+#execute 'install tree' do
+#  command 'apt-get -q install tree'   
+#end
+
+#ssh and network setup
 
 # from files directory
 
 file_map = {
  "calaverahosts" => "/home/vagrant/calaverahosts",
- "ssh.sh" => "/home/vagrant/ssh.sh"      # copy script down
+ "ssh.sh" => "/home/vagrant/ssh.sh"      # copy script down. yes, would be good to rewrite it entirely in Chef/Ruby
 }
 
 # download each file and place it in right directory
