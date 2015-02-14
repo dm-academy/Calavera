@@ -40,19 +40,19 @@ Vagrant.configure(2) do |config|
 # (eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl)
 
 	config.vm.define "base" do | base |
-		base.vm.host_name		="base.calavera.biz"	
-		base.vm.network 		"private_network", ip: "192.168.33.29"
-		base.vm.network 		:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
-		base.vm.network 		"forwarded_port", guest: 22, host: 2229, auto_correct: true
-		base.vm.network 		"forwarded_port", guest: 80, host: 8029
-		base.vm.network		        "forwarded_port", guest: 8080, host: 8129
-                base.vm.synced_folder           ".", "/home/base"
-                base.vm.synced_folder           "./shared", "/mnt/shared"                
-		#base.vm.provision 	        :shell, path: "./shell/base.sh"
+		base.vm.host_name			="base.calavera.biz"	
+		base.vm.network 			"private_network", ip: "192.168.33.29"
+		base.vm.network 			:forwarded_port, guest: 22, host: 2222, id: "ssh", disabled: true
+		base.vm.network 			"forwarded_port", guest: 22, host: 2229, auto_correct: true
+		base.vm.network 			"forwarded_port", guest: 80, host: 8029
+		base.vm.network		    "forwarded_port", guest: 8080, host: 8129
+      base.vm.synced_folder    ".", "/home/base"
+      base.vm.synced_folder    "./shared", "/mnt/shared"                
+		#base.vm.provision 	    :shell, path: "./shell/base.sh"
 		base.vm.provision :chef_zero do |chef|
-                    chef.cookbooks_path = ["./cookbooks/"]
-                    chef.add_recipe "base::default"  
-                end
+         chef.cookbooks_path = ["./cookbooks/"]
+         chef.add_recipe "base::default"  
+      end
 	end        
         
 ###############################################################################

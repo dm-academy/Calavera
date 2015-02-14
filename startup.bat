@@ -1,4 +1,5 @@
-# Windows shell script to initialize base box
+REM Windows shell script to initialize base box
+REM not sure how/if this runs as PowerShell
 
 rm -f package.box
 vagrant up base
