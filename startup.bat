@@ -1,6 +1,7 @@
 REM Windows shell script to initialize base box
 REM not sure how/if this runs as PowerShell
 
+vagrant destroy base -f
 rm -f package.box
 vagrant up base
 vagrant package base

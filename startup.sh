@@ -1,5 +1,6 @@
 #! /bin/bash
 
+vagrant destroy base -f  # insert guard
 rm -f package.box
 vagrant up base
 vagrant package base
