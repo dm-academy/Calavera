@@ -10,7 +10,7 @@
 # resolved order: cerebro, brazos, espina, hombros, **manually setup artifactory**, manos, cara 
 
 Vagrant.configure(2) do |config|
-	if ARGV[1]='base'
+        if ARGV[1]=='base'
 		config.vm.box = "opscode-ubuntu-14.04" # if you run base and repackage this will speed things up considerably	
 	else
 		config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
