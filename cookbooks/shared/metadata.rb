@@ -7,6 +7,5 @@ long_description ''
 version          '0.3.0'
 
 depends           'java7'
-depends           'apt'
 depends           'curl'
 

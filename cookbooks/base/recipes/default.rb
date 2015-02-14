@@ -5,8 +5,8 @@ execute 'apt update' do
   command 'apt-get -q update'   
 end
 
-include_recipe "curl::default"
 include_recipe "java7::default"
+include_recipe "curl::default"
 
 execute 'install tree' do
   command 'apt-get -q install tree'   
