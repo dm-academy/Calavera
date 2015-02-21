@@ -23,23 +23,6 @@ remote_file "/var/lib/tomcat6/webapps/ROOT/WEB-INF/web.xml" do
 end
 
 
-#execute 'env' do   # make idempotent
-#  command 'echo export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64 >> /etc/profile.d/java.sh'  #not idempotent
-#end
-#
-#execute 'env2' do   # make idempotent
-#  command 'echo export JAVA_HOME=/usr/lib/java-6-openjdk-amd64 >> ~/.bashrc'  #not idempotent
-#end
-#
-#execute 'env3' do   # make idempotent
-#  command 'chmod +x /etc/profile.d/java.sh'  #not idempotent
-#end
-#
-#execute 'env4' do   # make idempotent
-#  command 'export JAVA_HOME=/usr/lib/jvm/java-6-openjdk-amd64'  #not idempotent
-#end
-
-
 service "tomcat6" do
   action :restart
 end

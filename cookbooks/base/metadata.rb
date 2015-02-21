@@ -7,4 +7,4 @@ long_description 'updates packages, updates VirtualBox addin, installs chef & ja
 version          '0.3.0'
 
 depends         'curl'
-depends        'java7'
+depends         'java7'
