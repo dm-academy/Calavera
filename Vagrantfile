@@ -15,8 +15,8 @@ Vagrant.configure(2) do |config|
 	else
 		config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
 	end
-	
-   config.berkshelf.enabled = true
+  config.ssh.private_key_path = "~/.ssh/insecure_private_key"	
+  config.berkshelf.enabled = true
 	
 	# how to boost capacity
       #config.vm.provider :virtualbox do |virtualbox|
