@@ -15,8 +15,8 @@ Vagrant.configure(2) do |config|
 	else
 		config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
 	end
-	
-   config.berkshelf.enabled = true
+  config.ssh.private_key_path = "~/.ssh/insecure_private_key"	
+  config.berkshelf.enabled = true
 	
 	# how to boost capacity
       #config.vm.provider :virtualbox do |virtualbox|
@@ -46,12 +46,12 @@ Vagrant.configure(2) do |config|
 		base.vm.network 			"forwarded_port", guest: 22, host: 2229, auto_correct: true
 		base.vm.network 			"forwarded_port", guest: 80, host: 8029
 		base.vm.network		    "forwarded_port", guest: 8080, host: 8129
-      base.vm.synced_folder    ".", "/home/base"
-      base.vm.synced_folder    "./shared", "/mnt/shared"                
+                base.vm.synced_folder    ".", "/home/base"
+                base.vm.synced_folder    "./shared", "/mnt/shared"                
 		#base.vm.provision 	    :shell, path: "./shell/base.sh"
 		base.vm.provision :chef_zero do |chef|
-         chef.cookbooks_path = ["./cookbooks/"]
-         chef.add_recipe "base::default"  
+                chef.cookbooks_path = ["./cookbooks/"]
+                chef.add_recipe "base::default"  
       end
 	end        
         
@@ -165,23 +165,23 @@ Vagrant.configure(2) do |config|
 
 	config.vm.define "manos" do | manos |
 		manos.vm.host_name		="manos.calavera.biz"	
-		manos.vm.network 		"private_network", ip: "192.168.33.34"
-		manos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
-		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
-		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
-		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
+#		manos.vm.network 		"private_network", ip: "192.168.33.34"
+#		manos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
+#		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
+#		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
 		manos.vm.synced_folder           ".", "/home/manos"
 		manos.vm.synced_folder           "./shared", "/mnt/shared"                
-		#manos.vm.provision 	    :shell, path: "./shell/manos.sh"
+		#manos.vm.provision 	    	:shell, path: "./shell/manos.sh"
 		manos.vm.provision :chef_zero do |chef|
          chef.cookbooks_path = ["./cookbooks/"]
 		   chef.add_recipe "shared::default"
          chef.add_recipe "git::default"
          chef.add_recipe "localAnt::default"
-		   chef.add_recipe "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
-			chef.add_recipe "tomcat::default"
-			chef.add_recipe "shared::_junit"
-			chef.add_recipe "manos::default"
+		  chef.add_recipe "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
+		  chef.add_recipe "tomcat::default"
+		  chef.add_recipe "shared::_junit"
+		  chef.add_recipe "manos::default"
       end
 	end
 	
