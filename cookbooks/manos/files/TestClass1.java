@@ -33,7 +33,7 @@ public class TestClass1 {
 	public void testTrue() {
                     assertTrue("assertTrue test", true);  // true is true
                     assertNotNull("a is not null", this.a); //a exists
-                    assertEquals("five is 5", "four", this.a.five());  //a.five = "five"
+                    assertEquals("five is 5", "five", this.a.five());  //a.five = "five"
                     assertEquals("string correctly generated", "<h1>TestWebMessage</h1>", this.a.webMessage());  // string built correctly    
 	}
 
