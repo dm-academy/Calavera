@@ -46,12 +46,12 @@ Vagrant.configure(2) do |config|
 		base.vm.network 			"forwarded_port", guest: 22, host: 2229, auto_correct: true
 		base.vm.network 			"forwarded_port", guest: 80, host: 8029
 		base.vm.network		    "forwarded_port", guest: 8080, host: 8129
-      base.vm.synced_folder    ".", "/home/base"
-      base.vm.synced_folder    "./shared", "/mnt/shared"                
+                base.vm.synced_folder    ".", "/home/base"
+                base.vm.synced_folder    "./shared", "/mnt/shared"                
 		#base.vm.provision 	    :shell, path: "./shell/base.sh"
 		base.vm.provision :chef_zero do |chef|
-         chef.cookbooks_path = ["./cookbooks/"]
-         chef.add_recipe "base::default"  
+                chef.cookbooks_path = ["./cookbooks/"]
+                chef.add_recipe "base::default"  
       end
 	end        
         
@@ -167,9 +167,9 @@ Vagrant.configure(2) do |config|
 		manos.vm.host_name		="manos.calavera.biz"	
 #		manos.vm.network 		"private_network", ip: "192.168.33.34"
 #		manos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
-		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
-		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
-		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
+#		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
+#		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
+#		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
 		manos.vm.synced_folder           ".", "/home/manos"
 		manos.vm.synced_folder           "./shared", "/mnt/shared"                
 		#manos.vm.provision 	    :shell, path: "./shell/manos.sh"
