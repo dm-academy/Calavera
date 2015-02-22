@@ -172,16 +172,16 @@ Vagrant.configure(2) do |config|
 #		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
 		manos.vm.synced_folder           ".", "/home/manos"
 		manos.vm.synced_folder           "./shared", "/mnt/shared"                
-		#manos.vm.provision 	    :shell, path: "./shell/manos.sh"
+		#manos.vm.provision 	    	:shell, path: "./shell/manos.sh"
 		manos.vm.provision :chef_zero do |chef|
          chef.cookbooks_path = ["./cookbooks/"]
 		   chef.add_recipe "shared::default"
          chef.add_recipe "git::default"
          chef.add_recipe "localAnt::default"
-		   chef.add_recipe "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
-			chef.add_recipe "tomcat::default"
-			chef.add_recipe "shared::_junit"
-			chef.add_recipe "manos::default"
+		  chef.add_recipe "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
+		  chef.add_recipe "tomcat::default"
+		  chef.add_recipe "shared::_junit"
+		  chef.add_recipe "manos::default"
       end
 	end
 	
