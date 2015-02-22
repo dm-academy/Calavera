@@ -8,14 +8,15 @@ public class Class1 {
           {
                     strMsg = inString;
           }
+        public String five()
+        { 
+                return "five";
+        }
+
+          public String webMessage()
+          {
+              return "<h1>" + strMsg + "</h1>";
+          }
 
 
-	  public String webMessage()
-	  {
-	      return "<h1>" + strMsg + "</h1>";
-	  }
-
-
-	}
-
-
+        }
