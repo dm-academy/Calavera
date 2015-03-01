@@ -196,6 +196,22 @@ and if you expand the tree node that says "ext-release-local" (remember configur
 
 ![](img/ArtifactorySuccess3.png)
 
-[author's note: take a pre-manos shot of espina for contrast next time it is built]
+[author's note: take a pre-manos shot of hombros espina for contrast next time it is built]
 
 ### Deploying to cara
+
+Bringing up cara is a little anticlimactic.
+
+    vagrant up cara
+
+Assuming everything previously went well, chef will pull the .jar and .xml file from Artifactory on espina and deploy and restart Tomcat. You can go to:
+
+http://192.168.33.35:8080/MainServlet
+
+and should see:
+
+![](img/CaraSuccess.png)
+
+Hooray! What next?
+
+A user guide is in process to describe the various aspects of Calavera and how to actually use and extend the pipeline. Stay tuned. Or better yet, help!
