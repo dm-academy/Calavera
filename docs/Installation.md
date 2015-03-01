@@ -4,7 +4,7 @@
 
 ## Prerequisites
 --
-In terms of skills, you will probably need to spend at least a little time with the basics of Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
+In terms of skills, you need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
 
 
 You need:
@@ -99,4 +99,4 @@ And your local Artifactory running at:
 
 http://192.168.33.32:8081
 
-The username/password is admin/password. Completely insecure. DO NOT USE CALAVERA FOR PRODUCTION PURPOSES. IT IS A LAB EXPERIMENT ONLY.
+The default Artifactory username/password is admin/password. Completely insecure. DO NOT USE CALAVERA FOR PRODUCTION PURPOSES. IT IS A LAB EXPERIMENT ONLY.
