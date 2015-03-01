@@ -6,7 +6,7 @@
 echo "installing Ant..."
 #yum -y install ant   # Yum install of ant was not working correctly. outdated & other issues.
 cd /usr/share
-wget --quiet http://mirror.nexcess.net/apache//ant/binaries/apache-ant-1.9.4-bin.tar.gz
+wget --quiet http://mirror.nexcess.net/apache/ant/binaries/apache-ant-1.9.4-bin.tar.gz
 tar xzf apache-ant-1.9.4-bin.tar.gz >/dev/null
 rm -f apache-ant-1.9.4-bin.tar.gz
 
@@ -24,4 +24,3 @@ echo export PATH=/usr/share/apache-ant-1.9.4/bin:'$PATH'>> ~/.bashrc
 chmod +x /etc/profile.d/ant.sh
 cd /etc/profile.d
 source ant.sh
-
