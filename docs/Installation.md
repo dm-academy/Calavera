@@ -45,11 +45,9 @@ First, you need to install:
   * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
 * [Chef Development Kit](https://downloads.chef.io/chef-dk/)
 
-And of course you will need git, to download from Github, thus:
+And of course you will need git, to download from Github.
 
-    git clone https://github.com/CharlesTBetz/Calavera.git
-
-**Critical configuration tweak**
+**Critical pre-install configuration tweak**
 At this writing you MUST do this:
 
 In a text editor open /opt/chefdk/embedded/apps/berkshelf/lib/berkshelf/berksfile.rb
@@ -90,9 +88,14 @@ Any other order will likely result in errors and an unusable cluster.
 
 ## Installation step by step
 
-Figure out a suitable location to download the repository from Github. It is not large, but I recommend that you not "nest" it too deeply (Windows is especially annoying this way) and that you avoid having spaces in the pathnames (e.g. "My Documents"). Creating a C:\home\myname directory would be a good location example.  
+Figure out a suitable location to download the repository from Github. It is not large, but I recommend that you not "nest" it too deeply (Windows is especially annoying this way) and that you avoid having spaces in the pathnames (e.g. "My Documents"). Creating a C:\home\myname directory would be a good location example. Open a command window there and type:
 
-Run the following, one at a time. They will generate LOTS of console output.
+    git clone https://github.com/CharlesTBetz/Calavera.git
+
+
+CD to the new Calavera directory, and run the following, one at a time. They will generate LOTS of console output, but hopefully no errors.
+
+Disclaimner: this is still very early stage work. Many failure modes.
 
 ````
 ./startup.sh  (or startup.bat on windows)
@@ -102,7 +105,9 @@ vagrant up espina
 vagrant up hombros
 ````
 
-We have to set up Artifactory in Jenkins using the Jenkins GUI because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
+All done with those first 4? Good.
+
+We now have to set up Artifactory in Jenkins using the Jenkins GUI because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see. (Kudos for someone who can automate it, but I'd rather not see a lot of curl-type hacking.)
 
 You should now be able to see your local Jenkins instance running at:
 
