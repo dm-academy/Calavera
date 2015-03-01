@@ -19,7 +19,7 @@ You need:
 
 * Windows 7+, Mac OS X Mavericks or later, or Ubuntu 14 (note: I have not done extensive version testing; if you have a platform that runs the prequisites listed below it probably will work)
 
-* At least 4 GB of RAM and a computer capable of running 64-bit VMs
+* At least 4 GB of RAM (8 or more recommended; if you have 4 you should shut everything else off) and a computer capable of running 64-bit VMs
 
 * AT LEAST 20 gb of free hard drive space
 * Strongly recommend a visualizer so you can monitor VM consumption of disk:
@@ -33,7 +33,7 @@ The virtual machines use a range of local IP addresses from 192.168.33.29 throug
 
 You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Calavera/blob/master/Vagrantfile) for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080. If you don't know what this is about that's fine for now.
 
-## Installation overview
+## Installation precursors and overview
 
 
 First, you need to install:
@@ -86,9 +86,16 @@ The VMs need to be instantiated in a particular order, with one manual intervent
 1. manos (Development environment)
 1. cara (Production environment)
 
-Any other order will likely result in errors and an unusable cluster. So:
+Any other order will likely result in errors and an unusable cluster.
+
+## Installation step by step
+
+Figure out a suitable location to download the repository from Github. It is not large, but I recommend that you not "nest" it too deeply (Windows is especially annoying this way) and that you avoid having spaces in the pathnames (e.g. "My Documents"). Creating a C:\home\myname directory would be a good location example.  
+
+Run the following, one at a time. They will generate LOTS of console output.
 
 ````
+./startup.sh  (or startup.bat on windows)
 vagrant up cerebro
 vagrant up brazos
 vagrant up espina
@@ -150,8 +157,45 @@ Find the Artifactory Configuration section. Click Refresh Repositories.
 
 ![](img/JenkinsArtifactory5.png)
 
-Notice that "ext-release-local" appears along with the message "Items refreshed successfully"
+Notice that "ext-release-local" appears along with the message "Items refreshed successfully":
 
 ![](img/JenkinsArtifactory6.png)
 
 Click Save.
+
+### Bringing up manos
+
+Now, the acid test: bringing up manos. The user guide (to be written) will go into details on this, but let's just say there are a lot of ways Manos can fail. The precursor machines must have all come up without error.
+
+    vagrant up manos
+
+If the console output seems to have gone without a hitch, go first to Jenkins. As part of its provisioning, manos does an initial ant build & test, local Tomcat deployment, and git commit and remote push which should result in a Jenkins build and an Artifactory check in.
+
+To check all this out, first go to:
+
+http://192.168.33.34:8080/MainServlet
+
+This is the developer instance of Tomcat. You should see the Calavera message there.
+
+![](img/ManosServletView.png)
+
+Then, go to Jenkins. You should see a first successful build:
+![](img/JenkinsSuccess.png)
+
+(Feel free to click on the "#1" and poke around.)
+
+Finally, if you go to:
+
+http://192.168.33.32:8081/artifactory/webapp/home.html
+
+you will see that Artifactory is now "happily serving 2 artifacts." Hooray! Click on the "Artifacts" tab:
+
+![](img/ArtifactorySuccess2.png)
+
+and if you expand the tree node that says "ext-release-local" (remember configuring that above?) you will see that the Calavera release artifacts are deployed and ready for production!
+
+![](img/ArtifactorySuccess3.png)
+
+[author's note: take a pre-manos shot of espina for contrast next time it is built]
+
+### Deploying to cara

@@ -186,7 +186,7 @@ Vagrant.configure(2) do |config|
 
 	end
 
-	# test: http://192.168.33.34:8080/MainServlet	# why port is not forwarding?
+	# test: http://192.168.33.34:8080/MainServlet	
 	# if cerebro is configured:
 	# git add .
 	# git commit -m "some message"
