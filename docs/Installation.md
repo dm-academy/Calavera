@@ -89,7 +89,7 @@ vagrant up espina
 vagrant up hombros
 ````
 
-We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
+We have to set up Artifactory in Jenkins using the Jenkins GUI because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
 
 You should now be able to see your local Jenkins instance running at:
 
@@ -106,3 +106,7 @@ The default Artifactory username/password is admin/password. Completely insecure
 Go to your Jenkins instance:
 
 ![](img/Jenkins1.jpg)
+
+Choose "Manage Jenkins"
+
+![](img/ManageJenkins.svg)
