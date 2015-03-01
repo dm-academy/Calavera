@@ -15,10 +15,6 @@ This gives you a functioning starting point, a "known good" baseline running as 
 * If that build succeeds, the result is archived to Artifactory
 * You then can (with Chef) deploy the result to a simulated "production" node.
 
-One audience that I hope will find benefit in this is people like me - mid-career types who are watching all the buzz about DevOps in the media and looking for some accessible way to get a little deeper into it. Folks, when I started this I did not know ANY of the technologies here except a little bit of Java.
-
-You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
-
 ![](https://github.com/CharlesTBetz/Calavera/blob/master/docs/img/CalaveraArchitecture.jpg)
 
 See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description.
@@ -36,6 +32,10 @@ However, as near as I can tell the concept is original, and I intend to build on
 
 I welcome collaborators and am ready to entertain pull requests if anyone wants to help. This work is a life priority for me.
 
+One audience that I hope will find benefit in this is people like me - mid-career types who are watching all the buzz about DevOps in the media and looking for some accessible way to get a little deeper into it. Folks, when I started this I did not know ANY of the technologies here except a little bit of Java.
+
+You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
+
 See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.
 
 Installation
@@ -50,7 +50,7 @@ The last 3 weeks have marked Calavera's debut in a classroom setting. It has bee
 
 Been doing some final polishing. The public Calavera alpha release is delayed due to my educational commitments - have to prioritize creating the labs. Testing the system under fire in the classroom also seems appropriate before publishing.
 
-But a motivated person can certainly download and stand up the virtual machines at this point. I am currently working on the [installation instructions] (https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md).
+But a motivated person can certainly download and stand up the virtual machines at this point. I am currently working on the [installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md).
 
 See previous updates on the [Calavera blog](https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Blog)
 

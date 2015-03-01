@@ -33,6 +33,10 @@ First, you need to install:
   * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
 * [Chef Development Kit](https://downloads.chef.io/chef-dk/)
 
+And of course you will need git, to download from Github, thus:
+
+    git clone https://github.com/CharlesTBetz/Calavera.git
+
 Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
 
 * Chef
@@ -52,6 +56,13 @@ The VMs need to be instantiated in a particular order, with one manual intervent
 1. manos (Development environment)
 1. cara (Production environment)
 
-Any other order will likely result in errors and an unusable cluster.
+Any other order will likely result in errors and an unusable cluster. So:
 
-We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see. 
+````
+vagrant up cerebro
+vagrant up brazos
+vagrant up espina
+vagrant up hombros
+````
+
+We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
