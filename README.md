@@ -5,15 +5,15 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, Jenkins and Artifactory interaction, software versions, and the like.
 
-Some may be particularly interested in the Calavera example of how Chef can control Jenkins through the Jenkins api. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros."
+Some may be particularly interested in the Calavera example of how Chef can control Jenkins through the Jenkins api. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the recipe](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros/recipes/default.rb).
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
-* Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git.
-* When you execute a build on that environment, if successful it pushes to a remote master git repository
-* That commit then triggers a Jenkins build on a "slave" node
-* If that build succeeds, the result is archived to Artifactory
-* You then can (with Chef) deploy the result to a simulated "production" node.
+* Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git ("manos" node).
+* When you execute a build on that environment, if successful it pushes to a remote master git repository ("espina" node)
+* That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
+* If that build succeeds, the result is archived to Artifactory ("espina" node)
+* You then can (with Chef) deploy the result to a simulated "production" node "cara."
 
 ![](https://github.com/CharlesTBetz/Calavera/blob/master/docs/img/CalaveraArchitecture.jpg)
 
