@@ -3,9 +3,15 @@
 2015-03-01  version 0.1 alpha
 
 ## Prerequisites
---
-In terms of skills, you need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
 
+
+If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
+
+In terms of skills, you need to be able to install software on your computer, edit text files (NOT using Microsoft Word), and be comfortable with a command prompt.
+
+You also need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. Spend an hour with the Vagrant tutorial and vagrant up a simple VM or two and you'll be more or less ready for this.
+
+You need enough git to clone this repository to your machine. That's just one command, shown below. But it would be nice if you could help improve the project by forking your own repo, making enhancements, and sending up pull requests. They will be reviewed and acted upon.
 
 You need:
 
@@ -25,7 +31,7 @@ You need:
 
 The virtual machines use a range of local IP addresses from 192.168.33.29 through 192.168.33.36. Make sure you are not using those for some other project.
 
-You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Calavera/blob/master/Vagrantfile) for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080.
+You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Calavera/blob/master/Vagrantfile) for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080. If you don't know what this is about that's fine for now.
 
 ## Installation overview
 
@@ -105,12 +111,47 @@ The default Artifactory username/password is admin/password. Completely insecure
 
 Go to your Jenkins instance:
 
-![](img/Jenkins1.jpg)
+![](img/Jenkins2.png)
 
-Choose "Manage Jenkins"
+Choose "Manage Jenkins":
 
 ![](img/ManageJenkins.png)
 
-Choose "Configure System"
+Choose "Configure System":
 
 ![](img/ManageJenkins2.png)
+
+
+Scroll about halfway down to the "Artifactory" section and press the Add button:
+
+![](img/JenkinsArtifactory.png)
+
+As shown, enter
+
+http://192.168.33.32:8081/artifactory/
+
+and the default username/password of "admin/password."
+
+![](img/JenkinsArtifactory3.png)
+
+Press Test Connection. The message "Found Artifactory X.X.X" should appear. If not, double check that Espina is running and you can access the Artifactory repository URL through a browser.
+
+If all is well, click Save. You will be taken back to the main dashboard.
+
+Click hijoInit.
+
+![](img/hijoInit.png)
+
+Click Configure.
+
+![](img/JenkinsArtifactory4.png)
+
+Find the Artifactory Configuration section. Click Refresh Repositories.
+
+![](img/JenkinsArtifactory5.png)
+
+Notice that "ext-release-local" appears along with the message "Items refreshed successfully"
+
+![](img/JenkinsArtifactory6.png)
+
+Click Save.
