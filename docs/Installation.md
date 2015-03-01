@@ -110,3 +110,7 @@ Go to your Jenkins instance:
 Choose "Manage Jenkins"
 
 ![](img/ManageJenkins.png)
+
+Choose "Configure System"
+
+![](img/ManageJenkins2.png)
