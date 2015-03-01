@@ -15,7 +15,7 @@
 # (to reset all keys delete /mnt/shared/keys and kitchen/vagrant destroy/up)
 # 
 
-echo configuring ssh
+echo "*** ssh.sh run on $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***" >> /mnt/shared/keys/ssh.log
 
 mkdir -p /mnt/shared/keys  # -p = no error if it exists (this part is idempotent b/c we don't know if another node has already keygen'd)
 chown vagrant /mnt/shared/keys
@@ -23,14 +23,22 @@ chown vagrant /mnt/shared/keys
 if [[ $(ls /mnt/shared/keys) !=  *id_rsa[^\.]* ]] && \
    [[ $(ls /mnt/shared/keys) !=  *id_rsa.pub   ]] #   either shared key or private key are missing in /mnt/shared/keys
    then
-       echo missing key, regenerating both shared and private    
-       sudo ssh-keygen -q -t rsa -f "/mnt/shared/keys/id_rsa" -P "" \
-        -C "*** Host key auto-generated on Vagrant provisioning by node $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***"
+       echo missing key, regenerating both shared and private     >> /mnt/shared/keys/ssh.log
+       ssh-keygen  -t rsa -f "/mnt/shared/keys/id_rsa" -P "" \
+        -C "*** Host key auto-generated on Vagrant provisioning by node $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***" >> /mnt/shared/keys/ssh.log
     #regenerate both
-    sudo chown vagrant /mnt/shared/keys/*
+    chown vagrant /mnt/shared/keys/*
+else
+    echo both keys appear to be there >> /mnt/shared/keys/ssh.log
 fi
 
 cp -f /mnt/shared/keys/id_rsa* ~/.ssh # copy both to user (vagrant for now) .ssh
 echo "# CALAVERA: This file was updated by the $HOSTNAME provisioning process" >> /home/vagrant/.ssh/authorized_keys  
 cat /mnt/shared/keys/id_rsa.pub >> ~/.ssh/authorized_keys   # not idempotent; script intended only to be run on initial vagrant up
-chown vagrant /home/vagrant/.ssh/* 
+chown vagrant /home/vagrant/.ssh/*
+echo $HOSTNAME done with ssh script >> /mnt/shared/keys/ssh.log
+echo "***"  >> /mnt/shared/keys/ssh.log
+echo ""  >> /mnt/shared/keys/ssh.log
+
+
+

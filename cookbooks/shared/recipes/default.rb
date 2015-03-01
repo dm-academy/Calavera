@@ -40,6 +40,7 @@ end
 # convert next command to appropriate cookbook. 
 
 execute 'configure ssh' do
+  cwd "/home/vagrant"
   user "vagrant"
   group "vagrant"
   environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'}) 
