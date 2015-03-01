@@ -22,7 +22,9 @@ See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for init
 Charles Betz personal statement
 ==
 
-I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard yet. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
+I'm an architect, advisor, and instructor, who believes that being grounded in hands on work is essential.
+
+I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
 
 However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it is the realization of the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. More to come on this.
 
