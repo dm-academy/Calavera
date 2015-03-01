@@ -5,7 +5,6 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, Jenkins and Artifactory interaction, software versions, and the like.
 
-Some may be particularly interested in the Calavera example of how Chef can control Jenkins through the Jenkins api. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the recipe](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros/recipes/default.rb).
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
@@ -14,6 +13,8 @@ This gives you a functioning starting point, a "known good" baseline running as 
 * That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
 * If that build succeeds, the result is archived to Artifactory ("espina" node)
 * You then can (with Chef) deploy the result to a simulated "production" node "cara."
+
+Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
 ![](https://github.com/CharlesTBetz/Calavera/blob/master/docs/img/CalaveraArchitecture.jpg)
 
@@ -46,11 +47,11 @@ The next major steps will be:
 Charles Betz personal statement
 ==
 
-I'm an architect, advisor, and instructor, who believes that hands on engagement is essential.
+I'm an architect, advisor, and instructor. My career focus has been the "business of IT" including concerns such as enterprise architecture, IT service management, IT portfolio management, and IT financial management. However, I also believe that hands on engagement is essential.
 
 I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
 
-However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it is the realization of the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. It is also a reference implementation of [IT4IT](http://opengroup.org/it4it). More to come on this.
+However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it realizes the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. It is also a reference implementation of [IT4IT](http://opengroup.org/it4it). More to come on this.
 
 I welcome collaborators and am ready to entertain pull requests if anyone wants to help. This work is a life priority for me.
 
