@@ -109,4 +109,4 @@ Go to your Jenkins instance:
 
 Choose "Manage Jenkins"
 
-![](img/ManageJenkins.png)
+![](img/ManageJenkins.svg)
