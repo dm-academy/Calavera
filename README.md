@@ -21,23 +21,6 @@ See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki p
 
 See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for initial motivation.
 
-Charles Betz personal statement
-==
-
-I'm an architect, advisor, and instructor, who believes that hands on engagement is essential.
-
-I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
-
-However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it is the realization of the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. It is also a reference implementation of [IT4IT](http://opengroup.org/it4it). More to come on this.
-
-I welcome collaborators and am ready to entertain pull requests if anyone wants to help. This work is a life priority for me.
-
-One audience that I hope will find benefit in this is people like me - mid-career types who are watching all the buzz about DevOps in the media and looking for some accessible way to get a little deeper into it. Folks, when I started this I did not know ANY of the technologies here except a little bit of Java.
-
-You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
-
-See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.
-
 Installation
 ==
 
@@ -59,3 +42,20 @@ Future directions
 The next major steps will be:
 * Create a [MEAN-stack](http://en.wikipedia.org/wiki/MEAN) based development pipeline
 * Support Docker in addition to VirtualBox (may deprecate VirtualBox, depending)
+
+Charles Betz personal statement
+==
+
+I'm an architect, advisor, and instructor, who believes that hands on engagement is essential.
+
+I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
+
+However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it is the realization of the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. It is also a reference implementation of [IT4IT](http://opengroup.org/it4it). More to come on this.
+
+I welcome collaborators and am ready to entertain pull requests if anyone wants to help. This work is a life priority for me.
+
+One audience that I hope will find benefit in this is people like me - mid-career types who are watching all the buzz about DevOps in the media and looking for some accessible way to get a little deeper into it. Folks, when I started this I did not know ANY of the technologies here except a little bit of Java.
+
+You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
+
+See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.
