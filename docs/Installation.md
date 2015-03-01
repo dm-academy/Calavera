@@ -1,8 +1,8 @@
-Installing Calavera
-==
+# Installing Calavera
+
 2015-03-01  version 0.1 alpha
 
-Prerequisites
+## Prerequisites
 --
 In terms of skills, you will probably need to spend at least a little time with the basics of Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
 
@@ -27,8 +27,8 @@ The virtual machines use a range of local IP addresses from 192.168.33.29 throug
 
 You also may wish to review the Vagrant file for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080.
 
-Installation overview
---
+## Installation overview
+
 
 First, you need to install:
 
@@ -53,7 +53,10 @@ Find the line starting with EXCLUDED_VCS_FILES_WHEN_VENDORING
 change '.git' to '**/.git' in this line:
 
 ````
-EXCLUDED_VCS_FILES_WHEN_VENDORING = ['.arch-ids', '{arch}', '.bzr', '.bzrignore', '.bzrtags', 'CVS', '.cvsignore', '_darcs', '.git', '.hg', '.hgignore', '.hgrags', 'RCS', 'SCCS', '.svn'].freeze  
+EXCLUDED_VCS_FILES_WHEN_VENDORING = ['.arch-ids', '{arch}', '.bzr', \
+ '.bzrignore', '.bzrtags', 'CVS', '.cvsignore', '_darcs', '.git', '.hg', \
+  '.hgignore', '.hgrags', 'RCS', 'SCCS', '.svn'].freeze
+
 ````
 
 See https://github.com/berkshelf/vagrant-berkshelf/issues/237.
@@ -89,3 +92,11 @@ vagrant up hombros
 We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
 
 You should now be able to see your local Jenkins instance running at:
+
+http://192.168.33.33:8080
+
+And your local Artifactory running at:
+
+http://192.168.33.32:8081
+
+The username/password is admin/password. Completely insecure. DO NOT USE CALAVERA FOR PRODUCTION PURPOSES. IT IS A LAB EXPERIMENT ONLY.
