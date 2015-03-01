@@ -93,7 +93,7 @@ Figure out a suitable location to download the repository from Github. It is not
     git clone https://github.com/CharlesTBetz/Calavera.git
 
 
-CD to the new Calavera directory, and run the following, one at a time. They will generate LOTS of console output, but hopefully no errors.
+CD to the new Calavera directory, and run the following, one at a time. They will generate LOTS of console output, but hopefully no errors. This may take you around 20 minutes. It will appear to hang in places (Java related stuff in particular); give it at least 15 minutes before killing anything.
 
 Disclaimner: this is still very early stage work. Many failure modes.
 
@@ -105,7 +105,7 @@ vagrant up espina
 vagrant up hombros
 ````
 
-All done with those first 4? Good.
+All done with those first 5? Good.
 
 We now have to set up Artifactory in Jenkins using the Jenkins GUI because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see. (Kudos for someone who can automate it, but I'd rather not see a lot of curl-type hacking.)
 
