@@ -4,6 +4,8 @@ Installing Calavera
 
 Prerequisites
 --
+In terms of skills, you will probably need to spend at least a little time with the basics of Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
+
 
 You need:
 
@@ -21,6 +23,10 @@ You need:
 
 * You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
 
+The virtual machines use a range of local IP addresses from 192.168.33.29 through 192.168.33.36. Make sure you are not using those for some other project.
+
+You also may wish to review the Vagrant file for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080.
+
 Installation overview
 --
 
@@ -36,6 +42,21 @@ First, you need to install:
 And of course you will need git, to download from Github, thus:
 
     git clone https://github.com/CharlesTBetz/Calavera.git
+
+**Critical configuration tweak**
+At this writing you MUST do this:
+
+In a text editor open /opt/chefdk/embedded/apps/berkshelf/lib/berkshelf/berksfile.rb
+
+Find the line starting with EXCLUDED_VCS_FILES_WHEN_VENDORING
+
+change '.git' to '**/.git' in this line:
+
+````
+EXCLUDED_VCS_FILES_WHEN_VENDORING = ['.arch-ids', '{arch}', '.bzr', '.bzrignore', '.bzrtags', 'CVS', '.cvsignore', '_darcs', '.git', '.hg', '.hgignore', '.hgrags', 'RCS', 'SCCS', '.svn'].freeze  
+````
+
+See https://github.com/berkshelf/vagrant-berkshelf/issues/237.
 
 Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
 
@@ -66,3 +87,5 @@ vagrant up hombros
 ````
 
 We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.
+
+You should now be able to see your local Jenkins instance running at:
