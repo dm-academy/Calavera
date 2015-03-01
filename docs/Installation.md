@@ -21,7 +21,7 @@ You need:
 
 * You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
 
-Installation
+Installation overview
 --
 
 First, you need to install:
@@ -44,14 +44,14 @@ It then repackages it and destroys the Vagrant machine. The remaining 6 VMs all 
 
 The VMs need to be instantiated in a particular order, with one manual intervention:
 
-1. cerebro
-1. brazos
-1. espina
-1. hombros
+1. cerebro (Remote git repo)
+1. brazos (Slave build environment)
+1. espina (Artifactory)
+1. hombros (Jenkins)
 1. **manually setup jenkins to use artifactory**
-1. manos
-1. cara
+1. manos (Development environment)
+1. cara (Production environment)
 
 Any other order will likely result in errors and an unusable cluster.
 
-We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.  
+We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see. 
