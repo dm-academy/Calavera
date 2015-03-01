@@ -105,4 +105,4 @@ The default Artifactory username/password is admin/password. Completely insecure
 
 Go to your Jenkins instance:
 
-![](docs/img/Jenkins1.jpg)
+![](img/Jenkins1.jpg)
