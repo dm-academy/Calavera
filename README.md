@@ -5,6 +5,8 @@ This is a project to create a simplified, reproduceable DevOps pipeline for educ
 
 There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, Jenkins and Artifactory interaction, software versions, and the like.
 
+Some may be particularly interested in the Calavera example of how Chef can control Jenkins through the Jenkins api. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros."
+
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
 * Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git.
@@ -35,7 +37,7 @@ See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further infora
 Installation
 ==
 
-[Installation instructions](https://github.com/CharlesTBetz/Calavera/wiki/Installation-instructions)
+[Installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md)
 
 
 2015-03-01 update
@@ -44,7 +46,7 @@ The last 3 weeks have marked Calavera's debut in a classroom setting. It has bee
 
 Been doing some final polishing. The public Calavera alpha release is delayed due to my educational commitments - have to prioritize creating the labs. Testing the system under fire in the classroom also seems appropriate before publishing.
 
-But a motivated person can certainly download and stand up the virtual machines at this point. I have started a dedicated [installation instructions wiki](https://github.com/CharlesTBetz/Calavera/wiki/Installation-instructions).
+But a motivated person can certainly download and stand up the virtual machines at this point. I am currently working on the [installation instructions] (https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md).
 
 See previous updates on the [Calavera blog](https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Blog)
 

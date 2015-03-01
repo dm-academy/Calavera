@@ -1,13 +1,15 @@
-Prerequisites
-========
-* [VirtualBox](https://www.virtualbox.org/)
+Installing Calavera
+==
+2015-03-01  version 0.1 alpha
 
-* [Vagrant](http://www.vagrantup.com/downloads.html)
-  * [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
-  * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
-* [Chef Development Kit](https://downloads.chef.io/chef-dk/)
+Prerequisites
+--
+
+You need:
 
 * Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable.
+
+* Windows 7+, Mac OS X Mavericks or later, or Ubuntu 14 (note: I have not done extensive version testing; if you have a platform that runs the prequisites listed below it probably will work)
 
 * At least 4 GB of RAM and a computer capable of running 64-bit VMs
 
@@ -18,3 +20,38 @@ Prerequisites
   * [DiskInventoryX](http://www.derlien.com/) for Mac
 
 * You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
+
+Installation
+--
+
+First, you need to install:
+
+* [VirtualBox](https://www.virtualbox.org/)
+
+* [Vagrant](http://www.vagrantup.com/downloads.html)
+  * [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
+  * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
+* [Chef Development Kit](https://downloads.chef.io/chef-dk/)
+
+Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
+
+* Chef
+* Java
+* Virtualbox addins
+* curl & tree
+
+It then repackages it and destroys the Vagrant machine. The remaining 6 VMs all then use this repackaged base image.
+
+The VMs need to be instantiated in a particular order, with one manual intervention:
+
+1. cerebro
+1. brazos
+1. espina
+1. hombros
+1. **manually setup jenkins to use artifactory**
+1. manos
+1. cara
+
+Any other order will likely result in errors and an unusable cluster.
+
+We have to set up Artifactory in Jenkins because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see.  
