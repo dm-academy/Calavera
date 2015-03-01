@@ -11,11 +11,10 @@
 
 Vagrant.configure(2) do |config|
         if ARGV[1]=='base'
-		config.vm.box = "opscode-ubuntu-14.04" # if you run base and repackage this will speed things up considerably	
+		config.vm.box = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box" # if you run base and repackage this will speed things up considerably	
 	else
 		config.vm.box = "opscode-ubuntu-14.04a"	# this box will not be on your machine to start
 	end
-  config.ssh.private_key_path = "~/.ssh/insecure_private_key"	
   config.berkshelf.enabled = true
 	
 	# how to boost capacity
