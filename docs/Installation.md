@@ -25,7 +25,7 @@ You need:
 
 The virtual machines use a range of local IP addresses from 192.168.33.29 through 192.168.33.36. Make sure you are not using those for some other project.
 
-You also may wish to review the Vagrant file for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080.
+You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Calavera/blob/master/Vagrantfile) for port redirect conflicts. A consistent numeric approach has been adopted for redirecting 22, 80 and 8080.
 
 ## Installation overview
 
