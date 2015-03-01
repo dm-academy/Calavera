@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "base" do | base |
 		base.vm.host_name			="base.calavera.biz"	
 		base.vm.network 			"private_network", ip: "192.168.33.29"
-		base.vm.network 			"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		base.vm.network 			"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		base.vm.network 			"forwarded_port", guest: 22, host: 2229, auto_correct: true
 		base.vm.network 			"forwarded_port", guest: 80, host: 8029
 		base.vm.network		    "forwarded_port", guest: 8080, host: 8129
@@ -61,7 +61,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "cerebro" do | cerebro |
 		cerebro.vm.host_name		="cerebro.calavera.biz"	
 		cerebro.vm.network 		"private_network", ip: "192.168.33.30"
-		cerebro.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		cerebro.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		cerebro.vm.network 		"forwarded_port", guest: 22, host: 2230, auto_correct: true
 		cerebro.vm.network 		"forwarded_port", guest: 80, host: 8030
 		cerebro.vm.network		"forwarded_port", guest: 8080, host: 8130
@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "brazos" do | brazos |
 		brazos.vm.host_name		="brazos.calavera.biz"	
 		brazos.vm.network 		"private_network", ip: "192.168.33.31"
-		brazos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		brazos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		brazos.vm.network 		"forwarded_port", guest: 22, host: 2231, auto_correct: true
 		brazos.vm.network 		"forwarded_port", guest: 80, host: 8031
 		brazos.vm.network		"forwarded_port", guest: 8080, host: 8131
@@ -113,7 +113,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "espina" do | espina |
 		espina.vm.host_name		="espina.calavera.biz"	
 		espina.vm.network 		"private_network", ip: "192.168.33.32"
-		espina.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		espina.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		espina.vm.network 		"forwarded_port", guest: 22, host: 2232, auto_correct: true
 		espina.vm.network 		"forwarded_port", guest: 80, host: 8032
 		espina.vm.network		"forwarded_port", guest: 8080, host: 8132
@@ -139,7 +139,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "hombros" do | hombros |
 		hombros.vm.host_name		="hombros.calavera.biz"	
 		hombros.vm.network 		"private_network", ip: "192.168.33.33"
-		hombros.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		hombros.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		hombros.vm.network 		"forwarded_port", guest: 22, host: 2233, auto_correct: true
 		hombros.vm.network 		"forwarded_port", guest: 80, host: 8033
 		hombros.vm.network		"forwarded_port", guest: 8080, host: 8133
@@ -164,11 +164,11 @@ Vagrant.configure(2) do |config|
 
 	config.vm.define "manos" do | manos |
 		manos.vm.host_name		="manos.calavera.biz"	
-#		manos.vm.network 		"private_network", ip: "192.168.33.34"
+		manos.vm.network 		"private_network", ip: "192.168.33.34"
 #		manos.vm.network 		"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
-#		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
-#		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
-#		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
+		manos.vm.network 		"forwarded_port", guest: 22, host: 2234, auto_correct: true
+		manos.vm.network 		"forwarded_port", guest: 80, host: 8034
+		manos.vm.network		"forwarded_port", guest: 8080, host: 8134
 		manos.vm.synced_folder           ".", "/home/manos"
 		manos.vm.synced_folder           "./shared", "/mnt/shared"                
 		#manos.vm.provision 	    	:shell, path: "./shell/manos.sh"
@@ -221,7 +221,7 @@ Vagrant.configure(2) do |config|
 	config.vm.define "test" do | test |
 		test.vm.host_name			="test.calavera.biz"	
 		test.vm.network 			"private_network", ip: "192.168.33.99"
-		test.vm.network 			"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
+#		test.vm.network 			"forwarded_port", guest: 22, host: 2222, id: "ssh", disabled: true
 		test.vm.network 			"forwarded_port", guest: 22, host: 2299, auto_correct: true
 		test.vm.network 			"forwarded_port", guest: 80, host: 8099
 		test.vm.network			"forwarded_port", guest: 8080, host: 8199
