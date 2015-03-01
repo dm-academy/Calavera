@@ -1,3 +1,4 @@
+# brazos default
 # set up remote slave build server
 
 group 'jenkins'
@@ -25,7 +26,7 @@ end
 
 execute 'correct Jenkins directory ownership' do
   command ' chown -R jenkins /home/jenkins &&  \
-            chgrp -R jenkins /home/jenkins'          
+            chgrp -R jenkins /home/jenkins'
 end
 
 #execute 'correct tomcat webapps permissions' do
@@ -33,4 +34,4 @@ end
 #             chgrp -R jenkins /var/lib/tomcat6/webapps'    #
 #end
 
-# when rebuilding brazos it would be nice to let Jenkins know, if Jenkins is running. 
+# when rebuilding brazos it would be nice to let Jenkins know, if Jenkins is running.
