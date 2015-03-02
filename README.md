@@ -42,6 +42,7 @@ Future directions
 The next major steps will be:
 * Create a [MEAN-stack](http://en.wikipedia.org/wiki/MEAN) based development pipeline
 * Support Docker in addition to VirtualBox (may deprecate VirtualBox, depending)
+* Integrate with Cloud providers
 
 Charles Betz personal statement
 ==
