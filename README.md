@@ -58,4 +58,4 @@ One audience that I hope will find benefit in this is people like me - mid-caree
 
 You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
 
-See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.
+See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further information. And of course www.lean4it.com. 
