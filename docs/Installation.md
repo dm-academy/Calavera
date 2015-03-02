@@ -84,7 +84,7 @@ The VMs need to be instantiated in a particular order, with one manual intervent
 1. manos (Development environment)
 1. cara (Production environment)
 
-Any other order will likely result in errors and an unusable cluster.
+Any other order will likely result in errors and a "cluster" in another sense of that word.
 
 ## Installation step by step
 
