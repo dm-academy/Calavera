@@ -22,7 +22,8 @@ end
 #jenkins_credentials 'jenkins' do
 #  action :delete
 #end
-privkey = File.read("/var/lib/jenkins/.ssh/id_rsa")
+
+privkey = File.read("/mnt/shared/keys/id_rsa")
 
 jenkins_private_key_credentials 'jenkins' do
   id '1ea894fc-d69e-4f2e-ba27-30bf66f774b3'  # generated this once upon a time. recommend you generate a new one.
