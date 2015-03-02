@@ -31,7 +31,7 @@ Installation
 
 2015-03-01 update
 ==
-*2015-03-02 note OK I lied. After I finished the installation instructions yesterday and confirmed a couple succesful builds on different machines, I decided to go ahead and call 0.3 the first official alpha release.*
+*2015-03-02 note OK I changed my mind about releasing. After I finished the installation instructions yesterday and confirmed a couple succesful builds on different machines, I decided to go ahead and call 0.3 the first official alpha release.*
 
 The last 3 weeks have marked Calavera's debut in a classroom setting. It has been a lot of work and very exciting for both me and (I think) the students. This week, they are [standing up their own instances of the Manos development environment](https://github.com/StThomas-SEIS660/Lab-04/blob/master/Lab-04-inststructions.md).
 
