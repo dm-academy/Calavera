@@ -1,80 +1,61 @@
-calavera
+Calavera
 ========
 
-This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes, using git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory.  
+This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes, using git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory.
 
-See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description. See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for initial motivation.
+There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreograhy interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
 
-Prerequisites
-========
-* [VirtualBox](https://www.virtualbox.org/)
+This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
-* [Vagrant](http://www.vagrantup.com/downloads.html)
-  * [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
-  * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
-* [Chef Development Kit](https://downloads.chef.io/chef-dk/)
+* Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git ("manos" node).
+* When you execute a build on that environment, if successful it pushes to a remote master git repository ("espina" node)
+* That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
+* If that build succeeds, the result is archived to Artifactory ("espina" node)
+* You then can (with Chef) deploy the result to a simulated "production" node "cara."
 
-* Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable.
+Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
-* At least 4 GB of RAM and a computer capable of running 64-bit VMs
+![](docs/img/CalaveraArchitecture.jpg)
 
-* AT LEAST 20 gb of free hard drive space
-* Strongly recommend a visualizer so you can monitor VM consumption of disk:
-  * [WinDirStat](https://windirstat.info/) for Windows
-  * [KDirStat](http://kdirstat.sourceforge.net/) for Unix & Linux
-  * [DiskInventoryX](http://www.derlien.com/) for Mac
-  
-* You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
+See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description.
 
-2015-02-09 update:
-=======
+See http://www.lean4it.com/2014/10/devops-simulation-for-education.html for initial motivation.
 
-I have been heads down in R&D and admittedly lax in checking things in. Since I last updated I moved things over to Chef Kitchen, and the use of Chef gave me powerful abilities to automate Jenkins, so I am glad I did so. 
+Installation
+==
 
-BUT... I do not want to tightly couple Calavera to Chef. So, I do not want a .kitchen.yml file driving everything. I therefore am going to (as "third time's the charm") go back to a Vagrantfile as the prime mover, using Chef Solo as appropriate for expedited, dependency-aware configuration and automation. 
+[Installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md)
 
-I also have created two branches. Version 0.1 is the original version based solely on a shell provisioner. Version 0.2 is the completed Chef version. Going to clean house thoroughly for the v0.3 master. 
 
-2015-01-18 directional update:
-========
-To this point, all of the infrastructure was running well on default-sized Vagrant VMs (512m) and I could have it all on my Mac Air. This was making it possible to consider that any student with a 2-4gb laptop would be able to run the whole thing, especially if I tuned some of the machines down even further. (This is different from what the architecture diagram suggests, which is that the student is only running the Manos workstation locally.)
+2015-03-01 update
+==
+The last 3 weeks have marked Calavera's debut in a classroom setting. It has been a lot of work and very exciting for both me and (I think) the students. This week, they are [standing up their own instances of the Manos development environment](https://github.com/StThomas-SEIS660/Lab-04/blob/master/Lab-04-inststructions.md).
 
-Enter Chef Server. Attempting to install it on anything less than a VM with its own 4gb of RAM gives unpredictable results (that weren't obviously capacity-related, so I spent some cycles trying to run them down). So, it will not be possible for students to run Chef Server on their own laptops. 
+Been doing some final polishing. The public Calavera alpha release is delayed due to my educational commitments - have to prioritize creating the labs. Testing the system under fire in the classroom also seems appropriate before publishing.
 
-I am therefore going down the road of Chef Zero (formerly Solo), but will still run Chef Server in the lab. I have not yet sorted out pedgogically the relationship between the larger, presumably more stable lab instance of the pipeline versus a more disposable laptop instance of the entire thing. It would be nice if the students did not have to ssh into school, which imposes certain overheads I'd like to avoid. In either case the pipeline needs to be something that can be bootstrapped using Infrastructure as Code from a source repository. 
+But a motivated person can certainly download and stand up the virtual machines at this point. I am currently working on the [installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md).
 
-2015-01-17 directional update:
-========
-On to Chef! I have to recast all the provisioning shell scripts into Chef recipes. Why didn't I start with this? It would have been better in hindsight. But I have refreshed my shell scripting abilities which is good. Basically, I had two choices: build the project from an application-centric view, tracking the pipeline, vs. building it up from infrastructure. I chose the former, and am now paying the price. Digging into the very steep Chef learning curve... 
-Some may ask "why not puppet" and I have two responses, one strategic, the other tactical. 
+See previous updates on the [Calavera blog](https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Blog)
 
-Strategically, it seems to me that Chef is a bit "closer to the metal" and less "magic" than Puppet, which is how I want my students to learn. 
+Future directions
+==
+The next major steps will be:
+* Create a [MEAN-stack](http://en.wikipedia.org/wiki/MEAN) based development pipeline
+* Support Docker in addition to VirtualBox (may deprecate VirtualBox, depending)
 
-Tactically, I see a Chef recipe that is capable of auto-provisioning Jenkins nodes. I spent a very frustrating day yesterday trying to get the Jenkins CLI to auto-provision and credential new slave nodes (it was the credentialing where things fell apart.) Doesn't seem to be possible without getting much further into the Jenkins class model than I wanted to deal with. The only people that seem to have done it are Chef and a Python plugin. 
+Charles Betz personal statement
+==
 
-Looking for guidance, if anyone can point to something I have missed. 
+I'm an architect, advisor, and instructor. My career focus has been the "business of IT" including concerns such as enterprise architecture, IT service management, IT portfolio management, and IT financial management. However, I also believe that hands on engagement is essential.
 
-2015-01-15 release update:
-========
-Created a new include ssh.sh which creates public/private key pair (just one for cluster) and imports it throughout, as well as adding local host names for the 5 hosts. Now, within the cluster, one can simply "ssh <hostname> from any to any and get access with no password. (First time, one has to concur w/ the fingerprint; this can be automated away if need be.)
+I am not a professional software developer, infrastructure engineer, or systems administrator, although I know many. I have the deepest admiration for the professionals I see here on Github developing Vagrant plugins, Chef cookbooks, and the like. I know my work is not up to that standard. There are any number of aspects in these scripts that professionals might criticize. In part, this project has helped me learn the technologies at hand, so it is by definition amateurish.
 
-2015-01-13 release update:
-========
+However, as near as I can tell the concept is original, and I intend to build on it far beyond a DevOps pipeline. As part of the InsanIT initiative, it realizes the architecture principles I am using in my 3rd edition of *The Architecture of IT Management*. It is also a reference implementation of [IT4IT](http://opengroup.org/it4it). More to come on this.
 
-Installing Java on every new vagrant VM was taking way too long, so I developed a script that would bake it in (along with doing a complete software update and installing Tomcat). Everything is now dependent on a VM that has Java and Tomcat on it. 
+I welcome collaborators and am ready to entertain pull requests if anyone wants to help. This work is a life priority for me.
 
-So in order to build the project as it stands:
+One audience that I hope will find benefit in this is people like me - mid-career types who are watching all the buzz about DevOps in the media and looking for some accessible way to get a little deeper into it. Folks, when I started this I did not know ANY of the technologies here except a little bit of Java.
 
-- Install Virtualbox
-- Install Vagrant
-- Recommended: install Vagrant vb-guest (https://github.com/dotless-de/vagrant-vbguest)
-- cd to the Calavera/calavera-shared directory
-- run BakeCalavera.sh (sorry, only supporting MacOS at this time)
-- cd .. (back to the Calavera directory)
-- vagrant up (the 5 vms should then be created)
+You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
 
-Currently, the 5 vms build, but Jenkins requires manual configuration via its web portal to build the hijo project on brazos. Chef is not working yet and I have not selected a package manager.
-
-See also https://github.com/CharlesTBetz/Calavera/wiki/Manos-release-notes on the previous release.
-
-This all remains what I consider pre-alpha, but there may be some useful stuff here for interested parties, and it is almost suitable for instructional purposes in a high support classroom environment (class starts in 3 weeks!). 
+See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.

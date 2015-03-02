@@ -2,7 +2,7 @@
 # Cookbook Name:: shared
 # Recipe:: default - run on every node
 #
-# Copyright (c) 2015 The Authors, All Rights Reserved.
+# Copyright (c) 2015 Charles T Betz, All Rights Reserved.
 # Recipe for all nodes within Calavera
 
 # from files directory
@@ -37,17 +37,12 @@ execute 'remove host file' do
   command 'rm /home/vagrant/calaverahosts'
 end
 
-# convert next command to appropriate cookbook. 
+# convert next command to appropriate cookbook.
 
 execute 'configure ssh' do
   cwd "/home/vagrant"
   user "vagrant"
   group "vagrant"
-  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'}) 
+  environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})
   command "/home/vagrant/ssh.sh" # configure SSH - also not idempotent
 end
-
-
-
-
-

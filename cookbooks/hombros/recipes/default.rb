@@ -1,3 +1,4 @@
+# hombros default
 # set up Jenkins server
 
 directory "/var/lib/jenkins/.ssh"  do
@@ -13,7 +14,7 @@ end
 
 execute 'correct Jenkins directory ownership' do
   command 'chown -R jenkins /var/lib/jenkins &&  \
-          chgrp -R jenkins /var/lib/jenkins'  
+          chgrp -R jenkins /var/lib/jenkins'
 end
 
 # create credential
@@ -27,7 +28,7 @@ jenkins_private_key_credentials 'jenkins' do
   id '1ea894fc-d69e-4f2e-ba27-30bf66f774b3'  # generated this once upon a time. recommend you generate a new one.
   description 'SSH key'
   private_key privkey
-  
+
 end
 
 # create slave
@@ -74,6 +75,3 @@ end
 #jenkins_command 'safe-restart'
 
 # project name hijoInit
-
-
-
