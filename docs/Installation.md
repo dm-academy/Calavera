@@ -48,7 +48,7 @@ First, you need to install:
 And of course you will need git, to download from Github.
 
 **Critical pre-install configuration tweak**
-At this writing you MUST do this:
+At this writing you MUST do this AFTER you install the ChefDK:
 
 In a text editor open /opt/chefdk/embedded/apps/berkshelf/lib/berkshelf/berksfile.rb
 
