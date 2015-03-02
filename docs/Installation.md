@@ -4,10 +4,11 @@
 
 ## Prerequisites
 
+As github projects go, this one is intended to be accessible to the person of "general computing literacy." If you are interested in getting started with establishing a Github track record, this might be a good project to start with. 
+
+In terms of skills, you need to be able to install software on your computer, edit text files (NOT using Microsoft Word), and be comfortable with a command prompt. 
 
 If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
-
-In terms of skills, you need to be able to install software on your computer, edit text files (NOT using Microsoft Word), and be comfortable with a command prompt.
 
 You also need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. Spend an hour with the Vagrant tutorial and vagrant up a simple VM or two and you'll be more or less ready for this.
 
