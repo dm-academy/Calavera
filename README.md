@@ -51,6 +51,7 @@ Future directions
 The next major steps will be:
 * Create a [MEAN-stack](http://en.wikipedia.org/wiki/MEAN) based development pipeline
 * Support Docker in addition to VirtualBox (may deprecate VirtualBox, depending)
+* Integrate with Cloud providers
 
 Charles Betz personal statement
 ==
@@ -67,4 +68,4 @@ One audience that I hope will find benefit in this is people like me - mid-caree
 
 You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
 
-See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further inforamtion.
+See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further information. And of course www.lean4it.com. 
