@@ -1,25 +1,28 @@
 # Installing Calavera
 
-2015-03-01  version 0.1 alpha
+2015-03-01  version 0.3 alpha
 
 ## Prerequisites
 
+As github projects go, this one is intended to be accessible to the person of "general computing literacy." If you are interested in getting started with establishing a Github track record, this might be a good project to start with. There is a diversity of technology here, and some nontrivial tools, but the concepts are all relatively simple. This really is more about systems administration than true software development.  
 
-If you are really, truly unfamiliar with basic computing, virtualization, networking, and the like, this may not be a good project for you to start with.
-
-In terms of skills, you need to be able to install software on your computer, edit text files (NOT using Microsoft Word), and be comfortable with a command prompt.
+In terms of skills, you need to be able to install software on your computer, edit text files (NOT using Microsoft Word), and be comfortable with a command prompt. You need some understanding of basic computing, virtualization, networking, and the like. You should have at least a little programming or scripting ability. 
 
 You also need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. Spend an hour with the Vagrant tutorial and vagrant up a simple VM or two and you'll be more or less ready for this.
+
+You'll find yourself learning Chef, but since you are starting with a simple, functioning set of interrelated recipes it's not a bad way to start. This project might make a good adjunct if you're running a Chef tutorial. If you want to modify or extend the system, you'll have to pick up some Ruby. There's also a few *.bash scripts. 
 
 You need enough git to clone this repository to your machine. That's just one command, shown below. But it would be nice if you could help improve the project by forking your own repo, making enhancements, and sending up pull requests. They will be reviewed and acted upon.
 
 You need:
 
+* Internet connectivity for all the install steps (the cluster will run without Internet once it is up)
+
 * Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable.
 
 * Windows 7+, Mac OS X Mavericks or later, or Ubuntu 14 (note: I have not done extensive version testing; if you have a platform that runs the prequisites listed below it probably will work)
 
-* At least 4 GB of RAM (8 or more recommended; if you have 4 you should shut everything else off) and a computer capable of running 64-bit VMs
+* At least 8 GB of RAM (16 or more recommended; if you have 4 you can try --  shut everything else off) and a computer capable of running 64-bit VMs
 
 * AT LEAST 20 gb of free hard drive space
 * Strongly recommend a visualizer so you can monitor VM consumption of disk:
@@ -49,7 +52,7 @@ First, you need to install:
 And of course you will need git, to download from Github.
 
 **Critical pre-install configuration tweak**
-At this writing you MUST do this:
+At this writing you MUST do this AFTER you install the ChefDK:
 
 In a text editor open /opt/chefdk/embedded/apps/berkshelf/lib/berkshelf/berksfile.rb
 
@@ -86,6 +89,10 @@ The VMs need to be instantiated in a particular order, with one manual intervent
 1. cara (Production environment)
 
 Any other order will likely result in errors and a "cluster" in another sense of that word.
+
+## Issues
+
+I  am actively monitoring [Github Issues for this project](https://github.com/CharlesTBetz/Calavera/issues). If you run into something, please post there. 
 
 ## Installation step by step
 

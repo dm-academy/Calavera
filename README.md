@@ -1,19 +1,21 @@
 Calavera
 ========
 
-This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes, using git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory.
+This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes. It uses  "infrastructure as code" principles to configure git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory into an integrated, end to end system.
 
 There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreograhy interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
-* Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git ("manos" node).
-* When you execute a build on that environment, if successful it pushes to a remote master git repository ("espina" node)
-* That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
-* If that build succeeds, the result is archived to Artifactory ("espina" node)
-* You then can (with Chef) deploy the result to a simulated "production" node "cara."
+* Gives you a basic test-driven "Hello World" Java example with JUnit, Ant, Tomcat, and git.
+* When you execute a build on that environment, if successful it pushes to a remote master git repository.
+* That commit then triggers Jenkins to execute a build on a "slave" node.
+* If that build succeeds, the result is archived to Artifactory.
+* You then can (with Chef) deploy the result to a simulated "production" node.
 
-Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
+All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. Partial exception: the Jenkins/Artifactory integration must be partially manually configured; a full description for doing that is in [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
+
+Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes provisioning and controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
 ![](docs/img/CalaveraArchitecture.jpg)
 
@@ -27,8 +29,15 @@ Installation
 [Installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md)
 
 
+2015-03-03 0.3 Alpha Released!
+==
+Open for business. Please let me know what you think. And please help. 
+
+
 2015-03-01 update
 ==
+*2015-03-02 note OK I changed my mind about releasing. After I finished the installation instructions yesterday and confirmed a couple succesful builds on different machines, I decided to go ahead and call 0.3 the first official alpha release.*
+
 The last 3 weeks have marked Calavera's debut in a classroom setting. It has been a lot of work and very exciting for both me and (I think) the students. This week, they are [standing up their own instances of the Manos development environment](https://github.com/StThomas-SEIS660/Lab-04/blob/master/Lab-04-inststructions.md).
 
 Been doing some final polishing. The public Calavera alpha release is delayed due to my educational commitments - have to prioritize creating the labs. Testing the system under fire in the classroom also seems appropriate before publishing.
