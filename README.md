@@ -7,7 +7,7 @@ There are a number of benefits you might find in this project. While the basic D
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
-* Gives you a basic test-driven Java example with JUnit, Ant, Tomcat, and git ("manos" node).
+* Gives you a basic test-driven "Hellow World" Java example with JUnit, Ant, Tomcat, and git ("manos" node).
 * When you execute a build on that environment, if successful it pushes to a remote master git repository ("espina" node)
 * That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
 * If that build succeeds, the result is archived to Artifactory ("espina" node)
