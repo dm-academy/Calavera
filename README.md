@@ -7,11 +7,11 @@ There are a number of benefits you might find in this project. While the basic D
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
-* Gives you a basic test-driven "Hello World" Java example with JUnit, Ant, Tomcat, and git ("manos" node).
-* When you execute a build on that environment, if successful it pushes to a remote master git repository ("espina" node)
-* That commit then triggers a Jenkins build on a "slave" node ("hombros" for Jenkins, "brazos" for the slave node)
-* If that build succeeds, the result is archived to Artifactory ("espina" node)
-* You then can (with Chef) deploy the result to a simulated "production" node "cara."
+* Gives you a basic test-driven "Hello World" Java example with JUnit, Ant, Tomcat, and git.
+* When you execute a build on that environment, if successful it pushes to a remote master git repository.
+* That commit then triggers Jenkins to execute a build on a "slave" node.
+* If that build succeeds, the result is archived to Artifactory.
+* You then can (with Chef) deploy the result to a simulated "production" node.
 
 All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. Partial exception: the Jenkins/Artifactory integration must be partially manually configured; a full description for doing that is in [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
 
