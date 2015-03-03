@@ -29,6 +29,11 @@ Installation
 [Installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md)
 
 
+2015-03-03 0.3 Alpha Released!
+==
+Open for business. Please let me know what you think. And please help. 
+
+
 2015-03-01 update
 ==
 *2015-03-02 note OK I changed my mind about releasing. After I finished the installation instructions yesterday and confirmed a couple succesful builds on different machines, I decided to go ahead and call 0.3 the first official alpha release.*
