@@ -20,7 +20,7 @@ You need:
 
 * Windows 7+, Mac OS X Mavericks or later, or Ubuntu 14 (note: I have not done extensive version testing; if you have a platform that runs the prequisites listed below it probably will work)
 
-* At least 4 GB of RAM (8 or more recommended; if you have 4 you should shut everything else off) and a computer capable of running 64-bit VMs
+* At least 8 GB of RAM (16 or more recommended; if you have 4 you can try --  shut everything else off) and a computer capable of running 64-bit VMs
 
 * AT LEAST 20 gb of free hard drive space
 * Strongly recommend a visualizer so you can monitor VM consumption of disk:
