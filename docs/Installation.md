@@ -88,6 +88,10 @@ The VMs need to be instantiated in a particular order, with one manual intervent
 
 Any other order will likely result in errors and a "cluster" in another sense of that word.
 
+## Issues
+
+I  am actively monitoring [Github Issues for this project](https://github.com/CharlesTBetz/Calavera/issues). If you run into something, please post there. 
+
 ## Installation step by step
 
 Figure out a suitable location to download the repository from Github. It is not large, but I recommend that you not "nest" it too deeply (Windows is especially annoying this way) and that you avoid having spaces in the pathnames (e.g. "My Documents"). Creating a C:\home\myname directory would be a good location example. Open a command window there and type:
