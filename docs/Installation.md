@@ -10,7 +10,7 @@ In terms of skills, you need to be able to install software on your computer, ed
 
 You also need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. Spend an hour with the Vagrant tutorial and vagrant up a simple VM or two and you'll be more or less ready for this.
 
-You'll find yourself learning Chef, but since you are starting with a simple, functioning set of interrelated recipes it's not a bad way to start. This project might make a good adjunct if you're running a Chef tutorial. You'll have to pick up some Ruby. There's also a few *.bash scripts. 
+You'll find yourself learning Chef, but since you are starting with a simple, functioning set of interrelated recipes it's not a bad way to start. This project might make a good adjunct if you're running a Chef tutorial. If you want to modify or extend the system, you'll have to pick up some Ruby. There's also a few *.bash scripts. 
 
 You need enough git to clone this repository to your machine. That's just one command, shown below. But it would be nice if you could help improve the project by forking your own repo, making enhancements, and sending up pull requests. They will be reviewed and acted upon.
 
