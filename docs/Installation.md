@@ -16,6 +16,8 @@ You need enough git to clone this repository to your machine. That's just one co
 
 You need:
 
+* Internet connectivity for all the install steps (the cluster will run without Internet once it is up)
+
 * Recent (< 3 yrs old) Pentium or Xeon or similar class AMD chip, multi-core preferable.
 
 * Windows 7+, Mac OS X Mavericks or later, or Ubuntu 14 (note: I have not done extensive version testing; if you have a platform that runs the prequisites listed below it probably will work)
