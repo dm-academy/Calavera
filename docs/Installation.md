@@ -49,7 +49,7 @@ First, you need to install:
 * [Chef Development Kit](https://downloads.chef.io/chef-dk/) version 0.4 or later
 
 
-And of course you will need git, to download from Github.
+And of course you will need [git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), to download from Github.
 
 **Critical pre-install configuration tweak**
 At this writing you MUST do this AFTER you install the ChefDK:

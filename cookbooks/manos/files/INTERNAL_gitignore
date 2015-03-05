@@ -6,4 +6,6 @@
 .vagrant/   # probably don't need to worry about this
 target/*    # things built on dev workstation do not go in source control
 *.class
-
+result.txt
+result.xml
+*.jar
