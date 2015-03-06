@@ -13,7 +13,12 @@
 	<property name="deploy"		value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/lib"/>
 	<property name="configDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/"/>	
 
-	<property name="junit.fork" value="true"/>		
+	<property name="junit.fork" value="true"/>
+	
+        <tstamp>
+            <format property="time.stamp" pattern="yyyy-MM-dd_HH:mm:ss"/>
+        </tstamp>
+
 
 	<path id="JUnit 4.libraryclasspath">
 	    <pathelement location="/usr/bin/junit-4.12.jar"/>
@@ -35,6 +40,7 @@
 	<target name="init">
 		<echo>
 			Computer name is ${my_env.COMPUTERNAME}
+			Build time is ${time.stamp} UTC (e.g. US CT +6)
                         User name is ${user.name}
 			Building from ${ant.file}
 			Java is version ${ant.java.version}

@@ -27,9 +27,10 @@ public class MainServlet extends HttpServlet {
 
 	      // Actual logic goes here.
 	      PrintWriter out = response.getWriter();
+	      
               Class1 oResp = new Class1(message);
-              
 	      out.println(oResp.webMessage());
+	      
 	  }
 	  
 	  public void destroy()
