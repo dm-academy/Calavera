@@ -258,6 +258,30 @@ Vagrant.configure(2) do |config|
   end
   
   # test: http://192.168.33.35:8080/MainServlet
+  
+###############################################################################
+###################################    nervios     ##############################
+###############################################################################
+# monitoring
+
+  config.vm.define "nervios" do | nervios |
+    nervios.vm.host_name              ="nervios.calavera.biz"
+    nervios.vm.network                 "private_network", ip: "192.168.33.36"
+    nervios.vm.network                 "forwarded_port", guest: 22, host: 2236, auto_correct: true
+    nervios.vm.network                 "forwarded_port", guest: 80, host: 8036
+    nervios.vm.network                "forwarded_port", guest: 8080, host: 8136
+    
+    nervios.ssh.forward_agent        =true
+
+      nervios.vm.synced_folder         ".", "/home/nervios"
+      nervios.vm.synced_folder         "./shared", "/mnt/shared"
+    #nervios.vm.provision       :shell, path: "./shell/nervios.sh"
+
+    nervios.vm.provision :chef_zero do |chef|
+      chef.cookbooks_path =       ["./cookbooks/"]
+      #chef.add_recipe             "nervios::default"
+    end
+  end
 
 ###############################################################################
 ###################################    test     ##############################
