@@ -115,67 +115,6 @@ vagrant up hombros
 
 All done with those first 5? Good.
 
-We now have to set up Artifactory in Jenkins using the Jenkins GUI because the Jenkins API does not support configuring Artifactory in an automated way, as far as I can see. (Kudos for someone who can automate it, but I'd rather not see a lot of curl-type hacking.)
-
-You should now be able to see your local Jenkins instance running at:
-
-http://192.168.33.33:8080
-
-And your local Artifactory running at:
-
-http://192.168.33.32:8081
-
-The default Artifactory username/password is admin/password. Completely insecure. DO NOT USE CALAVERA FOR PRODUCTION PURPOSES. IT IS A LAB EXPERIMENT ONLY.
-
-*While we're on the topic of security: The Calavera approach to security is to use the same public/private key pair across all the machines in the cluster. Again, unsuitable for production purposes, but at least you have an ssh-based skeleton and not one based merely on id/password logins.*
-
-Go to your Jenkins instance:
-
-![](img/Jenkins2.png)
-
-Choose "Manage Jenkins":
-
-![](img/ManageJenkins.png)
-
-Choose "Configure System":
-
-![](img/ManageJenkins2.png)
-
-
-Scroll about halfway down to the "Artifactory" section and press the Add button:
-
-![](img/JenkinsArtifactory.png)
-
-As shown, enter
-
-http://192.168.33.32:8081/artifactory/
-
-and the default username/password of "admin/password."
-
-![](img/JenkinsArtifactory3.png)
-
-Press Test Connection. The message "Found Artifactory X.X.X" should appear. If not, double check that Espina is running and you can access the Artifactory repository URL through a browser.
-
-If all is well, click Save. You will be taken back to the main dashboard.
-
-Click hijoInit.
-
-![](img/hijoInit.png)
-
-Click Configure.
-
-![](img/JenkinsArtifactory4.png)
-
-Find the Artifactory Configuration section. Click Refresh Repositories.
-
-![](img/JenkinsArtifactory5.png)
-
-Notice that "ext-release-local" appears along with the message "Items refreshed successfully":
-
-![](img/JenkinsArtifactory6.png)
-
-Click Save.
-
 ### Bringing up manos
 
 Now, the acid test: bringing up manos. The user guide (to be written) will go into details on this, but let's just say there are a lot of ways Manos can fail. The precursor machines must have all come up without error.
