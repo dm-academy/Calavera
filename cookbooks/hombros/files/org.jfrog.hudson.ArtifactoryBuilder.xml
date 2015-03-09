@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<org.jfrog.hudson.ArtifactoryBuilder_-DescriptorImpl plugin="artifactory@2.2.7">
+  <artifactoryServers>
+    <org.jfrog.hudson.ArtifactoryServer>
+      <timeout>300</timeout>
+      <url>http://192.168.33.32:8081/artifactory</url>
+      <id>1185897771@1425928793395</id>
+      <deployerCredentials>
+        <username>admin</username>
+        <password>cGFzc3dvcmQ=</password>
+      </deployerCredentials>
+      <bypassProxy>false</bypassProxy>
+    </org.jfrog.hudson.ArtifactoryServer>
+  </artifactoryServers>
+</org.jfrog.hudson.ArtifactoryBuilder_-DescriptorImpl>

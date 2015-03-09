@@ -73,6 +73,21 @@ jenkins_job 'hijoInit' do
   config xml
 end
 
-#jenkins_command 'safe-restart'
+file_map = {
+  "hijoConfig.xml" => "/var/lib/jenkins/jobs/hijoInit/config.xml",
+ "org.jfrog.hudson.ArtifactoryBuilder.xml" => "/var/lib/jenkins/org.jfrog.hudson.ArtifactoryBuilder.xml"
+}
+
+# download each file and place it in right directory
+file_map.each do | fileName, pathName |
+  cookbook_file fileName do
+    path pathName
+    user "jenkins"
+    group "jenkins"
+    action :create
+  end
+end
+
+jenkins_command 'safe-restart'
 
 # project name hijoInit
