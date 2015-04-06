@@ -29,7 +29,7 @@ end
 
 
 execute 'correct artifactory directory permissions' do
-  command 'chown -R artifactory /opt/artifactory-3.5.2.1/ && chgrp -R artifactory /opt/artifactory-3.5.2.1/'          # Chef does not have an easy way to do this.
+  command 'chown -R artifactory /opt/artifactory-3.5.3/ && chgrp -R artifactory /opt/artifactory-3.5.3/'          # Chef does not have an easy way to do this.
 end
 
 execute 'correct executables' do
