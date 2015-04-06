@@ -3,7 +3,7 @@ Calavera
 
 This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes. It uses  "infrastructure as code" principles to configure git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory into an integrated, end to end system.
 
-There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreograhy interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
+There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreography interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
