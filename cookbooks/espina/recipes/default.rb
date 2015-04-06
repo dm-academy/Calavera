@@ -33,12 +33,12 @@ execute 'correct artifactory directory permissions' do
 end
 
 execute 'correct executables' do
-  command 'chmod 755 /opt/artifactory-3.5.2.1/bin/*'       # Chef does not have an easy way to do this.
+  command 'chmod 755 /opt/artifactory-3.5.3/bin/*'       # Chef does not have an easy way to do this.
 end
 
 execute 'launch Artifactory' do
   user 'root'
-  command '/opt/artifactory-3.5.2.1/bin/artifactory.sh &'       # Start Artifactory. Need to install as a service that auto-restarts.  
+  command '/opt/artifactory-3.5.3/bin/artifactory.sh &'       # Start Artifactory. Need to install as a service that auto-restarts.  
 end
 
 
