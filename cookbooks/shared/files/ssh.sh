@@ -36,6 +36,7 @@ cp -f /mnt/shared/keys/id_rsa* ~/.ssh # copy both to user (vagrant for now) .ssh
 echo "# CALAVERA: This file was updated by the $HOSTNAME provisioning process" >> /home/vagrant/.ssh/authorized_keys  
 cat /mnt/shared/keys/id_rsa.pub >> ~/.ssh/authorized_keys   # not idempotent; script intended only to be run on initial vagrant up
 chown vagrant /home/vagrant/.ssh/*
+chmod 600 /home/vagrant/.ssh/id_rsa
 echo $HOSTNAME done with ssh script >> /mnt/shared/keys/ssh.log
 echo "***"  >> /mnt/shared/keys/ssh.log
 echo ""  >> /mnt/shared/keys/ssh.log
