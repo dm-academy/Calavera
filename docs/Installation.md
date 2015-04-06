@@ -42,12 +42,10 @@ You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Ca
 First, you need to install:
 
 * [VirtualBox](https://www.virtualbox.org/)
-
+* [Chef Development Kit](https://downloads.chef.io/chef-dk/) version 0.4 or later
 * [Vagrant](http://www.vagrantup.com/downloads.html)
   * [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
   * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
-* [Chef Development Kit](https://downloads.chef.io/chef-dk/) version 0.4 or later
-
 
 And of course you will need [git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), to download from Github.
 
