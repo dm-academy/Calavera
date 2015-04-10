@@ -1,6 +1,6 @@
 # do NOT just "vagrant up" this whole cluster. not recommended.
 # currently, need to do startup.sh and then vagrant up the machines one by on in this order
-#  cerebro, brazos, espina, hombros, **manually setup artifactory**, manos, cara
+#  cerebro, brazos, espina, hombros, manos, cara
 
 #Berksfile tweak needed per https://github.com/berkshelf/vagrant-berkshelf/issues/237  **/.git
 
