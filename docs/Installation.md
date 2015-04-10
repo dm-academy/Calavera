@@ -76,13 +76,12 @@ Calavera starts with a script, "startup.sh" or "startup.bat", which takes a stan
 
 It then repackages it and destroys the Vagrant machine. The remaining 6 VMs all then use this repackaged base image.
 
-The VMs need to be instantiated in a particular order, with one manual intervention:
+The VMs need to be instantiated in a particular order:
 
 1. cerebro (Remote git repo)
 1. brazos (Slave build environment)
 1. espina (Artifactory)
 1. hombros (Jenkins)
-1. **manually setup jenkins to use artifactory**
 1. manos (Development environment)
 1. cara (Production environment)
 
