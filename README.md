@@ -13,7 +13,7 @@ This gives you a functioning starting point, a "known good" baseline running as 
 * If that build succeeds, the result is archived to Artifactory.
 * You then can (with Chef) deploy the result to a simulated "production" node.
 
-All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. Partial exception: the Jenkins/Artifactory integration must be partially manually configured; a full description for doing that is in [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
+All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. See [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
 
 Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes provisioning and controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
