@@ -68,9 +68,9 @@ Vagrant.configure(2) do |config|
     cerebro.vm.network            "forwarded_port", guest: 80, host: 8030
     cerebro.vm.network             "forwarded_port", guest: 8080, host: 8130
     cerebro.vm.network             "forwarded_port", guest: 8080, host: 8130
-    
+
     cerebro.ssh.forward_agent       =true
-    
+
     cerebro.vm.synced_folder      ".",         "/home/cerebro"
     cerebro.vm.synced_folder      "./shared", "/mnt/shared"
 
@@ -95,9 +95,9 @@ Vagrant.configure(2) do |config|
     brazos.vm.network               "forwarded_port", guest: 22, host: 2231, auto_correct: true
     brazos.vm.network               "forwarded_port", guest: 80, host: 8031
     brazos.vm.network              "forwarded_port", guest: 8080, host: 8131
-    
+
     brazos.ssh.forward_agent       =true
-    
+
     brazos.vm.synced_folder        ".",         "/home/brazos"
     brazos.vm.synced_folder        "./shared", "/mnt/shared"
 
@@ -122,7 +122,7 @@ Vagrant.configure(2) do |config|
     espina.vm.network               "forwarded_port", guest: 22, host: 2232, auto_correct: true
     espina.vm.network               "forwarded_port", guest: 80, host: 8032
     espina.vm.network              "forwarded_port", guest: 8080, host: 8132
-    
+
     espina.ssh.forward_agent        =true
 
     espina.vm.synced_folder        ".",         "/home/espina"
@@ -149,7 +149,7 @@ Vagrant.configure(2) do |config|
     hombros.vm.network            "forwarded_port", guest: 22, host: 2233, auto_correct: true
     hombros.vm.network            "forwarded_port", guest: 80, host: 8033
     hombros.vm.network            "forwarded_port", guest: 8080, host: 8133
-    
+
     hombros.ssh.forward_agent      =true
 
     hombros.vm.synced_folder        ".",         "/home/espina"
@@ -178,7 +178,7 @@ Vagrant.configure(2) do |config|
     manos.vm.network              "forwarded_port", guest: 22, host: 2234, auto_correct: true
     manos.vm.network              "forwarded_port", guest: 80, host: 8034
     manos.vm.network              "forwarded_port", guest: 8080, host: 8134
-    
+
     manos.ssh.forward_agent        =true
 
     manos.vm.synced_folder        ".",         "/home/manos"
@@ -215,7 +215,7 @@ Vagrant.configure(2) do |config|
       manos40.vm.network              "forwarded_port", guest: 22, host: 2240, auto_correct: true
       manos40.vm.network              "forwarded_port", guest: 80, host: 8040
       manos40.vm.network              "forwarded_port", guest: 8080, host: 8140
-      
+
       manos40.ssh.forward_agent        =true
 
       manos40.vm.synced_folder        ".",         "/home/manos40"
@@ -242,7 +242,7 @@ Vagrant.configure(2) do |config|
     cara.vm.network                 "forwarded_port", guest: 22, host: 2235, auto_correct: true
     cara.vm.network                 "forwarded_port", guest: 80, host: 8035
     cara.vm.network                "forwarded_port", guest: 8080, host: 8135
-    
+
     cara.ssh.forward_agent        =true
 
     cara.vm.synced_folder          ".",         "/home/cara"
@@ -256,9 +256,9 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "cara::default"
     end
   end
-  
+
   # test: http://192.168.33.35:8080/MainServlet
-  
+
 ###############################################################################
 ###################################    nervios     ##############################
 ###############################################################################
@@ -270,7 +270,7 @@ Vagrant.configure(2) do |config|
     nervios.vm.network                 "forwarded_port", guest: 22, host: 2236, auto_correct: true
     nervios.vm.network                 "forwarded_port", guest: 80, host: 8036
     nervios.vm.network                "forwarded_port", guest: 8080, host: 8136
-    
+
     nervios.ssh.forward_agent        =true
 
       nervios.vm.synced_folder         ".", "/home/nervios"
@@ -282,6 +282,55 @@ Vagrant.configure(2) do |config|
       #chef.add_recipe             "nervios::default"
     end
   end
+
+
+  ###############################################################################
+  ###################################    rodillas  ##############################
+  ###############################################################################
+  # monitoring
+
+    config.vm.define "rodillas" do | rodillas |
+      rodillas.vm.host_name              ="rodillas.calavera.biz"
+      rodillas.vm.network                 "private_network", ip: "192.168.33.37"
+      rodillas.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
+      rodillas.vm.network                 "forwarded_port", guest: 80, host: 8037
+      rodillas.vm.network                 "forwarded_port", guest: 8080, host: 8137
+
+      rodillas.ssh.forward_agent        =true
+
+      rodillas.vm.synced_folder         ".", "/home/rodillas"
+      rodillas.vm.synced_folder         "./shared", "/mnt/shared"
+      #nervios.vm.provision       :shell, path: "./shell/rodillas.sh"
+
+      rodillas.vm.provision :chef_zero do |chef|
+        chef.cookbooks_path =       ["./cookbooks/"]
+        #chef.add_recipe             "rodillas::default"
+      end
+    end
+
+    ###############################################################################
+    ###################################    rodillas-1  ##############################
+    ###############################################################################
+    # monitoring
+
+      config.vm.define "rodillas-1" do | rodillas-1 |
+        rodillas-1.vm.host_name              ="rodillas-1.calavera.biz"
+        rodillas-1.vm.network                 "private_network", ip: "192.168.33.38"
+        rodillas-1.vm.network                 "forwarded_port", guest: 22, host: 2238, auto_correct: true
+        rodillas-1.vm.network                 "forwarded_port", guest: 80, host: 8038
+        rodillas-1.vm.network                 "forwarded_port", guest: 8080, host: 8138
+
+        rodillas-1.ssh.forward_agent        =true
+
+        rodillas-1.vm.synced_folder         ".", "/home/rodillas-1"
+        rodillas-1.vm.synced_folder         "./shared", "/mnt/shared"
+        #nervios.vm.provision       :shell, path: "./shell/rodillas-1.sh"
+
+        rodillas-1.vm.provision :chef_zero do |chef|
+          chef.cookbooks_path =       ["./cookbooks/"]
+          #chef.add_recipe             "rodillas-1::default"
+        end
+      end
 
 ###############################################################################
 ###################################    test     ##############################
@@ -295,7 +344,7 @@ Vagrant.configure(2) do |config|
     test.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true
     test.vm.network                 "forwarded_port", guest: 80, host: 8099
     test.vm.network                "forwarded_port", guest: 8080, host: 8199
-    
+
     test.ssh.forward_agent        =true
 
       test.vm.synced_folder         ".", "/home/test"
