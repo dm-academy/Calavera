@@ -3,7 +3,7 @@ Calavera
 
 This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes. It uses  "infrastructure as code" principles to configure git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory into an integrated, end to end system.
 
-There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreograhy interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
+There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreography interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
 
 This gives you a functioning starting point, a "known good" baseline running as a cluster of 6 Ubuntu VMs under Vagrant and Chef, that does the following:
 
@@ -13,7 +13,7 @@ This gives you a functioning starting point, a "known good" baseline running as 
 * If that build succeeds, the result is archived to Artifactory.
 * You then can (with Chef) deploy the result to a simulated "production" node.
 
-All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. Partial exception: the Jenkins/Artifactory integration must be partially manually configured; a full description for doing that is in [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
+All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. See [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
 
 Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes provisioning and controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 

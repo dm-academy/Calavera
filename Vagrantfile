@@ -1,6 +1,6 @@
 # do NOT just "vagrant up" this whole cluster. not recommended.
 # currently, need to do startup.sh and then vagrant up the machines one by on in this order
-#  cerebro, brazos, espina, hombros, **manually setup artifactory**, manos, cara
+#  cerebro, brazos, espina, hombros, manos, cara
 
 #Berksfile tweak needed per https://github.com/berkshelf/vagrant-berkshelf/issues/237  **/.git
 
@@ -14,7 +14,7 @@
 
 Vagrant.configure(2) do |config|
   if ARGV[1]=='base'
-    config.vm.box = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box"
+    config.vm.box = "opscode/temp"
   else
     config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
   end
