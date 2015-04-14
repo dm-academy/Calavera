@@ -287,7 +287,7 @@ Vagrant.configure(2) do |config|
   ###############################################################################
   ###################################    rodillas  ##############################
   ###############################################################################
-  # monitoring
+  # 
 
     config.vm.define "rodillas" do | rodillas |
       rodillas.vm.host_name              ="rodillas.calavera.biz"
@@ -309,26 +309,26 @@ Vagrant.configure(2) do |config|
     end
 
     ###############################################################################
-    ###################################    rodillas-1  ##############################
+    ###################################    rodillas1  ##############################
     ###############################################################################
-    # monitoring
+    # 
 
-      config.vm.define "rodillas-1" do | rodillas-1 |
-        rodillas-1.vm.host_name              ="rodillas-1.calavera.biz"
-        rodillas-1.vm.network                 "private_network", ip: "192.168.33.38"
-        rodillas-1.vm.network                 "forwarded_port", guest: 22, host: 2238, auto_correct: true
-        rodillas-1.vm.network                 "forwarded_port", guest: 80, host: 8038
-        rodillas-1.vm.network                 "forwarded_port", guest: 8080, host: 8138
+      config.vm.define "rodillas1" do | rodillas1 |
+        rodillas1.vm.host_name              ="rodillas1.calavera.biz"
+        rodillas1.vm.network                 "private_network", ip: "192.168.33.38"
+        rodillas1.vm.network                 "forwarded_port", guest: 22, host: 2238, auto_correct: true
+        rodillas1.vm.network                 "forwarded_port", guest: 80, host: 8038
+        rodillas1.vm.network                 "forwarded_port", guest: 8080, host: 8138
 
-        rodillas-1.ssh.forward_agent        =true
+        rodillas1.ssh.forward_agent        =true
 
-        rodillas-1.vm.synced_folder         ".", "/home/rodillas-1"
-        rodillas-1.vm.synced_folder         "./shared", "/mnt/shared"
-        #nervios.vm.provision       :shell, path: "./shell/rodillas-1.sh"
+        rodillas1.vm.synced_folder         ".", "/home/rodillas1"
+        rodillas1.vm.synced_folder         "./shared", "/mnt/shared"
+        #nervios.vm.provision       :shell, path: "./shell/rodillas1.sh"
 
-        rodillas-1.vm.provision :chef_zero do |chef|
+        rodillas1.vm.provision :chef_zero do |chef|
           chef.cookbooks_path =       ["./cookbooks/"]
-          #chef.add_recipe             "rodillas-1::default"
+          #chef.add_recipe             "rodillas1::default"
         end
       end
 
