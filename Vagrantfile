@@ -287,7 +287,7 @@ Vagrant.configure(2) do |config|
   ###############################################################################
   ###################################    rodillas  ##############################
   ###############################################################################
-  # 
+  # installs itop
 
     config.vm.define "rodillas" do | rodillas |
       rodillas.vm.host_name              ="rodillas.calavera.biz"
@@ -300,7 +300,7 @@ Vagrant.configure(2) do |config|
 
       rodillas.vm.synced_folder         ".", "/home/rodillas"
       rodillas.vm.synced_folder         "./shared", "/mnt/shared"
-      #nervios.vm.provision       :shell, path: "./shell/rodillas.sh"
+      #rodillas.vm.provision       :shell, path: "./cookbooks/rodillas/files/itop-a.sh"
 
       rodillas.vm.provision :chef_zero do |chef|
         chef.cookbooks_path =       ["./cookbooks/"]
@@ -311,7 +311,7 @@ Vagrant.configure(2) do |config|
     ###############################################################################
     ###################################    rodillas1  ##############################
     ###############################################################################
-    # 
+    # installs otrs
 
       config.vm.define "rodillas1" do | rodillas1 |
         rodillas1.vm.host_name              ="rodillas1.calavera.biz"
@@ -324,7 +324,7 @@ Vagrant.configure(2) do |config|
 
         rodillas1.vm.synced_folder         ".", "/home/rodillas1"
         rodillas1.vm.synced_folder         "./shared", "/mnt/shared"
-        #nervios.vm.provision       :shell, path: "./shell/rodillas1.sh"
+        #rodillas1.vm.provision       :shell, path: "./shell/rodillas1.sh"
 
         rodillas1.vm.provision :chef_zero do |chef|
           chef.cookbooks_path =       ["./cookbooks/"]
