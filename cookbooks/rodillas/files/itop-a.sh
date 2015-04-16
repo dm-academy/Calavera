@@ -7,7 +7,7 @@ apt-get -y update --fix-missing && apt-get -y upgrade
 #debconf-set-selections <<< 'mysql-server mysql-server/root_password password  '
 #debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password  '
 
-apt-get -y install lamp-server^
+# apt-get -y install lamp-server^ #currently requires interactive
 apt-get -y install php5-ldap php5-mcrypt
 apt-get -y install graphviz
 
