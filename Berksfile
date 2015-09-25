@@ -4,7 +4,7 @@ metadata
 
 
 cookbook 'shared',  path: "./cookbooks/shared"
-cookbook 'java7',   path: "./cookbooks/java7"
+#cookbook 'java7',   path: "./cookbooks/java7"
 cookbook 'java8',   path: "./cookbooks/java8"
 cookbook 'cerebro', path: "./cookbooks/cerebro"
 cookbook 'brazos',  path: "./cookbooks/brazos"
