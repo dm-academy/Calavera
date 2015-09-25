@@ -23,3 +23,5 @@ bash 'set Java environment' do
       source /etc/profile.d/java.sh
     EOH
 end
+
+

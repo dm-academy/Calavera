@@ -34,7 +34,7 @@ Vagrant.configure(2) do |config|
 # to be repackaged
 #
 # purpose of doing this is to save time
-# eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl)
+# eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl
 # also configures ssh & hosts
 
   config.vm.define "base" do | base |
@@ -46,8 +46,6 @@ Vagrant.configure(2) do |config|
 
     base.vm.synced_folder           ".",         "/home/base"
     base.vm.synced_folder           "./shared", "/mnt/shared"
-
-    #base.vm.provision             :shell, path: "./shell/base.sh"
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
@@ -135,7 +133,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # test: http://192.168.33.32:8081, admin/password
+  # test: http://192.168.33.32:8081/artifactory, admin/password
   # currently need to manually configure Artifactory url and login/pw in Jenkins main setup
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
 
