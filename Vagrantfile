@@ -32,8 +32,8 @@ Vagrant.configure(2) do |config|
     manos.vm.host_name            ="manos.calavera.biz"
     #manos.vm.network              "private_network", ip: "192.168.33.34"  # don't need to specify; we use 127.0.0.1:port for access for this lab
     manos.vm.network              "forwarded_port", guest: 22, host: 2234, auto_correct: true
-    manos.vm.network              "forwarded_port", guest: 80, host: 8034
-    manos.vm.network              "forwarded_port", guest: 8080, host: 8134
+    manos.vm.network              "forwarded_port", guest: 80, host: 8034, auto_correct: true
+    manos.vm.network              "forwarded_port", guest: 8080, host: 8134, auto_correct: true
 
     manos.ssh.forward_agent        =true
 
