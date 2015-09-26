@@ -36,7 +36,7 @@ Vagrant.configure(2) do |config|
 # purpose of doing this is to save time
 # eliminates repeated chef, virtualbox utils & java downloads, also apt-get updates & installs tree & curl
 # also configures ssh & hosts
-
+# test
   config.vm.define "base" do | base |
     base.vm.host_name              ="base.calavera.biz"
     base.vm.network                 "private_network", ip: "192.168.33.29"
