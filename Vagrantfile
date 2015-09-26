@@ -81,7 +81,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-# need a git test
+# test: vagrant ssh cerebro, git -v
 
 ###############################################################################
 ###################################    brazos     ##############################
@@ -104,7 +104,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
       chef.add_recipe             "shared::_junit"
-      #chef.add_recipe             "java7::default"
+      chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "brazos::default"
     end
@@ -129,6 +129,7 @@ Vagrant.configure(2) do |config|
 
     espina.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.add_recipe             "java8::default"
       chef.add_recipe             "espina::default"
     end
   end
@@ -187,12 +188,11 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
-      #chef.add_recipe             "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
+      chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base. tomcat also installs Java. but won't work w/o it.
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "shared::_junit"
       chef.add_recipe             "manos::default"
     end
-
   end
 
   # test: http://192.168.33.34:8080/MainServlet
@@ -249,7 +249,7 @@ Vagrant.configure(2) do |config|
 
     cara.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      #chef.add_recipe             "java7::default"
+      chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "cara::default"
     end

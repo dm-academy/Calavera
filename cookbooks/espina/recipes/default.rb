@@ -12,7 +12,7 @@ user 'artifactory' do
 end
 
 remote_file "/opt/artifactory-latest.zip" do
-  source "http://bit.ly/Hqv9aj"    # this was being stubborn with full URL for some reason. points to latest build. 
+  source "http://bit.ly/Hqv9aj"    # this was being stubborn with full URL for some reason. points to latest build.
   mode '0755'
 end
 
@@ -37,7 +37,7 @@ end
 
 execute 'launch Artifactory' do
   user 'root'
-  command '/opt/artifactory-latest/bin/artifactory.sh &'       # Start Artifactory. Need to install as a service that auto-restarts.  
+  command '/opt/artifactory-latest/bin/artifactory.sh &'       # Start Artifactory. Need to install as a service that auto-restarts.
 end
 
 

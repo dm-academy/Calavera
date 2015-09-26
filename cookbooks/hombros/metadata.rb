@@ -6,5 +6,5 @@ description      'Installs/Configures development choreography (e.g. Jenkins)'
 long_description ''
 version          '0.3.0'
 
-depends           'tomcat-all'
+depends           'tomcat'
 depends           'jenkins'

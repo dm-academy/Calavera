@@ -3,9 +3,10 @@
 
 #execute 'apt update' do
 #  command 'apt-get -q update'
+#  command 'apt-get -q upgrade'
 #end
 
-#include_recipe "java7::default"
+include_recipe "java7::default"
 #include_recipe "java8::default"
 include_recipe "curl::default"
 

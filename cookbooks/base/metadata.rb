@@ -7,4 +7,4 @@ long_description 'updates packages, updates VirtualBox addin, installs chef & ja
 version          '0.3.0'
 
 depends         'curl'
-#depends         'java8'   # removing java from base build due to tomcat/artifactory incompatibility
+depends         'java7'   # experimenting w/removing java from base build due to tomcat/artifactory incompatibility
