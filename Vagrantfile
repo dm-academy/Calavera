@@ -244,7 +244,7 @@ Vagrant.configure(2) do |config|
     cara.ssh.forward_agent        =true
 
     cara.vm.synced_folder          ".",         "/home/cara"
-    cara.vm.synced_folder          "./shared", "/mnt/shared
+    cara.vm.synced_folder          "./shared", "/mnt/shared"
     #cara.vm.provision       :shell, path: "./shell/cara.sh"]
 
     cara.vm.provision :chef_zero do |chef|
