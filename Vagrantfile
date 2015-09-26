@@ -188,7 +188,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
-      chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base. tomcat also installs Java. but won't work w/o it.
+      chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "shared::_junit"
       chef.add_recipe             "manos::default"
@@ -223,7 +223,7 @@ Vagrant.configure(2) do |config|
         chef.cookbooks_path         = ["./cookbooks/"]
         chef.add_recipe             "git::default"
         chef.add_recipe             "localAnt::default"
-        chef.add_recipe             "java7::default"   # for some reason the Java recipe must be re-run to install Tomcat
+        chef.add_recipe             "java7::default"    #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
         chef.add_recipe             "tomcat::default"
         chef.add_recipe             "shared::_junit"
         # not running a manosXX recipe per se. user should manually clone hijo repo from espina
@@ -244,7 +244,7 @@ Vagrant.configure(2) do |config|
     cara.ssh.forward_agent        =true
 
     cara.vm.synced_folder          ".",         "/home/cara"
-    cara.vm.synced_folder          "./shared", "/mnt/shared"
+    cara.vm.synced_folder          "./shared", "/mnt/shared
     #cara.vm.provision       :shell, path: "./shell/cara.sh"]
 
     cara.vm.provision :chef_zero do |chef|
