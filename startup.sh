@@ -14,5 +14,5 @@ rm -f ./shared/keys/*   # re-set public/private keys
 vagrant up base
 vagrant package base
 vagrant box add opscode-ubuntu-14.04a package.box -f
-rm -f package.box
+#rm -f package.box
 vagrant destroy base -f
