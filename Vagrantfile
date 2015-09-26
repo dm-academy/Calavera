@@ -14,9 +14,9 @@
 #
 Vagrant.configure(2) do |config|
   if ARGV[1]=='base'
-    config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box"
     config.vm.box = "opscode/temp"
   else
+    config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box"
     config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
   end
   config.berkshelf.enabled = true
