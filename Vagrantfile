@@ -44,7 +44,6 @@ Vagrant.configure(2) do |config|
   end
 
   # test from main host: curl http://127.0.0.1:8134/MainServlet
-  # substitute your appropriate port for 8134
-
+  # substitute appropriate port for 8134
 
  end
