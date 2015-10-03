@@ -1,5 +1,5 @@
-<?xml version="1.0"?> 
-<project default="main"> 
+<?xml version="1.0"?>
+<project default="main">
 	<property name="buildName"	value="CalaveraMain"/>
 	<property name="message" 	value="built and deployed to Tomcat."/>
 	<property name="testsOK" 	value="tested OK"/>
@@ -7,14 +7,14 @@
 	<property name="test" 		value="./src/test/java/biz/calavera"/>
 	<property name="config"		value="./src/main/config"/>
 	<property name="output" 	value="./target"/>
-	<property name="results" 	value="./target"/>	
+	<property name="results" 	value="./target"/>
 	<!--property name="jars" 		value="./jars"/-->
 	<property name="classDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/classes"/>
 	<property name="deploy"		value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/lib"/>
-	<property name="configDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/"/>	
+	<property name="configDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/"/>
 
 	<property name="junit.fork" value="true"/>
-	
+
         <tstamp>
             <format property="time.stamp" pattern="yyyy-MM-dd_HH:mm:ss"/>
         </tstamp>
@@ -29,14 +29,14 @@
 		<pathelement location="/usr/share/tomcat6/lib/servlet-api.jar"/>
 		<path refid="JUnit 4.libraryclasspath"/>
 	</path>
-		
-	<target name="main" depends="init, compile, test, compress, deploy"> 
 
-		<echo> 
+	<target name="main" depends="init, compile, test, compress, deploy">
+
+		<echo>
 			${message}
-		</echo> 
-	</target> 
-	
+		</echo>
+	</target>
+
 	<target name="init">
 		<echo>
 			Computer name is ${my_env.COMPUTERNAME}
@@ -55,40 +55,40 @@
 		<mkdir dir="${results}"/>
 	</target>
 
-	<target name="compile"> 
-		<javac includeantruntime="false" 
-			srcdir="${src}" 
+	<target name="compile">
+		<javac includeantruntime="false"
+			srcdir="${src}"
 			destdir="${output}"
 			classpathref="Calavera.classpath"
 		/>
-		<javac includeantruntime="false" 
-			srcdir="${test}" 
+		<javac includeantruntime="false"
+			srcdir="${test}"
 			destdir="${output}"
 			classpathref="Calavera.classpath"
 		/>
-	</target> 
+	</target>
 
-	<target name="test" depends="compile"> 
+	<target name="test" depends="compile">
 		<echo>
 			entering test
 		</echo>
-		<junit printsummary="on" haltonfailure="yes"> 
-			<classpath refid="JUnit 4.libraryclasspath" /> 
-			<classpath> 
-				<pathelement location="${output}"/> 
-			</classpath> 
+		<junit printsummary="on" haltonfailure="yes">
+			<classpath refid="JUnit 4.libraryclasspath" />
+			<classpath>
+				<pathelement location="${output}"/>
+			</classpath>
 
 		    	<test name="biz.calavera.TestClass1" haltonfailure="yes" todir="${results}" outfile="result">
-				<formatter type="xml" /> 
-				<formatter type="plain" /> 
-			</test>	
-		</junit> 
+				<formatter type="xml" />
+				<formatter type="plain" />
+			</test>
+		</junit>
 
-	</target> 
+	</target>
 
-	<target name="compress"> 
+	<target name="compress">
 		<jar destfile="${output}/${buildName}.jar" basedir="${output}">
-			<include name="**/*.class"/> 
+			<include name="**/*.class"/>
 			<manifest>
 			  <attribute name="MainServlet" value="biz.calavera.MainServlet"/>
 			</manifest>
@@ -97,48 +97,46 @@
 			<fileset dir="${config}">
 				<include name="web.xml"/>
 			</fileset>
-		</copy>	
-	</target> 
-	
-	
-	<target name="deploy" > 
+		</copy>
+	</target>
+
+
+	<target name="deploy" >
 		<delete dir="${deploy}"/>
 		<mkdir dir="${deploy}"/>
-		
+
 		<copy todir="${deploy}">
 			<fileset dir="${output}">
 				<include name="**/*.jar"/>
 				<exclude name="**/Test*"/>
 			</fileset>
 		</copy>
-		
+
 		<copy todir="${configDeploy}">
 			<fileset dir="${config}">
 				<include name="web.xml"/>
 			</fileset>
 		</copy>
-		
 
-		
+
+
 		<echo>
-			Attempting Tomcat restart. 
+			Attempting Tomcat restart.
 		</echo>
-		
+
 		<!-- !!!! need to add test if this is running -->
 		<!-- if run too quickly in succession, will fail with unpredictable results-->
 		<!-- could not get preferred syntax to work
 		<exec executable="sh">
 			<arg value = "service"/>
 			<arg value = "tomcat6"/>
-			<arg value = "stop"/>			
+			<arg value = "stop"/>
 		</exec-->
-		
-		<!-- deprecated -->		
-		<exec command="service tomcat6 stop"/>		
+
+		<!-- deprecated -->
+		<exec command="service tomcat6 stop"/>
 		<exec command="service tomcat6 start"/>
-	
+
 	</target>
 
 </project>
-
-

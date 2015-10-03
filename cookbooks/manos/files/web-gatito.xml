@@ -28,21 +28,14 @@
   </description>
 
 
-
     <servlet>
-        <servlet-name>MainServlet</servlet-name>
-        <servlet-class>biz.calavera.MainServlet</servlet-class>
-
-        <servlet-name>Gatito</servlet-name>
-        <servlet-class>biz.calavera.Gatito</servlet-class>
+        <servlet-name>gatito</servlet-name>
+        <servlet-class>biz.calavera.gatito</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
-        <url-pattern>/MainServlet</url-pattern>
-
-        <servlet-name>Gatito</servlet-name>
-        <url-pattern>/Gatito</url-pattern>
+        <servlet-name>gatito</servlet-name>
+        <url-pattern>/gatito</url-pattern>
     </servlet-mapping>
 
 </web-app>

@@ -35,12 +35,12 @@ end
 
 execute 'Jenkins keys' do
   cwd 'home/vagrant/.ssh'
-  command 'cp * /home/jenkins/.ssh'  # this should include authorized keys. 
+  command 'cp * /home/jenkins/.ssh'  # this should include authorized keys.
 end
 
 execute 'correct Jenkins ssh files ownership' do
   command 'chown -R jenkins /home/jenkins &&  \
-          chgrp -R jenkins /home/jenkins'  
+          chgrp -R jenkins /home/jenkins'
 end
 
 execute 'init git' do
