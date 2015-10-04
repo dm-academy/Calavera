@@ -4,4 +4,37 @@
 192.168.33.33   hombros     hombros
 192.168.33.34   manos       manos
 192.168.33.35   cara        cara
+192.168.33.36   nervios     nervios
 
+
+10.1.0.10   cerebro1     cerebro1
+10.1.0.11   brazos1      brazos1
+10.1.0.12   espina1      espina1
+10.1.0.13   hombros1     hombros1
+10.1.0.14   manos1       manos1
+10.1.0.15   cara1        cara1
+10.1.0.16   nervios1     nervios1
+
+10.2.0.10   cerebro2     cerebro2
+10.2.0.11   brazos2      brazos2
+10.2.0.12   espina2      espina2
+10.2.0.13   hombros2     hombros2
+10.2.0.14   manos2       manos2
+10.2.0.15   cara2        cara2
+10.2.0.16   nervios2     nervios2
+
+10.3.0.10   cerebro3     cerebro3
+10.3.0.11   brazos3      brazos3
+10.3.0.12   espina3      espina3
+10.3.0.13   hombros3     hombros3
+10.3.0.14   manos3       manos3
+10.3.0.15   cara3        cara3
+10.3.0.16   nervios3     nervios3
+
+10.4.0.10   cerebro4     cerebro4
+10.4.0.11   brazos4      brazos4
+10.4.0.12   espina4      espina4
+10.4.0.13   hombros4     hombros4
+10.4.0.14   manos4       manos4
+10.4.0.15   cara4        cara4
+10.4.0.16   nervios4     nervios4

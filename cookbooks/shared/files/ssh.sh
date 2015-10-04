@@ -8,12 +8,12 @@
 
 # Ok here is the business rule
 # ssh.sh is run out of calavera::default chef recipe
-# 
+#
 # and checks that the key pair exists in /mnt/shared/keys (this directory must be shared across the cluster)
 # generates if it does not
 # force copies keys to ~/.ssh
 # (to reset all keys delete /mnt/shared/keys and kitchen/vagrant destroy/up)
-# 
+#
 
 echo "*** ssh.sh run on $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***" >> /mnt/shared/keys/ssh.log
 
@@ -33,13 +33,10 @@ else
 fi
 
 cp -f /mnt/shared/keys/id_rsa* ~/.ssh # copy both to user (vagrant for now) .ssh
-echo "# CALAVERA: This file was updated by the $HOSTNAME provisioning process" >> /home/vagrant/.ssh/authorized_keys  
+echo "# CALAVERA: This file was updated by the $HOSTNAME provisioning process" >> /home/vagrant/.ssh/authorized_keys
 cat /mnt/shared/keys/id_rsa.pub >> ~/.ssh/authorized_keys   # not idempotent; script intended only to be run on initial vagrant up
 chown vagrant /home/vagrant/.ssh/*
 chmod 600 /home/vagrant/.ssh/id_rsa
 echo $HOSTNAME done with ssh script >> /mnt/shared/keys/ssh.log
 echo "***"  >> /mnt/shared/keys/ssh.log
 echo ""  >> /mnt/shared/keys/ssh.log
-
-
-
