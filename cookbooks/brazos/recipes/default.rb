@@ -9,7 +9,7 @@ end
 
 
 directory "/home/jenkins/.ssh"  do
-  mode 00755
+  mode 00755  
   action :create
   recursive true
 end
