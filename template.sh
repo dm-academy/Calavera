@@ -20,10 +20,12 @@ sed -i -- "s/cerebro/cerebro$1/g" cookbooks/cerebro/files/post-receive
 
 ## espina - no corrections needed
 
-
 ## hombros
 sed -i -- "s/espina/espina$1/g" cookbooks/hombros/files/*.xml
 sed -i -- "s/brazos/brazos$1/g" cookbooks/hombros/recipes/default.rb
 
 ## manos
 sed -i -- "s/cerebro/cerebro$1/g" cookbooks/manos/recipes/default.rb
+
+## cara
+sed -i -- "s/espina/espina$1/g" cookbooks/cara/recipes/default.rb
