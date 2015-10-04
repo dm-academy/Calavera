@@ -14,3 +14,5 @@ sed -i -- "s/xx/$1/g" Vagrantfile
 # fix various resources in Chef
 sed -i -- "s/hombros/hombros$1/g" cookbooks/cerebro/files/post-receive
 sed -i -- "s/cerebro/cerebro$1/g" cookbooks/cerebro/files/post-receive
+
+sed -i -- "s/cerebro/cerebro$1/g" cookbooks/manos/recipes/default.rb
