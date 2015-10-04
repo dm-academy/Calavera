@@ -14,6 +14,8 @@
 
 Vagrant.configure(2) do |config|
   if ARGV[1]=='base'
+    #config.vm.box_url =  "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box --name opscode/temp" --force"
+    config.vm.box_url = "/var/vagrant/boxes/opscode-temp.box" #if this breaks, uncomment above... this needs a comprehensive rethinking w/r/t startup.sh
     config.vm.box = "opscode/temp"
   else
     config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" # if this errors, you need startup.sh run
