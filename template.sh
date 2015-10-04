@@ -6,7 +6,7 @@
 
 # don't forget vagrant plugin install vagrant-berkshelf
 
-vagrant plugin install vagrant-berkshelf
+# vagrant plugin install vagrant-berkshelf
 mv Vagrantfile oldVagrantfile
 cp VagrantfileTemplate Vagrantfile
 sed -i -- "s/xx/$1/g" Vagrantfile
