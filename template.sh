@@ -4,8 +4,10 @@
 # Chef recipes
 # needs to be run from Calavera dir as uses relative paths, yuck
 
+
+vagrant plugin install vagrant-berkshelf
 mv Vagrantfile oldVagrantfile
 cp VagrantfileTemplate Vagrantfile
-sed -i -- 's/xx/$1/g' Vagrantfile
+sed -i -- "s/xx/$1/g" Vagrantfile
 
 # fix various resources in Chef
