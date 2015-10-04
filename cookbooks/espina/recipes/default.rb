@@ -12,7 +12,8 @@ user 'artifactory' do
 end
 
 remote_file "/opt/artifactory-latest.zip" do
-  source "http://bit.ly/Hqv9aj"    # this was being stubborn with full URL for some reason. points to latest build.
+  source "https://bintray.com/artifact/download/jfrog/artifactory/artifactory-3.5.1.zip"   # reverted due to issues with later versions
+  #source "http://bit.ly/Hqv9aj"    # this was being stubborn with full URL for some reason. points to latest build.
   mode '0755'
 end
 

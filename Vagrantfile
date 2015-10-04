@@ -129,13 +129,14 @@ Vagrant.configure(2) do |config|
 
     espina.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "java8::default"
+      chef.add_recipe             "java7::default"
+      #chef.add_recipe             "java8::default" reverting to ARtifactory 3.51
       chef.add_recipe             "espina::default"
     end
   end
 
   # test: http://192.168.33.32:8081/artifactory, admin/password
-  # currently need to manually configure Artifactory url and login/pw in Jenkins main setup
+  # artifactory / jenkins config is stored in cookbooks/hombros/files/org.jfrog.hudson.ArtifactoryBuilder.xml
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
 
 ###############################################################################
