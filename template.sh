@@ -4,6 +4,7 @@
 # Chef recipes
 # needs to be run from Calavera dir as uses relative paths, yuck
 
+# don't forget vagrant plugin install vagrant-berkshelf
 
 vagrant plugin install vagrant-berkshelf
 mv Vagrantfile oldVagrantfile
