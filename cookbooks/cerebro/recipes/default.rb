@@ -67,36 +67,3 @@ cookbook_file "post-receive" do
     mode 00755    # must be executable
     action :create
 end
-
-### gatito config
-
-directory "/home/gatito.git/"  do
-    mode 00775
-    owner "git"
-    group "git"
-    action :create
-    recursive true
-end
-
-execute 'init git' do
-  user "git"
-  group "git"
-  command 'git init --bare --shared=group /home/gatito.git'
-end
-
-execute 'init git' do
-  user "git"
-  group "git"
-  cwd '/home/gatito.git'
-  command "git config receive.denynonfastforwards false"    # this way we can force wipe from manos if manos is rebuilt after cerebro
-end
-#configure post receive hook
-# that means manos is dependent on havng cerebro done in terms of ordering
-
-cookbook_file "post-receive-gatito" do
-    path "/home/gatito.git/hooks/post-receive"
-    user "jenkins"
-    group "jenkins"
-    mode 00755    # must be executable
-    action :create
-end
