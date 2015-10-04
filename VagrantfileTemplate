@@ -1,6 +1,7 @@
 # Vagrantfile template
 # you need to replace all xx with digit 1-9
 # hostnames are hard coded in following locations:
+# cerebro|files|post-receive
 # manos::default
 #
 # do NOT just "vagrant up" this whole cluster. not recommended.
@@ -92,19 +93,19 @@ Vagrant.configure(2) do |config|
 ###################################    brazosxx     ##############################
 ###############################################################################
 
-  config.vm.define "brazoxx" do | brazoxx |
-    brazoxx.vm.host_name            ="brazoxx.calavera.biz"
-    brazoxx.vm.network               "private_network", ip: "10.xx.0.11"
-    brazoxx.vm.network               "forwarded_port", guest: 22, host: 2xx11, auto_correct: true
-    brazoxx.vm.network               "forwarded_port", guest: 80, host: 8xx11, auto_correct: true
-    brazoxx.vm.network              "forwarded_port", guest: 8080, host: 9xx11, auto_correct: true
+  config.vm.define "brazosxx" do | brazosxx |
+    brazosxx.vm.host_name            ="brazosxx.calavera.biz"
+    brazosxx.vm.network               "private_network", ip: "10.xx.0.11"
+    brazosxx.vm.network               "forwarded_port", guest: 22, host: 2xx11, auto_correct: true
+    brazosxx.vm.network               "forwarded_port", guest: 80, host: 8xx11, auto_correct: true
+    brazosxx.vm.network              "forwarded_port", guest: 8080, host: 9xx11, auto_correct: true
 
-    brazoxx.ssh.forward_agent       =true
+    brazosxx.ssh.forward_agent       =true
 
-    brazoxx.vm.synced_folder        ".",         "/home/brazoxx"
-    brazoxx.vm.synced_folder        "./shared", "/mnt/shared"
+    brazosxx.vm.synced_folder        ".",         "/home/brazosxx"
+    brazosxx.vm.synced_folder        "./shared", "/mnt/shared"
 
-    brazoxx.vm.provision :chef_zero do |chef|
+    brazosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
