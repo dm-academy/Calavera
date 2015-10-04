@@ -12,7 +12,18 @@ cp VagrantfileTemplate Vagrantfile
 sed -i -- "s/xx/$1/g" Vagrantfile
 
 # fix various resources in Chef
+## cerebro
 sed -i -- "s/hombros/hombros$1/g" cookbooks/cerebro/files/post-receive
 sed -i -- "s/cerebro/cerebro$1/g" cookbooks/cerebro/files/post-receive
 
+## brazos - no corrections needed
+
+## espina - no corrections needed
+
+
+## hombros
+sed -i -- "s/espina/espina$1/g" cookbooks/hombros/files/*.xml
+sed -i -- "s/brazos/brazos$1/g" cookbooks/hombros/recipes/default.rb
+
+## manos
 sed -i -- "s/cerebro/cerebro$1/g" cookbooks/manos/recipes/default.rb
