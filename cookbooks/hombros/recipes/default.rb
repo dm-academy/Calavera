@@ -63,11 +63,11 @@ end
 
 
 cookbook_file "hijoInit.xml" do    # downloaded from manually defined job. todo: convert this to erb file
-  path "#{Chef::Config[:file_cache_path]}/hijoInit.xml"
+  path "#{Chef::Config[:file_cache_path]}/hijoConfig.xml"
   mode 0744
 end
 
-xml = File.join(Chef::Config[:file_cache_path], 'hijoInit.xml')
+xml = File.join(Chef::Config[:file_cache_path], 'hijoConfig.xml')  #changed from hijoInit.xml, watch this
 
 jenkins_job 'hijoInit' do
   config xml
