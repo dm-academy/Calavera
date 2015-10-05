@@ -29,16 +29,8 @@ execute 'Jenkins keys' do
   #cwd 'home/vagrant/.ssh' # somehow out of synch in templated version, suspect startup.sh issue
   #command 'cp * /home/jenkins/.ssh'  # this should include authorized keys.
   cwd '/home/jenkins/.ssh'
-  command 'cp /mnt/shared/keys/* .'  # this should be the source - fixes part of problem
+  command 'cp /mnt/shared/keys/id_rsa.pub .'  # this should be the source - fixes part of problem
   command 'cat id_rsa.pub >> authorized_keys'
-end
-
-directory "/home/jenkins/.ssh"  do
-    mode 00700      # this will fail with other permissions
-    owner "jenkins"
-    group "git"
-    action :create
-    recursive true
 end
 
 execute 'correct Jenkins ssh files ownership' do
