@@ -44,8 +44,8 @@ Vagrant.configure(2) do |config|
     base.vm.host_name              ="base.calavera.biz"
     base.vm.network                 "private_network", ip: "192.168.33.29"
     base.vm.network                 "forwarded_port", guest: 22, host: 2229, auto_correct: true
-    base.vm.network                 "forwarded_port", guest: 80, host: 8029
-    base.vm.network                 "forwarded_port", guest: 8080, host: 8129
+    base.vm.network                 "forwarded_port", guest: 80, host: 8029, auto_correct: true
+    base.vm.network                 "forwarded_port", guest: 8080, host: 8129, auto_correct: true
 
     base.vm.synced_folder           ".",         "/home/base"
     base.vm.synced_folder           "./shared", "/mnt/shared"
@@ -66,9 +66,8 @@ Vagrant.configure(2) do |config|
     cerebro.vm.host_name           ="cerebro.calavera.biz"
     cerebro.vm.network             "private_network", ip: "192.168.33.30"
     cerebro.vm.network            "forwarded_port", guest: 22, host: 2230, auto_correct: true
-    cerebro.vm.network            "forwarded_port", guest: 80, host: 8030
-    cerebro.vm.network             "forwarded_port", guest: 8080, host: 8130
-    cerebro.vm.network             "forwarded_port", guest: 8080, host: 8130
+    cerebro.vm.network            "forwarded_port", guest: 80, host: 8030, auto_correct: true
+    cerebro.vm.network             "forwarded_port", guest: 8080, host: 8130, auto_correct: true
 
     cerebro.ssh.forward_agent       =true
 
@@ -94,8 +93,8 @@ Vagrant.configure(2) do |config|
     brazos.vm.host_name            ="brazos.calavera.biz"
     brazos.vm.network               "private_network", ip: "192.168.33.31"
     brazos.vm.network               "forwarded_port", guest: 22, host: 2231, auto_correct: true
-    brazos.vm.network               "forwarded_port", guest: 80, host: 8031
-    brazos.vm.network              "forwarded_port", guest: 8080, host: 8131
+    brazos.vm.network               "forwarded_port", guest: 80, host: 8031, auto_correct: true
+    brazos.vm.network              "forwarded_port", guest: 8080, host: 8131, auto_correct: true
 
     brazos.ssh.forward_agent       =true
 
@@ -121,8 +120,8 @@ Vagrant.configure(2) do |config|
     espina.vm.host_name            ="espina.calavera.biz"
     espina.vm.network               "private_network", ip: "192.168.33.32"
     espina.vm.network               "forwarded_port", guest: 22, host: 2232, auto_correct: true
-    espina.vm.network               "forwarded_port", guest: 80, host: 8032
-    espina.vm.network              "forwarded_port", guest: 8080, host: 8132
+    espina.vm.network               "forwarded_port", guest: 80, host: 8032, auto_correct: true
+    espina.vm.network              "forwarded_port", guest: 8080, host: 8132, auto_correct: true
 
     espina.ssh.forward_agent        =true
 
@@ -150,8 +149,8 @@ Vagrant.configure(2) do |config|
     hombros.vm.host_name          ="hombros.calavera.biz"
     hombros.vm.network             "private_network", ip: "192.168.33.33"
     hombros.vm.network            "forwarded_port", guest: 22, host: 2233, auto_correct: true
-    hombros.vm.network            "forwarded_port", guest: 80, host: 8033
-    hombros.vm.network            "forwarded_port", guest: 8080, host: 8133
+    hombros.vm.network            "forwarded_port", guest: 80, host: 8033, auto_correct: true
+    hombros.vm.network            "forwarded_port", guest: 8080, host: 8133, auto_correct: true
 
     hombros.ssh.forward_agent      =true
 
@@ -179,8 +178,8 @@ Vagrant.configure(2) do |config|
     manos.vm.host_name            ="manos.calavera.biz"
     manos.vm.network              "private_network", ip: "192.168.33.34"
     manos.vm.network              "forwarded_port", guest: 22, host: 2234, auto_correct: true
-    manos.vm.network              "forwarded_port", guest: 80, host: 8034
-    manos.vm.network              "forwarded_port", guest: 8080, host: 8134
+    manos.vm.network              "forwarded_port", guest: 80, host: 8034, auto_correct: true
+    manos.vm.network              "forwarded_port", guest: 8080, host: 8134, auto_correct: true
 
     manos.ssh.forward_agent        =true
 
@@ -215,8 +214,8 @@ Vagrant.configure(2) do |config|
       manos40.vm.host_name            ="manos40.calavera.biz"
       manos40.vm.network              "private_network", ip: "192.168.33.40"   #END USER MUST UPDATE PER GUIDANCE
       manos40.vm.network              "forwarded_port", guest: 22, host: 2240, auto_correct: true
-      manos40.vm.network              "forwarded_port", guest: 80, host: 8040
-      manos40.vm.network              "forwarded_port", guest: 8080, host: 8140
+      manos40.vm.network              "forwarded_port", guest: 80, host: 8040, auto_correct: true
+      manos40.vm.network              "forwarded_port", guest: 8080, host: 8140, auto_correct: true
 
       manos40.ssh.forward_agent        =true
 
@@ -242,8 +241,8 @@ Vagrant.configure(2) do |config|
     cara.vm.host_name              ="cara.calavera.biz"
     cara.vm.network                 "private_network", ip: "192.168.33.35"
     cara.vm.network                 "forwarded_port", guest: 22, host: 2235, auto_correct: true
-    cara.vm.network                 "forwarded_port", guest: 80, host: 8035
-    cara.vm.network                "forwarded_port", guest: 8080, host: 8135
+    cara.vm.network                 "forwarded_port", guest: 80, host: 8035, auto_correct: true
+    cara.vm.network                "forwarded_port", guest: 8080, host: 8135, auto_correct: true
 
     cara.ssh.forward_agent        =true
 
@@ -270,8 +269,8 @@ Vagrant.configure(2) do |config|
     nervios.vm.host_name              ="nervios.calavera.biz"
     nervios.vm.network                 "private_network", ip: "192.168.33.36"
     nervios.vm.network                 "forwarded_port", guest: 22, host: 2236, auto_correct: true
-    nervios.vm.network                 "forwarded_port", guest: 80, host: 8036
-    nervios.vm.network                "forwarded_port", guest: 8080, host: 8136
+    nervios.vm.network                 "forwarded_port", guest: 80, host: 8036, auto_correct: true
+    nervios.vm.network                "forwarded_port", guest: 8080, host: 8136, auto_correct: true
 
     nervios.ssh.forward_agent        =true
 
@@ -295,8 +294,8 @@ Vagrant.configure(2) do |config|
     test.vm.host_name              ="test.calavera.biz"
     test.vm.network                 "private_network", ip: "192.168.33.99"
     test.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true
-    test.vm.network                 "forwarded_port", guest: 80, host: 8099
-    test.vm.network                "forwarded_port", guest: 8080, host: 8199
+    test.vm.network                 "forwarded_port", guest: 80, host: 8099, auto_correct: true
+    test.vm.network                "forwarded_port", guest: 8080, host: 8199, auto_correct: true
 
     test.ssh.forward_agent        =true
 
