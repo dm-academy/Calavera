@@ -216,7 +216,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "caraxx" do | caraxx |
     caraxx.vm.host_name              ="caraxx.calavera.biz"
-    caraxx.vm.network                 "private_network", ip: "10.xx.0.14"
+    caraxx.vm.network                 "private_network", ip: "10.xx.0.15"
     caraxx.vm.network                 "forwarded_port", guest: 22, host: 2xx15, auto_correct: true
     caraxx.vm.network                 "forwarded_port", guest: 80, host: 8xx15, auto_correct: true
     caraxx.vm.network                "forwarded_port", guest: 8080, host: 9xx15, auto_correct: true
