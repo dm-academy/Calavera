@@ -18,7 +18,7 @@ user 'jenkins' do   # jenkins will need to ssh in to retrieve files to build
 end
 
 directory "/home/jenkins/.ssh"  do
-    mode 00777
+    mode 00700
     owner "jenkins"
     group "git"
     action :create
@@ -29,12 +29,11 @@ execute 'Jenkins keys' do
   #cwd 'home/vagrant/.ssh' # somehow out of synch in templated version, suspect startup.sh issue
   #command 'cp * /home/jenkins/.ssh'  # this should include authorized keys.
   cwd '/home/jenkins/.ssh'
-  command 'cp /mnt/shared/keys/id_rsa.pub .'  # this should be the source - fixes part of problem
-  command 'cat id_rsa.pub >> authorized_keys'
+  # command 'cp /mnt/shared/keys/id_rsa.pub .'  # this should be the source - fixes part of problem
+  command 'cat /mnt/shared/keys/id_rsa.pub >> authorized_keys'
 end
 
 execute 'correct Jenkins ssh files ownership' do
-  command 'chmod 0700 /home/jenkins/.ssh' # this will fail with other permissions
   command 'chown -R jenkins /home/jenkins &&  \
           chgrp -R jenkins /home/jenkins'
 end
