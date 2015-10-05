@@ -143,7 +143,8 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # test: http://xx.xx.xx.xx:8081/artifactory, admin/password
+  # test: x-windows http://10.xx.0.12:7xx12/artifactory, admin/password
+  # curl not working
   # artifactory / jenkins config is stored in cookbooks/hombros/files/org.jfrog.hudson.ArtifactoryBuilder.xml
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
 
@@ -174,7 +175,7 @@ Vagrant.configure(2) do |config|
 
   end
 
-  # Jenkins should appear at http://192.168.33.33:8080
+  # Jenkins should appear at http://10.xx.0.13:8080
 
 ###############################################################################
 ###################################    manosxx     ##############################
@@ -204,7 +205,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # test: http://192.168.33.34:8080/MainServlet
+  # test: http://10.xx.0.14:8080/MainServlet
   # if cerebro is configured:
   # git add .
   # git commit -m "some message"
@@ -217,7 +218,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "caraxx" do | caraxx |
     caraxx.vm.host_name              ="caraxx.calavera.biz"
-    caraxx.vm.network                 "private_network", ip: "10.xx.0.15"
+    caraxx.vm.network                 "private_network", ip: "10.xx.0.14"
     caraxx.vm.network                 "forwarded_port", guest: 22, host: 2xx15, auto_correct: true
     caraxx.vm.network                 "forwarded_port", guest: 80, host: 8xx15, auto_correct: true
     caraxx.vm.network                "forwarded_port", guest: 8080, host: 9xx15, auto_correct: true
@@ -236,7 +237,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-    # test: http://192.168.33.35:8080/MainServlet
+    # test: http://10.xx.0.14:8080/MainServlet
 
 ###############################################################################
 ###################################    nerviosxx     ##############################
