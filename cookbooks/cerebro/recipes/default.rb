@@ -18,7 +18,7 @@ user 'jenkins' do   # jenkins will need to ssh in to retrieve files to build
 end
 
 directory "/home/jenkins/.ssh"  do
-    mode 00700      # this will fail with other permissions
+    mode 00777
     owner "jenkins"
     group "git"
     action :create
@@ -33,7 +33,16 @@ execute 'Jenkins keys' do
   command 'cat id_rsa.pub >> authorized_keys'
 end
 
+directory "/home/jenkins/.ssh"  do
+    mode 00700      # this will fail with other permissions
+    owner "jenkins"
+    group "git"
+    action :create
+    recursive true
+end
+
 execute 'correct Jenkins ssh files ownership' do
+  command 'chmod 0700 /home/jenkins/.ssh' # this will fail with other permissions
   command 'chown -R jenkins /home/jenkins &&  \
           chgrp -R jenkins /home/jenkins'
 end
