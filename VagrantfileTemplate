@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
 ###################################    base   #################################
 ###############################################################################
 
-# Called by startup.sh. You should not "vagrant up base" directly, as it also needs
+# Called by startup.sh. You should NOT "vagrant up base" directly, as it also needs
 # to be repackaged
 #
 # purpose of doing this is to save time
@@ -56,10 +56,8 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
-      chef.add_recipe               "base::default"
-      # chef.add_recipe               "shared::default" # moving to Cerebro which by convention is launched 1st
+      chef.add_recipe               "base::default"  configures ssh and hostnames. good to do every so often.
     end
-
   end
 
 ###############################################################################
@@ -82,7 +80,6 @@ Vagrant.configure(2) do |config|
 
     cerebroxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "shared::default"  # /home/jenkins/.ssh/authorized_keys creation depends on this   
       chef.add_recipe             "git::default"
       chef.add_recipe             "cerebro::default"
 
@@ -139,7 +136,7 @@ Vagrant.configure(2) do |config|
     espinaxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
-      #chef.add_recipe             "java8::default" reverting to ARtifactory 3.51
+      #chef.add_recipe            "java8::default" reverting to ARtifactory 3.51
       chef.add_recipe             "espina::default"
     end
   end
