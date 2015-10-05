@@ -8,8 +8,10 @@ directory "/var/lib/jenkins/.ssh"  do
 end
 
 execute 'duplicate keys' do
-  cwd '/home/vagrant/.ssh'
-  command 'cp * /var/lib/jenkins/.ssh'   # this includes authorized_keys, don't think it does any good there
+  #cwd '/home/vagrant/.ssh'    #somehow this is out of synch with /mnt/shared/keys on templated Vagrant.
+
+  #command 'cp * /var/lib/jenkins/.ssh'   # this includes authorized_keys, don't think it does any good there
+  command 'cp /mnt/shared/keys/* /var/lib/jenkins/.ssh'  # this should be the source
 end
 
 execute 'correct Jenkins directory ownership' do

@@ -15,8 +15,10 @@ directory "/home/jenkins/.ssh"  do
 end
 
 execute 'duplicate keys' do
-  cwd '/home/vagrant/.ssh'
-  command 'cp id_rsa* /home/jenkins/.ssh'   # includes authorized hosts
+  #cwd '/home/vagrant/.ssh' # somehow out of synch in templated version, suspect startup.sh issue
+  #command 'cp id_rsa* /home/jenkins/.ssh'   # includes authorized hosts
+  command 'cp /mnt/shared/keys/* /home/jenkins/.ssh'  # this should be the source - fixes part of problem
+
 end
 
 execute 'authorize jenkins public key' do
