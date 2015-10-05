@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
-      chef.add_recipe               "base::default"  configures ssh and hostnames. good to do every so often.
+      chef.add_recipe               "base::default"  #configures ssh and hostnames. good to do every so often.
     end
   end
 
