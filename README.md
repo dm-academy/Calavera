@@ -13,7 +13,7 @@ This gives you a functioning starting point, a "known good" baseline running as 
 * If that build succeeds, the result is archived to Artifactory.
 * You then can (with Chef) deploy the result to a simulated "production" node.
 
-All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. See [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md). 
+All the configurations are expressed in the Vagrantfile and the Chef cookbooks, so you can inspect and adapt them. No magic here. See [the instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md).
 
 Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes provisioning and controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
@@ -28,10 +28,19 @@ Installation
 
 [Installation instructions](https://github.com/CharlesTBetz/Calavera/blob/master/docs/Installation.md)
 
+2015-10-05 Fall updates
+==
+This has been a very active fall. The biggest change has been the creation of a viable multi-tenant architecture. It's still a bit kludgy, but with the VagantfileTemplate and the template.sh script the simulation can support 4 teams now (each with their own pipeline) and could easily scale higher.
+
+I am not sure if there have been networking improvements in Vagrant, but issues I was seeing earlier in the year with VMs disappearing seem to have stabilized. I am looking forward to the next 3 weeks of labs, which will be based on the new platform. The only lingering question I have is how well my poor server will perform with 24 Vagrant VMs on it, but nominally it should be OK, as it has 48 gb of RAM. 
+
+See https://github.com/dm-academy/aitm-labs/tree/master/Lab-04 and (when done) labs 5 and 6 as well for the platform application. The labs may be a little sparse at first, because so much time went into the platform. I also don't have time to document the exact usage of the templating solution for now.
+
+Struggled with Artifactory 4 and eventually reverted to 3.51, but we will move forward again.
 
 2015-03-03 0.3 Alpha Released!
 ==
-Open for business. Please let me know what you think. And please help. 
+Open for business. Please let me know what you think. And please help.
 
 
 2015-03-01 update
@@ -68,4 +77,4 @@ One audience that I hope will find benefit in this is people like me - mid-caree
 
 You can of course take 2 week courses in each of these technologies, but this is an alternate approach: see just enough of each in action to understand how it contributes to the overall system. It's been well worth it for me.
 
-See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further information. And of course www.lean4it.com. 
+See [the wiki](https://github.com/CharlesTBetz/Calavera/wiki) for further information. And of course www.lean4it.com.
