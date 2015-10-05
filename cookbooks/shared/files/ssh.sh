@@ -15,7 +15,9 @@
 # (to reset all keys delete /mnt/shared/keys and kitchen/vagrant destroy/up)
 #
 
-echo "*** ssh.sh run on $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***" >> /mnt/shared/keys/ssh.log
+echo "*** CALAVERA ssh.sh run on $HOSTNAME on "$(date +%F)" "$(date +%T)" UTC ***" >> /mnt/shared/keys/ssh.log
+
+## so, if we ONLY run this on base, and someone reset Calavera, the keys would go away except they are in .gitignore.
 
 mkdir -p /mnt/shared/keys  # -p = no error if it exists (this part is idempotent b/c we don't know if another node has already keygen'd)
 chown vagrant /mnt/shared/keys
