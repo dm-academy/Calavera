@@ -23,6 +23,7 @@ sed -i -- "s/cerebro/cerebro$1/g" cookbooks/cerebro/files/post-receive
 ## hombros
 sed -i -- "s/espina/espina$1/g" cookbooks/hombros/files/*.xml
 sed -i -- "s/brazos/brazos$1/g" cookbooks/hombros/recipes/default.rb
+sed -i -- "s/cerebro/cerebro$1/g" cookbooks/hombros/recipes/default.rb
 
 ## manos
 sed -i -- "s/cerebro/cerebro$1/g" cookbooks/manos/recipes/default.rb
