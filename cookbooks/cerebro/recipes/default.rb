@@ -29,7 +29,7 @@ execute 'Jenkins keys' do
   #cwd 'home/vagrant/.ssh' # somehow out of synch in templated version, suspect startup.sh issue
   #command 'cp * /home/jenkins/.ssh'  # this should include authorized keys.
   cwd '/home/jenkins/.ssh'
-  command 'cp /mnt/shared/keys/* /home/jenkins/.ssh'  # this should be the source - fixes part of problem
+  command 'cp /mnt/shared/keys/* .'  # this should be the source - fixes part of problem
   command 'cat id_rsa.pub >> authorized_keys'
 end
 
