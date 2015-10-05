@@ -62,7 +62,9 @@ jenkins_plugin 'artifactory' do   #install artifactory plugin
 end
 
 
-cookbook_file "hijoInit.xml" do    # downloaded from manually defined job. todo: convert this to erb file
+cookbook_file "hijoConfig.xml" do    # downloaded from manually defined job. todo: convert this to erb file
+  #changed from hijoInit.xml, watch this
+
   path "#{Chef::Config[:file_cache_path]}/hijoConfig.xml"
   mode 0744
 end
