@@ -8,8 +8,10 @@ directory "/var/lib/jenkins/.ssh"  do
 end
 
 execute 'duplicate keys' do
-  cwd '/home/vagrant/.ssh'
-  command 'cp * /var/lib/jenkins/.ssh'   # this includes authorized_keys, don't think it does any good there
+  #cwd '/home/vagrant/.ssh'    #somehow this is out of synch with /mnt/shared/keys on templated Vagrant.
+
+  #command 'cp * /var/lib/jenkins/.ssh'   # this includes authorized_keys, don't think it does any good there
+  command 'cp /mnt/shared/keys/* /var/lib/jenkins/.ssh'  # this should be the source
 end
 
 execute 'correct Jenkins directory ownership' do
@@ -62,12 +64,14 @@ jenkins_plugin 'artifactory' do   #install artifactory plugin
 end
 
 
-cookbook_file "hijoInit.xml" do    # downloaded from manually defined job. todo: convert this to erb file
-  path "#{Chef::Config[:file_cache_path]}/hijoInit.xml"
+cookbook_file "hijoConfig.xml" do    # downloaded from manually defined job. todo: convert this to erb file
+  #changed from hijoInit.xml, watch this
+
+  path "#{Chef::Config[:file_cache_path]}/hijoConfig.xml"
   mode 0744
 end
 
-xml = File.join(Chef::Config[:file_cache_path], 'hijoInit.xml')
+xml = File.join(Chef::Config[:file_cache_path], 'hijoConfig.xml')  #changed from hijoInit.xml, watch this
 
 jenkins_job 'hijoInit' do
   config xml

@@ -8,4 +8,3 @@ version          '0.3.0'
 
 #depends           'java8'
 depends           'curl'
-

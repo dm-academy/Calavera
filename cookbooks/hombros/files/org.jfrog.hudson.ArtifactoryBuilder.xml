@@ -3,7 +3,7 @@
   <artifactoryServers>
     <org.jfrog.hudson.ArtifactoryServer>
       <timeout>300</timeout>
-      <url>http://192.168.33.32:8081/artifactory</url>
+      <url>http://espina:8081/artifactory</url>
       <id>1185897771@1425928793395</id>
       <deployerCredentials>
         <username>admin</username>

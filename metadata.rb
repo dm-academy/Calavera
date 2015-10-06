@@ -5,7 +5,3 @@ license          'MIT'
 description      'Installs/Configures calavera'
 long_description 'Installs/Configures calavera'
 version          '0.3.0'
-
-
-
-

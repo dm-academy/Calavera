@@ -45,7 +45,7 @@
         <artifactoryName>1185897771@1425928793395</artifactoryName>
         <repositoryKey>ext-release-local</repositoryKey>
         <snapshotsRepositoryKey>ext-release-local</snapshotsRepositoryKey>
-        <artifactoryUrl>http://192.168.33.32:8081/artifactory</artifactoryUrl>
+        <artifactoryUrl>http://espina:8081/artifactory</artifactoryUrl>
         <stagingPlugin/>
       </details>
       <deployPattern>**/target/*.jar=&gt;Calavera

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: shared
-# Recipe:: default - run on every node
+# Recipe:: default - run on base node
 #
 # Copyright (c) 2015 Charles T Betz, All Rights Reserved.
 # Recipe for all nodes within Calavera
