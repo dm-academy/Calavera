@@ -32,9 +32,9 @@ Installation
 ==
 This has been a very active fall. The biggest change has been the creation of a viable multi-tenant architecture. It's still a bit kludgy, but with the VagantfileTemplate and the template.sh script the simulation can support 4 teams now (each with their own pipeline) and could easily scale higher.
 
-I am not sure if there have been networking improvements in Vagrant, but issues I was seeing earlier in the year with VMs disappearing seem to have stabilized. I am looking forward to the next 3 weeks of labs, which will be based on the new platform. The only lingering question I have is how well my poor server will perform with 24 Vagrant VMs on it, but nominally it should be OK, as it has 48 gb of RAM. 
+I am not sure if there have been networking improvements in Vagrant, but issues I was seeing earlier in the year with VMs disappearing seem to have stabilized. I am looking forward to the next 3 weeks of labs, which will be based on the new platform. The only lingering question I have is how well my poor server will perform with 24 Vagrant VMs on it, but nominally it should be OK, as it has 48 gb of RAM. (update: it's performing fine.)
 
-See https://github.com/dm-academy/aitm-labs/tree/master/Lab-04 and (when done) labs 5 and 6 as well for the platform application. The labs may be a little sparse at first, because so much time went into the platform. I also don't have time to document the exact usage of the templating solution for now.
+See [lab 04](https://github.com/dm-academy/aitm-labs/blob/master/Lab-04/04-tech-lab.adoc) and (when done) labs 5 and 6 as well for the platform application. The labs may be a little sparse at first, because so much time went into the platform. I also don't have time to document the exact usage of the templating solution for now. (./template.sh xx where xx=1-4, creates a Vagrantfile for that directory with machines numbered accordingly. Some sed action to search/replace machine names in the Chef resources. Yes, could do this more elegantly with Chef.)
 
 Struggled with Artifactory 4 and eventually reverted to 3.51, but we will move forward again.
 
