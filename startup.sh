@@ -10,7 +10,7 @@ vagrant plugin install vagrant-berkshelf
 vagrant destroy base -f  # insert guard
 rm -f package.box
 rm -f ./shared/keys/*   # re-set public/private keys
-#vagrant box add http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box --name opscode/temp --force
+vagrant box add http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-14.04_chef-provisionerless.box --name opscode/temp --force
 
 vagrant up base
 vagrant package base
