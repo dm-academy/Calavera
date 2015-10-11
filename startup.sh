@@ -6,7 +6,7 @@
 #install berkshelf plugin
 # fix that pesky berkshelf issue with **/.git
 
-
+vagrant plugin install vagrant-berkshelf
 vagrant destroy base -f  # insert guard
 rm -f package.box
 rm -f ./shared/keys/*   # re-set public/private keys
