@@ -1,4 +1,6 @@
 
+sudo apt-get update
+
 sudo apt-get -y install apache2
 sudo apt-get -y install mysql-server mysql-client
 sudo apt-get -y install php5 php5-mysql libapache2-mod-php5
