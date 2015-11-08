@@ -261,6 +261,31 @@ Vagrant.configure(2) do |config|
     end
   end
 
+  ###############################################################################
+  ###################################    pies     ##############################
+  ###############################################################################
+  # monitoring
+
+    config.vm.define "pies" do | pies |
+      pies.vm.host_name              ="pies.calavera.biz"
+      pies.vm.network                 "private_network", ip: "192.168.33.37"
+      pies.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
+      pies.vm.network                 "forwarded_port", guest: 80, host: 8037, auto_correct: true
+      pies.vm.network                "forwarded_port", guest: 8080, host: 8137, auto_correct: true
+
+      pies.ssh.forward_agent        =true
+
+        pies.vm.synced_folder         ".", "/home/pies"
+        pies.vm.synced_folder         "./shared", "/mnt/shared"
+      #nervios.vm.provision       :shell, path: "./shell/pies.sh"
+
+      pies.vm.provision :chef_zero do |chef|
+        chef.cookbooks_path =       ["./cookbooks/"]
+        #chef.add_recipe             "pies::default"
+      end
+    end
+
+
 ###############################################################################
 ###################################    test     ##############################
 ###############################################################################
