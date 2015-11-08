@@ -1,7 +1,7 @@
 #!/bin/bash
-# this file is essential for kicking off the jenkins build on brazos when manos commits to cerebro
-# manos -> cerebro -> hombros -> brazos
+# this file is essential for kicking off the jenkins build on brazos when manos commits to cerebro5
+# manos -> cerebro5 -> hombros5 -> brazos
 # it must be set to executable!
-# provisioned in cerebro.rb
+# provisioned in cerebro5.rb
 
-curl http://hombros:8080/git/notifyCommit?url=git@cerebro:/home/hijo.git
+curl http://hombros5:8080/git/notifyCommit?url=git@cerebro5:/home/hijo.git
