@@ -56,7 +56,10 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
-      chef.add_recipe               "base::default"  #configures ssh and hostnames. good to do every so often.
+      chef.add_recipe               "base::default"  # java, curl and tree
+      chef.add_recipe               "base::_hosts"
+      chef.add_recipe               "base::_ssh"
+
     end
   end
 
@@ -80,7 +83,6 @@ Vagrant.configure(2) do |config|
 
     cerebroxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "shared::default"  # need to split hosts from ssh, or idemp hosts
       chef.add_recipe             "git::default"
       chef.add_recipe             "cerebro::default"
     end
@@ -199,7 +201,6 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "shared::_junit"
-      chef.add_recipe             "shared::_hosts"
       chef.add_recipe             "manos::default"
     end
   end
@@ -232,7 +233,6 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "shared::_hosts"
       chef.add_recipe             "cara::default"
     end
   end
@@ -249,15 +249,15 @@ Vagrant.configure(2) do |config|
     nerviosxx.vm.network                 "private_network", ip: "10.xx.0.16"
     nerviosxx.vm.network                 "forwarded_port", guest: 22, host: 2xx16, auto_correct: true
     nerviosxx.vm.network                 "forwarded_port", guest: 80, host: 8xx16, auto_correct: true
-    nerviosxx.vm.network                "forwarded_port", guest: 8080, host: 9xx16, auto_correct: true
+    nerviosxx.vm.network                 "forwarded_port", guest: 8080, host: 9xx16, auto_correct: true
 
     nerviosxx.ssh.forward_agent        =true
 
       nerviosxx.vm.synced_folder         ".", "/home/nerviosxx"
       nerviosxx.vm.synced_folder         "./shared", "/mnt/shared"
-    #nerviosxx.vm.provision       :shell, path: "./shell/nerviosxx.sh"
+      #nerviosxx.vm.provision       :shell, path: "./shell/nerviosxx.sh"
 
-    nerviosxx.vm.provision :chef_zero do |chef|
+      nerviosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
       #chef.add_recipe             "nervios::default"
     end
