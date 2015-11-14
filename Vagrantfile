@@ -1,5 +1,5 @@
 # Vagrantfile template
-# you need to replace all 0 with digit 1-9
+# you need to replace all 1 with digit 1-9
 # hostnames are hard coded in following locations:
 # cerebro|files|post-receive
 # manos::default
@@ -64,49 +64,49 @@ Vagrant.configure(2) do |config|
   end
 
 ###############################################################################
-###################################    cerebro0   ##############################
+###################################    cerebro1   ##############################
 ###############################################################################
 
-  config.vm.define "cerebro0" do | cerebro0 |
-    cerebro0.vm.host_name           ="cerebro0.calavera.biz"
-    cerebro0.vm.network             "private_network", ip: "10.0.0.10"
-    cerebro0.vm.network            "forwarded_port", guest: 22, host: 2010, auto_correct: true
-    cerebro0.vm.network            "forwarded_port", guest: 80, host: 8010, auto_correct: true
-    cerebro0.vm.network             "forwarded_port", guest: 8080, host: 9010, auto_correct: true
+  config.vm.define "cerebro1" do | cerebro1 |
+    cerebro1.vm.host_name           ="cerebro1.calavera.biz"
+    cerebro1.vm.network             "private_network", ip: "10.1.0.10"
+    cerebro1.vm.network            "forwarded_port", guest: 22, host: 2110, auto_correct: true
+    cerebro1.vm.network            "forwarded_port", guest: 80, host: 8110, auto_correct: true
+    cerebro1.vm.network             "forwarded_port", guest: 8080, host: 9110, auto_correct: true
 
-    cerebro0.ssh.forward_agent       =true
+    cerebro1.ssh.forward_agent       =true
 
-    cerebro0.vm.synced_folder      ".",         "/home/cerebro0"
-    cerebro0.vm.synced_folder      "./shared", "/mnt/shared"
+    cerebro1.vm.synced_folder      ".",         "/home/cerebro1"
+    cerebro1.vm.synced_folder      "./shared", "/mnt/shared"
 
-    #cerebro0.vm.provision       :shell, path: "./shell/cerebro0.sh"
+    #cerebro1.vm.provision       :shell, path: "./shell/cerebro1.sh"
 
-    cerebro0.vm.provision :chef_zero do |chef|
+    cerebro1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "cerebro::default"
     end
   end
 
-# test: vagrant ssh cerebro0, git -v
+# test: vagrant ssh cerebro1, git -v
 
 ###############################################################################
-###################################    brazos0     ##############################
+###################################    brazos1     ##############################
 ###############################################################################
 
-  config.vm.define "brazos0" do | brazos0 |
-    brazos0.vm.host_name            ="brazos0.calavera.biz"
-    brazos0.vm.network               "private_network", ip: "10.0.0.11"
-    brazos0.vm.network               "forwarded_port", guest: 22, host: 2011, auto_correct: true
-    brazos0.vm.network               "forwarded_port", guest: 80, host: 8011, auto_correct: true
-    brazos0.vm.network              "forwarded_port", guest: 8080, host: 9011, auto_correct: true
+  config.vm.define "brazos1" do | brazos1 |
+    brazos1.vm.host_name            ="brazos1.calavera.biz"
+    brazos1.vm.network               "private_network", ip: "10.1.0.11"
+    brazos1.vm.network               "forwarded_port", guest: 22, host: 2111, auto_correct: true
+    brazos1.vm.network               "forwarded_port", guest: 80, host: 8111, auto_correct: true
+    brazos1.vm.network              "forwarded_port", guest: 8080, host: 9111, auto_correct: true
 
-    brazos0.ssh.forward_agent       =true
+    brazos1.ssh.forward_agent       =true
 
-    brazos0.vm.synced_folder        ".",         "/home/brazos0"
-    brazos0.vm.synced_folder        "./shared", "/mnt/shared"
+    brazos1.vm.synced_folder        ".",         "/home/brazos1"
+    brazos1.vm.synced_folder        "./shared", "/mnt/shared"
 
-    brazos0.vm.provision :chef_zero do |chef|
+    brazos1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
@@ -118,24 +118,24 @@ Vagrant.configure(2) do |config|
   end
 
 ###############################################################################
-###################################    espina0     ##############################
+###################################    espina1     ##############################
 ###############################################################################
 
-  config.vm.define "espina0" do | espina0 |
-    espina0.vm.host_name            ="espina0.calavera.biz"
-    espina0.vm.network               "private_network", ip: "10.0.0.12"
-    espina0.vm.network               "forwarded_port", guest: 22, host: 2012, auto_correct: true
-    espina0.vm.network               "forwarded_port", guest: 80, host: 8012, auto_correct: true
-    espina0.vm.network              "forwarded_port", guest: 8080, host: 9012, auto_correct: true
-    espina0.vm.network              "forwarded_port", guest: 8081, host: 7012, auto_correct: true
+  config.vm.define "espina1" do | espina1 |
+    espina1.vm.host_name            ="espina1.calavera.biz"
+    espina1.vm.network               "private_network", ip: "10.1.0.12"
+    espina1.vm.network               "forwarded_port", guest: 22, host: 2112, auto_correct: true
+    espina1.vm.network               "forwarded_port", guest: 80, host: 8112, auto_correct: true
+    espina1.vm.network              "forwarded_port", guest: 8080, host: 9112, auto_correct: true
+    espina1.vm.network              "forwarded_port", guest: 8081, host: 7112, auto_correct: true
 
-    espina0.ssh.forward_agent        =true
+    espina1.ssh.forward_agent        =true
 
-    espina0.vm.synced_folder        ".",         "/home/espina0"
-    espina0.vm.synced_folder        "./shared", "/mnt/shared"
-    #espina0.vm.provision       :shell, path: "./shell/espina0.sh"
+    espina1.vm.synced_folder        ".",         "/home/espina1"
+    espina1.vm.synced_folder        "./shared", "/mnt/shared"
+    #espina1.vm.provision       :shell, path: "./shell/espina1.sh"
 
-    espina0.vm.provision :chef_zero do |chef|
+    espina1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       #chef.add_recipe            "java8::default" reverting to ARtifactory 3.51
@@ -143,30 +143,30 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # test: x-windows http://10.0.0.12:8081/artifactory, admin/password
+  # test: x-windows http://10.1.0.12:8081/artifactory, admin/password
   # curl not working
   # artifactory / jenkins config is stored in cookbooks/hombros/files/org.jfrog.hudson.ArtifactoryBuilder.xml
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
 
 ###############################################################################
-###################################    hombros0     ##############################
+###################################    hombros1     ##############################
 ###############################################################################
 
-  config.vm.define "hombros0" do | hombros0 |
-    hombros0.vm.host_name          ="hombros0.calavera.biz"
-    hombros0.vm.network             "private_network", ip: "10.0.0.13"
-    hombros0.vm.network            "forwarded_port", guest: 22, host: 2013, auto_correct: true
-    hombros0.vm.network            "forwarded_port", guest: 80, host: 8013, auto_correct: true
-    hombros0.vm.network            "forwarded_port", guest: 8080, host: 9013, auto_correct: true
+  config.vm.define "hombros1" do | hombros1 |
+    hombros1.vm.host_name          ="hombros1.calavera.biz"
+    hombros1.vm.network             "private_network", ip: "10.1.0.13"
+    hombros1.vm.network            "forwarded_port", guest: 22, host: 2113, auto_correct: true
+    hombros1.vm.network            "forwarded_port", guest: 80, host: 8113, auto_correct: true
+    hombros1.vm.network            "forwarded_port", guest: 8080, host: 9113, auto_correct: true
 
-    hombros0.ssh.forward_agent      =true
+    hombros1.ssh.forward_agent      =true
 
-    hombros0.vm.synced_folder        ".",         "/home/hombros0"
-    hombros0.vm.synced_folder        "./shared", "/mnt/shared"
+    hombros1.vm.synced_folder        ".",         "/home/hombros1"
+    hombros1.vm.synced_folder        "./shared", "/mnt/shared"
 
-    #hombros0.vm.provision          :shell, path: "./shell/hombros0.sh"
+    #hombros1.vm.provision          :shell, path: "./shell/hombros1.sh"
 
-    hombros0.vm.provision :chef_zero do |chef|
+    hombros1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
       chef.add_recipe               "git::default"
       chef.add_recipe               "jenkins::master"
@@ -175,26 +175,26 @@ Vagrant.configure(2) do |config|
 
   end
 
-  # Jenkins should appear at http://10.0.0.13:8080
+  # Jenkins should appear at http://10.1.0.13:8080
 
 ###############################################################################
-###################################    manos0     ##############################
+###################################    manos1     ##############################
 ###############################################################################
 
-  config.vm.define "manos0" do | manos0 |
-    manos0.vm.host_name            ="manos0.calavera.biz"
-    manos0.vm.network              "private_network", ip: "10.0.0.14"
-    manos0.vm.network              "forwarded_port", guest: 22, host: 2014, auto_correct: true
-    manos0.vm.network              "forwarded_port", guest: 80, host: 8014, auto_correct: true
-    manos0.vm.network              "forwarded_port", guest: 8080, host: 9014, auto_correct: true
+  config.vm.define "manos1" do | manos1 |
+    manos1.vm.host_name            ="manos1.calavera.biz"
+    manos1.vm.network              "private_network", ip: "10.1.0.14"
+    manos1.vm.network              "forwarded_port", guest: 22, host: 2114, auto_correct: true
+    manos1.vm.network              "forwarded_port", guest: 80, host: 8114, auto_correct: true
+    manos1.vm.network              "forwarded_port", guest: 8080, host: 9114, auto_correct: true
 
-    manos0.ssh.forward_agent        =true
+    manos1.ssh.forward_agent        =true
 
-    manos0.vm.synced_folder        ".",         "/home/manos0"
-    manos0.vm.synced_folder        "./shared", "/mnt/shared"
-    #manos0.vm.provision         :shell, path: "./shell/manos0.sh"
+    manos1.vm.synced_folder        ".",         "/home/manos1"
+    manos1.vm.synced_folder        "./shared", "/mnt/shared"
+    #manos1.vm.provision         :shell, path: "./shell/manos1.sh"
 
-    manos0.vm.provision :chef_zero do |chef|
+    manos1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "git::default"
       chef.add_recipe             "localAnt::default"
@@ -205,7 +205,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # test: http://10.0.0.14:8080/MainServlet
+  # test: http://10.1.0.14:8080/MainServlet
   # if cerebro is configured:
   # git add .
   # git commit -m "some message"
@@ -213,23 +213,23 @@ Vagrant.configure(2) do |config|
 
 
 ###############################################################################
-###################################    cara0     ##############################
+###################################    cara1     ##############################
 ###############################################################################
 
-  config.vm.define "cara0" do | cara0 |
-    cara0.vm.host_name              ="cara0.calavera.biz"
-    cara0.vm.network                 "private_network", ip: "10.0.0.15"
-    cara0.vm.network                 "forwarded_port", guest: 22, host: 2015, auto_correct: true
-    cara0.vm.network                 "forwarded_port", guest: 80, host: 8015, auto_correct: true
-    cara0.vm.network                "forwarded_port", guest: 8080, host: 9015, auto_correct: true
+  config.vm.define "cara1" do | cara1 |
+    cara1.vm.host_name              ="cara1.calavera.biz"
+    cara1.vm.network                 "private_network", ip: "10.1.0.15"
+    cara1.vm.network                 "forwarded_port", guest: 22, host: 2115, auto_correct: true
+    cara1.vm.network                 "forwarded_port", guest: 80, host: 8115, auto_correct: true
+    cara1.vm.network                "forwarded_port", guest: 8080, host: 9115, auto_correct: true
 
-    cara0.ssh.forward_agent        =true
+    cara1.ssh.forward_agent        =true
 
-    cara0.vm.synced_folder          ".",         "/home/cara0"
-    cara0.vm.synced_folder          "./shared", "/mnt/shared"
-    #cara0.vm.provision       :shell, path: "./shell/cara0.sh"]
+    cara1.vm.synced_folder          ".",         "/home/cara1"
+    cara1.vm.synced_folder          "./shared", "/mnt/shared"
+    #cara1.vm.provision       :shell, path: "./shell/cara1.sh"]
 
-    cara0.vm.provision :chef_zero do |chef|
+    cara1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
@@ -237,27 +237,27 @@ Vagrant.configure(2) do |config|
     end
   end
 
-    # test: http://10.0.0.15:8080/MainServlet
+    # test: http://10.1.0.15:8080/MainServlet
 
 ###############################################################################
-###################################    nervios0     ##############################
+###################################    nervios1     ##############################
 ###############################################################################
 # monitoring
 
-  config.vm.define "nervios0" do | nervios0 |
-    nervios0.vm.host_name              ="nervios0.calavera.biz"
-    nervios0.vm.network                 "private_network", ip: "10.0.0.16"
-    nervios0.vm.network                 "forwarded_port", guest: 22, host: 2016, auto_correct: true
-    nervios0.vm.network                 "forwarded_port", guest: 80, host: 8016, auto_correct: true
-    nervios0.vm.network                 "forwarded_port", guest: 8080, host: 9016, auto_correct: true
+  config.vm.define "nervios1" do | nervios1 |
+    nervios1.vm.host_name              ="nervios1.calavera.biz"
+    nervios1.vm.network                 "private_network", ip: "10.1.0.16"
+    nervios1.vm.network                 "forwarded_port", guest: 22, host: 2116, auto_correct: true
+    nervios1.vm.network                 "forwarded_port", guest: 80, host: 8116, auto_correct: true
+    nervios1.vm.network                 "forwarded_port", guest: 8080, host: 9116, auto_correct: true
 
-    nervios0.ssh.forward_agent        =true
+    nervios1.ssh.forward_agent        =true
 
-      nervios0.vm.synced_folder         ".", "/home/nervios0"
-      nervios0.vm.synced_folder         "./shared", "/mnt/shared"
-      #nervios0.vm.provision       :shell, path: "./shell/nervios0.sh"
+      nervios1.vm.synced_folder         ".", "/home/nervios1"
+      nervios1.vm.synced_folder         "./shared", "/mnt/shared"
+      #nervios1.vm.provision       :shell, path: "./shell/nervios1.sh"
 
-      nervios0.vm.provision :chef_zero do |chef|
+      nervios1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
       #chef.add_recipe             "nervios::default"
     end

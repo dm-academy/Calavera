@@ -35,13 +35,13 @@ jenkins_private_key_credentials 'jenkins' do
 end
 
 # create slave
-jenkins_ssh_slave 'brazos055' do
+jenkins_ssh_slave 'brazos1055' do
   description 'Run test suites'
   remote_fs   '/home/jenkins'
   #labels      ['executor', 'freebsd', 'jail']
 
   # SSH specific attributes
-  host        'brazos055' # or 'slave.example.org'
+  host        'brazos1055' # or 'slave.example.org'
   user        'jenkins'
   credentials 'jenkins'
 end

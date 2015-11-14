@@ -1,5 +1,7 @@
 #! /bin/bash
-# RUN AS SUDO
+
+# Be sure that /var/vagrant/boxes exists and you have write access
+# don't run as sudo
 #install Vagrant
 #install chefdk
 #install virtualbox plugin
@@ -18,7 +20,5 @@ vagrant package base
 mkdir -p /var/vagrant/boxes/   # shared public location
 cp package.box /var/vagrant/boxes/opscode-ubuntu-14.04a.box
 vagrant box add opscode-ubuntu-14.04a /var/vagrant/boxes/opscode-ubuntu-14.04a.box -f
-chown $USER -R ~/.vagrant.d/boxes/opscode-ubuntu-14.04a
-chown $USER -R shared/keys    #you shouldn't be running this script anywhere else
 rm -f package.box
 vagrant destroy base -f
