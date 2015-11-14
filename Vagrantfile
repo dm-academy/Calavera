@@ -268,11 +268,11 @@ Vagrant.configure(2) do |config|
 
     config.vm.define "pies" do | pies |
 
-      # how to boost capacity
-          #config.vm.provider :virtualbox do |virtualbox|
-          virtualbox.customize ["modifyvm", :id, "--memory", "2048"]   # e.g. for Chef Server
-          virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
-        #end
+      config.vm.provider :virtualbox do |virtualbox|
+        virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
+        virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+      end
+      
       pies.vm.host_name              ="pies.calavera.biz"
       pies.vm.network                 "private_network", ip: "192.168.33.37"
       pies.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
@@ -299,6 +299,11 @@ Vagrant.configure(2) do |config|
 # not part of the pipeline
 
   config.vm.define "test" do | test |
+    config.vm.provider :virtualbox do |virtualbox|
+      virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
+      virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    end
+
     test.vm.host_name              ="test.calavera.biz"
     test.vm.network                 "private_network", ip: "192.168.33.99"
     test.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true

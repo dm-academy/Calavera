@@ -11,7 +11,7 @@
 # what if Ant is corrupted? can't test for a perfect install
 # downloading and reinstallilng is not that costly
 
-ENV['ANT_VERSION'] = "apache-ant-1.9.5"
+ENV['ANT_VERSION'] = "apache-ant-1.9.6"
 ENV['ANT_MIRROR'] = "http://mirror.nexcess.net/apache//ant/binaries/"
 
 #execute echo "installing Ant"
