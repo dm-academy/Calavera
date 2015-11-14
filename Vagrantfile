@@ -56,7 +56,7 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
-      chef.add_recipe               "base::default"  #configures ssh and hostnames. good to do every so often.
+      chef.add_recipe               "base::default"
     end
   end
 
@@ -80,7 +80,7 @@ Vagrant.configure(2) do |config|
 
     cerebro5.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "shared::default"  # need to split hosts from ssh, or idemp hosts
+      chef.add_recipe             "shared::_ssh"  
       chef.add_recipe             "git::default"
       chef.add_recipe             "cerebro::default"
     end
@@ -199,6 +199,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "shared::_junit"
+      chef.add_recipe             "shared::_hosts"
       chef.add_recipe             "manos::default"
     end
   end
@@ -231,11 +232,12 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
+      chef.add_recipe             "shared::_hosts"
       chef.add_recipe             "cara::default"
     end
   end
 
-    # test: http://10.5.0.14:8080/MainServlet
+    # test: http://10.5.0.15:8080/MainServlet
 
 ###############################################################################
 ###################################    nervios5     ##############################
@@ -272,7 +274,7 @@ Vagrant.configure(2) do |config|
         virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
         virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
       end
-      
+
       pies.vm.host_name              ="pies.calavera.biz"
       pies.vm.network                 "private_network", ip: "192.168.33.37"
       pies.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
