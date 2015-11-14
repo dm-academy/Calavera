@@ -14,10 +14,11 @@ sudo wget http://downloads.sourceforge.net/project/itop/itop/2.2.0/iTop-2.2.0-24
 
 sudo mv iTop-* iTop.zip
 sudo unzip iTop.zip -d itop
+rm iTop.zip
 
-sudo chmod 777 /etc/apache2/000-default.conf
-sudo sed -i -- "s/html/itop/" /etc/apache2/ 000-default.conf
-sudo chmod 744 /etc/apache2/000-default.conf
+sudo chmod 777 /etc/apache2/sites-available/000-default.conf
+sudo sed -i -- "s/html/itop/" /etc/apache2/sites-available/000-default.conf
+sudo chmod 744 /etc/apache2/sites-available/000-default.conf
 
 sudo chown -R www-data itop
 
