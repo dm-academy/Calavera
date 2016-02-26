@@ -3,8 +3,7 @@
 
 
 execute 'apt update' do
-  command 'apt-get -q update -y'
-  # command 'apt-get -q upgrade -y'
+  command 'echo "apt updated"'
 end
 
 include_recipe "java7::default"
