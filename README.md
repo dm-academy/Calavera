@@ -17,7 +17,7 @@ All the configurations are expressed in the Vagrantfile and the Chef cookbooks, 
 
 Some may be particularly interested in the Calavera example of how Chef can provision Jenkins through the Jenkins api. This includes provisioning and controlling a slave, integrating with git through a githook, and integrating with Artifactory. It's all there; have a go with it. The Vagrant machine that runs Jenkins is called "hombros." See [the hombros cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/hombros) and [the brazos cookbook](https://github.com/CharlesTBetz/Calavera/blob/master/cookbooks/brazos).
 
-![](docs/img/CalaveraArchitecture.jpg)
+![](docs/img/CalaveraArchitecture.png)
 
 See https://github.com/CharlesTBetz/Calavera/wiki/Calavera-Home and other wiki pages for full, evolving description.
 
