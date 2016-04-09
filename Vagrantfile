@@ -326,6 +326,8 @@ Vagrant.configure(2) do |config|
 
     test.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recipe               "tomcat::default"
       chef.add_recipe             "test::default"
     end
   end
