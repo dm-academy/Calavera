@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
     cerebroxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe               "shared::_apt-update"
-      chef.add_recip  e             "git::default"
+      chef.add_recipe               "git::default"
       chef.add_recipe               "cerebro::default"
     end
   end
