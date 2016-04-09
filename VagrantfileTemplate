@@ -56,6 +56,7 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
+      chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "base::default"  # java, curl and tree
       chef.add_recipe               "base::_hosts"
       chef.add_recipe               "base::_ssh"
@@ -83,8 +84,9 @@ Vagrant.configure(2) do |config|
 
     cerebroxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "git::default"
-      chef.add_recipe             "cerebro::default"
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recip  e             "git::default"
+      chef.add_recipe               "cerebro::default"
     end
   end
 
@@ -108,12 +110,13 @@ Vagrant.configure(2) do |config|
 
     brazosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "git::default"
-      chef.add_recipe             "localAnt::default"
-      chef.add_recipe             "shared::_junit"
-      chef.add_recipe             "java7::default"
-      chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "brazos::default"
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recipe               "git::default"
+      chef.add_recipe               "localAnt::default"
+      chef.add_recipe               "shared::_junit"
+      chef.add_recipe               "java7::default"
+      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "brazos::default"
     end
   end
 
@@ -137,9 +140,10 @@ Vagrant.configure(2) do |config|
 
     espinaxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "java7::default"
-      #chef.add_recipe            "java8::default" reverting to ARtifactory 3.51
-      chef.add_recipe             "espina::default"
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recipe               "java7::default"
+      #chef.add_recipe              "java8::default" reverting to ARtifactory 3.51
+      chef.add_recipe               "espina::default"
     end
   end
 
@@ -168,6 +172,7 @@ Vagrant.configure(2) do |config|
 
     hombrosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
+      chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "jenkins::master"
       chef.add_recipe               "hombros::default"
@@ -196,12 +201,13 @@ Vagrant.configure(2) do |config|
 
     manosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "git::default"
-      chef.add_recipe             "localAnt::default"
-      chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
-      chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "shared::_junit"
-      chef.add_recipe             "manos::default"
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recipe               "git::default"
+      chef.add_recipe               "localAnt::default"
+      chef.add_recipe               "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
+      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "shared::_junit"
+      chef.add_recipe               "manos::default"
     end
   end
 
@@ -231,9 +237,10 @@ Vagrant.configure(2) do |config|
 
     caraxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
-      chef.add_recipe             "java7::default"
-      chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "cara::default"
+      chef.add_recipe               "shared::_apt-update"
+      chef.add_recipe               "java7::default"
+      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "cara::default"
     end
   end
 
@@ -259,6 +266,8 @@ Vagrant.configure(2) do |config|
 
       nerviosxx.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
+      chef.add_recipe               "shared::_apt-update"
+
       #chef.add_recipe             "nervios::default"
     end
   end

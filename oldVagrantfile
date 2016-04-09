@@ -1,22 +1,22 @@
 # Vagrantfile template
 # you need to replace all 1 with digit 1-9
 # hostnames are hard coded in following locations:
-# cerebro1|files|post-receive
-# manos1::default
+# cerebro|files|post-receive
+# manos::default
 #
 # do NOT just "vagrant up" this whole cluster. not recommended.
 # currently, need to do startup.sh and then vagrant up the machines one by on in this order
-#  cerebro1, brazos1, espina1, hombros1, manos1, cara1
+#  cerebro, brazos, espina, hombros, manos, cara
 
 #Berksfile tweak needed per https://github.com/berkshelf/vagrant-berkshelf/issues/237  **/.git
 
 # dependencies:
-  # manos1 => cerebro1
-  # manos1 => hombros1
-  # hombros1 => brazos1
-  # hombros1 => espina1
-  # hombros1 => cerebro1
-  # cara1 => espina1
+  # manos => cerebro
+  # manos => hombros
+  # hombros => brazos
+  # hombros => espina
+  # hombros => cerebro
+  # cara => espina
 
 Vagrant.configure(2) do |config|
   if ARGV[1]=='base'
@@ -83,12 +83,13 @@ Vagrant.configure(2) do |config|
 
     cerebro1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.add_recipe             "shared::_apt-update"
       chef.add_recipe             "git::default"
-      chef.add_recipe             "cerebro1::default"
+      chef.add_recipe             "cerebro::default"
     end
   end
 
-# test1: vagrant ssh cerebro1, git -v
+# test: vagrant ssh cerebro1, git -v
 
 ###############################################################################
 ###################################    brazos1     ##############################
@@ -113,7 +114,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "shared::_junit"
       chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "brazos1::default"
+      chef.add_recipe             "brazos::default"
     end
   end
 
@@ -139,13 +140,13 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       #chef.add_recipe            "java8::default" reverting to ARtifactory 3.51
-      chef.add_recipe             "espina1::default"
+      chef.add_recipe             "espina::default"
     end
   end
 
-  # test1: x-windows http://10.1.0.12:8081/artifactory, admin/password
+  # test: x-windows http://10.1.0.12:8081/artifactory, admin/password
   # curl not working
-  # artifactory / jenkins config is stored in cookbooks/hombros1/files/org.jfrog.hudson.ArtifactoryBuilder.xml
+  # artifactory / jenkins config is stored in cookbooks/hombros/files/org.jfrog.hudson.ArtifactoryBuilder.xml
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
 
 ###############################################################################
@@ -170,7 +171,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path           = ["./cookbooks/"]
       chef.add_recipe               "git::default"
       chef.add_recipe               "jenkins::master"
-      chef.add_recipe               "hombros1::default"
+      chef.add_recipe               "hombros::default"
     end
 
   end
@@ -201,12 +202,12 @@ Vagrant.configure(2) do |config|
       chef.add_recipe             "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
       chef.add_recipe             "tomcat::default"
       chef.add_recipe             "shared::_junit"
-      chef.add_recipe             "manos1::default"
+      chef.add_recipe             "manos::default"
     end
   end
 
-  # test1: http://10.1.0.14:8080/MainServlet
-  # if cerebro1 is configured:
+  # test: http://10.1.0.14:8080/MainServlet
+  # if cerebro is configured:
   # git add .
   # git commit -m "some message"
   # git push origin master
@@ -233,11 +234,11 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.add_recipe             "java7::default"
       chef.add_recipe             "tomcat::default"
-      chef.add_recipe             "cara1::default"
+      chef.add_recipe             "cara::default"
     end
   end
 
-    # test1: http://10.1.0.15:8080/MainServlet
+    # test: http://10.1.0.15:8080/MainServlet
 
 ###############################################################################
 ###################################    nervios1     ##############################
@@ -259,63 +260,63 @@ Vagrant.configure(2) do |config|
 
       nervios1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
-      #chef.add_recipe             "nervios1::default"
+      #chef.add_recipe             "nervios::default"
     end
   end
 
 ###############################################################################
-###################################    pies1     ##############################
+###################################    pies     ##############################
 ###############################################################################
 # monitoring
 
-  config.vm.define "pies1" do | pies1 |
+  config.vm.define "pies" do | pies |
 
     config.vm.provider :virtualbox do |virtualbox|
       virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
       virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
 
-    pies1.vm.host_name              ="pies1.calavera.biz"
-    pies1.vm.network                 "private_network", ip: "192.168.33.37"
-    pies1.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
-    pies1.vm.network                 "forwarded_port", guest: 80, host: 8037, auto_correct: true
-    pies1.vm.network                "forwarded_port", guest: 8080, host: 8137, auto_correct: true
+    pies.vm.host_name              ="pies.calavera.biz"
+    pies.vm.network                 "private_network", ip: "192.168.33.37"
+    pies.vm.network                 "forwarded_port", guest: 22, host: 2237, auto_correct: true
+    pies.vm.network                 "forwarded_port", guest: 80, host: 8037, auto_correct: true
+    pies.vm.network                "forwarded_port", guest: 8080, host: 8137, auto_correct: true
 
-    pies1.ssh.forward_agent        =true
+    pies.ssh.forward_agent        =true
 
-      pies1.vm.synced_folder         ".", "/home/pies1"
-      pies1.vm.synced_folder         "./shared", "/mnt/shared"
-    #nervios1.vm.provision       :shell, path: "./shell/pies1.sh"
+      pies.vm.synced_folder         ".", "/home/pies"
+      pies.vm.synced_folder         "./shared", "/mnt/shared"
+    #nervios.vm.provision       :shell, path: "./shell/pies.sh"
 
-    pies1.vm.provision :chef_zero do |chef|
+    pies.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
-      #chef.add_recipe             "pies1::default"
+      #chef.add_recipe             "pies::default"
     end
   end
 
 
 ###############################################################################
-###################################    test1     ##############################
+###################################    test     ##############################
 ###############################################################################
-# a test1 machine to try out new things
+# a test machine to try out new things
 # not part of the pipeline
 
-  config.vm.define "test1" do | test1 |
-    test1.vm.host_name              ="test1.calavera.biz"
-    test1.vm.network                 "private_network", ip: "192.168.33.99"
-    test1.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true
-    test1.vm.network                 "forwarded_port", guest: 80, host: 8099, auto_correct: true
-    test1.vm.network                "forwarded_port", guest: 8080, host: 8199, auto_correct: true
+  config.vm.define "test" do | test |
+    test.vm.host_name              ="test.calavera.biz"
+    test.vm.network                 "private_network", ip: "192.168.33.99"
+    test.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true
+    test.vm.network                 "forwarded_port", guest: 80, host: 8099, auto_correct: true
+    test.vm.network                "forwarded_port", guest: 8080, host: 8199, auto_correct: true
 
-    test1.ssh.forward_agent        =true
+    test.ssh.forward_agent        =true
 
-      test1.vm.synced_folder         ".", "/home/test1"
-      test1.vm.synced_folder         "./shared", "/mnt/shared"
-    #test1.vm.provision       :shell, path: "./shell/test1.sh"
+      test.vm.synced_folder         ".", "/home/test"
+      test.vm.synced_folder         "./shared", "/mnt/shared"
+    #test.vm.provision       :shell, path: "./shell/test.sh"
 
-    test1.vm.provision :chef_zero do |chef|
+    test.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
-      chef.add_recipe             "test1::default"
+      chef.add_recipe             "test::default"
     end
   end
 ###############################################################################
