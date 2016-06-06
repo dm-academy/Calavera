@@ -1,6 +1,10 @@
 Calavera
 ========
 
+*Status 6 June 2016*
+
+Calavera is currenlty broken due to Jenkins 2.0 issues with the main Chef community cookbook. Working on forcing an earlier version; even this is problematic. See https://github.com/chef-cookbooks/jenkins/issues/469. 
+
 This is a project to create a simplified, reproduceable DevOps pipeline for educational purposes. It uses  "infrastructure as code" principles to configure git, Vagrant, Java, JUnit, Ant, Jenkins, Chef Zero, and Artifactory into an integrated, end to end system.
 
 There are a number of benefits you might find in this project. While the basic DevOps principles it illustrates are simple and widely understood, it can nevertheless be frustrating to properly configure all the interactions in an end to end DevOps pipeline. There are any number of issues lurking in integrating the pipeline: .ssh setup, permissions, build choreography interactions (e.g. git/Jenkins/Artifactory), software versions, and the like.
