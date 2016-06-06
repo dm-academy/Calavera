@@ -126,16 +126,16 @@
 
 		<!-- !!!! need to add test if this is running -->
 		<!-- if run too quickly in succession, will fail with unpredictable results-->
-		<!-- could not get preferred syntax to work
+		<!-- could not get preferred syntax to work-->
 		<exec executable="sh">
 			<arg value = "service"/>
 			<arg value = "tomcat6"/>
 			<arg value = "stop"/>
-		</exec-->
+		</exec>
 
 		<!-- deprecated -->
-		<exec command="service tomcat6 stop"/>
-		<exec command="service tomcat6 start"/>
+		<!--<exec command="service tomcat6 stop"/>
+		<exec command="service tomcat6 start"/>-->
 
 	</target>
 
