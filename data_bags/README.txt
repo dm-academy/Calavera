@@ -1,0 +1,1 @@
+# directory now required for Chef - see https://github.com/mitchellh/vagrant/blob/master/website/source/docs/provisioning/chef_zero.html.md

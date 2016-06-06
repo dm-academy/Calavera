@@ -56,6 +56,9 @@ Vagrant.configure(2) do |config|
 
     base.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "base::default"  # java, curl and tree
       chef.add_recipe               "base::_hosts"
@@ -83,7 +86,10 @@ Vagrant.configure(2) do |config|
     #cerebro1.vm.provision       :shell, path: "./shell/cerebro1.sh"
 
     cerebro1.vm.provision :chef_zero do |chef|
-      chef.cookbooks_path         = ["./cookbooks/"]
+      chef.cookbooks_path           = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "cerebro::default"
@@ -110,6 +116,9 @@ Vagrant.configure(2) do |config|
 
     brazos1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "localAnt::default"
@@ -140,6 +149,9 @@ Vagrant.configure(2) do |config|
 
     espina1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "java7::default"
       #chef.add_recipe              "java8::default" reverting to ARtifactory 3.51
@@ -172,6 +184,9 @@ Vagrant.configure(2) do |config|
 
     hombros1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path           = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "jenkins::master"
@@ -201,6 +216,9 @@ Vagrant.configure(2) do |config|
 
     manos1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "localAnt::default"
@@ -237,6 +255,9 @@ Vagrant.configure(2) do |config|
 
     cara1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path         = ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "java7::default"
       chef.add_recipe               "tomcat::default"
@@ -266,6 +287,9 @@ Vagrant.configure(2) do |config|
 
       nervios1.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
 
       #chef.add_recipe             "nervios::default"
@@ -300,6 +324,9 @@ Vagrant.configure(2) do |config|
 
     pies.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       #chef.add_recipe             "pies::default"
     end
   end
@@ -326,6 +353,9 @@ Vagrant.configure(2) do |config|
 
     test.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "tomcat::default"
       chef.add_recipe             "test::default"
