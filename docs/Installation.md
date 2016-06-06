@@ -104,19 +104,19 @@ Disclaimner: this is still very early stage work. Many failure modes.
 
 ````
 ./startup.sh  (or startup.bat on windows)
-vagrant up cerebro
-vagrant up brazos
-vagrant up espina
-vagrant up hombros
+vagrant up cerebro1
+vagrant up brazos1
+vagrant up espina1
+vagrant up hombros1
 ````
 
 All done with those first 5? Good.
 
-### Bringing up manos
+### Bringing up manos1
 
-Now, the acid test: bringing up manos. The user guide (to be written) will go into details on this, but let's just say there are a lot of ways Manos can fail. The precursor machines must have all come up without error.
+Now, the acid test: bringing up manos1. The user guide (to be written) will go into details on this, but let's just say there are a lot of ways Manos can fail. The precursor machines must have all come up without error.
 
-    vagrant up manos
+    vagrant up manos1
 
 If the console output seems to have gone without a hitch, go first to Jenkins. As part of its provisioning, manos does an initial ant build & test, local Tomcat deployment, and git commit and remote push which should result in a Jenkins build and an Artifactory check in.
 
@@ -151,11 +151,11 @@ and if you expand the tree node that says "ext-release-local" (remember configur
 
 [author's note: take a pre-manos shot of hombros espina for contrast next time it is built]
 
-### Deploying to cara
+### Deploying to cara1
 
-Bringing up cara is a little anticlimactic.
+Bringing up cara1 is a little anticlimactic.
 
-    vagrant up cara
+    vagrant up cara1
 
 Assuming everything previously went well, chef will pull the .jar and .xml file from Artifactory on espina and deploy and restart Tomcat. You can go to:
 
