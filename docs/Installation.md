@@ -49,24 +49,6 @@ First, you need to install:
 
 And of course you will need [git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), to download from Github.
 
-**Critical pre-install configuration tweak**
-At this writing you MUST do this AFTER you install the ChefDK:
-
-In a text editor open /opt/chefdk/embedded/apps/berkshelf/lib/berkshelf/berksfile.rb
-
-Find the line starting with EXCLUDED_VCS_FILES_WHEN_VENDORING
-
-change '.git' to '**/.git' in this line:
-
-````
-EXCLUDED_VCS_FILES_WHEN_VENDORING = ['.arch-ids', '{arch}', '.bzr', \
- '.bzrignore', '.bzrtags', 'CVS', '.cvsignore', '_darcs', '.git', '.hg', \
-  '.hgignore', '.hgrags', 'RCS', 'SCCS', '.svn'].freeze
-
-````
-
-See https://github.com/berkshelf/vagrant-berkshelf/issues/237.
-
 Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
 
 * Chef
