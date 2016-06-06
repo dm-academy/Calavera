@@ -1,6 +1,6 @@
 # Installing Calavera
 
-2015-03-01  version 0.3 alpha
+
 
 ## Prerequisites
 
