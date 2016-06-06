@@ -1,5 +1,21 @@
-# hombros default
-# set up Jenkins server
+## hombros default
+## set up Jenkins server
+#
+
+jenkins_plugin 'greenballs' do   #install git plugin
+  #action :uninstall
+  notifies :restart, 'service[jenkins]', :immediately
+end
+
+jenkins_plugin 'git' do   #install git plugin
+  #action :uninstall
+  notifies :restart, 'service[jenkins]', :immediately
+end
+
+jenkins_plugin 'artifactory' do   #install artifactory plugin
+  #action :uninstall
+  notifies :restart, 'service[jenkins]', :immediately
+end
 
 directory "/var/lib/jenkins/.ssh"  do
   mode 00755
@@ -28,11 +44,17 @@ end
 privkey = File.read("/mnt/shared/keys/id_rsa")
 
 jenkins_private_key_credentials 'jenkins' do
-  id '1ea894fc-d69e-4f2e-ba27-30bf66f774b3'  # generated this once upon a time. recommend you generate a new one.
+  id '1ea894fc-d69e-4f2e-ba27-30bf66f774b3'  #  use Linux `uuidgen` command. recommend you generate a new one.
   description 'SSH key'
   private_key privkey
-
 end
+
+
+#jenkins_password_credentials 'jenkins' do
+#  id 'f2361e6b-b8e0-4b2b-890b-82e85bc1a59f'
+#  description 'PW'
+#  password    'test'
+#end
 
 # create slave
 jenkins_ssh_slave 'brazos1' do
@@ -53,15 +75,16 @@ end
 #  action :uninstall
 #end
 
-jenkins_plugin 'git' do   #install git plugin
-  #action :uninstall
-  notifies :restart, 'service[jenkins]', :immediately
-end
-
-jenkins_plugin 'artifactory' do   #install artifactory plugin
-  #action :uninstall
-  notifies :restart, 'service[jenkins]', :immediately
-end
+# moved plugin install up
+#jenkins_plugin 'git' do   #install git plugin
+#  #action :uninstall
+#  notifies :restart, 'service[jenkins]', :immediately
+#end
+#
+#jenkins_plugin 'artifactory' do   #install artifactory plugin
+#  #action :uninstall
+#  notifies :restart, 'service[jenkins]', :immediately
+#end
 
 
 cookbook_file "hijoConfig.xml" do    # downloaded from manually defined job. todo: convert this to erb file
@@ -93,5 +116,6 @@ file_map.each do | fileName, pathName |
 end
 
 jenkins_command 'safe-restart'
+
 
 # project name hijoInit

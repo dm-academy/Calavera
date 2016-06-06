@@ -12,7 +12,9 @@
 # downloading and reinstallilng is not that costly
 
 ENV['ANT_VERSION'] = "apache-ant-1.9.7"
-ENV['ANT_MIRROR'] = "http://mirror.nexcess.net/apache//ant/binaries/"
+# mirrors are flakey
+ENV['ANT_MIRROR'] = "http://apache.mirrors.hoobly.com//ant/binaries/"
+#ENV['ANT_MIRROR'] = "http://mirror.nexcess.net/apache//ant/binaries/"
 
 #execute echo "installing Ant"
 remote_file "/opt/" + ENV['ANT_VERSION'] + "-bin.tar.gz" do

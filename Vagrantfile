@@ -189,7 +189,8 @@ Vagrant.configure(2) do |config|
       chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
-      chef.add_recipe               "jenkins::master"
+      #chef.add_recipe               "jenkins::master"
+      chef.add_recipe               "localJenkins::default"
       chef.add_recipe               "hombros::default"
     end
 
