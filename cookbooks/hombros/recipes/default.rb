@@ -2,10 +2,10 @@
 ## set up Jenkins server
 #
 
-jenkins_plugin 'greenballs' do   #install git plugin
-  #action :uninstall
-  notifies :restart, 'service[jenkins]', :immediately
-end
+#jenkins_plugin 'greenballs' do   #install git plugin
+#  #action :uninstall
+#  notifies :restart, 'service[jenkins]', :immediately
+#end
 
 jenkins_plugin 'git' do   #install git plugin
   #action :uninstall
