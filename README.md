@@ -4,7 +4,7 @@ Calavera
 --------------------
 *Status 6 June 2016*
 
-Calavera is currenlty broken due to Jenkins 2.0 issues with the main Chef community cookbook. Working on forcing an earlier version; even this is problematic. See https://github.com/chef-cookbooks/jenkins/issues/466 & related. May have to wait until https://github.com/chef-cookbooks/jenkins/pull/471 is merged. Monitoring... 
+Calavera is currently broken on the manos1 vm due to Tomcat issues. 
 
 -------------------
 
