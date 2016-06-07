@@ -4,7 +4,7 @@ Calavera
 --------------------
 *Status 6 June 2016*
 
-Calavera is currently broken on the manos1 vm due to Tomcat issues. 
+Calavera fixes tested this AM and working on Mac OS. Currently testing on Windows and Ubuntu. 
 
 -------------------
 
