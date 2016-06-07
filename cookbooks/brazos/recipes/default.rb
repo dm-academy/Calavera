@@ -14,9 +14,8 @@ directory "/home/jenkins/.ssh"  do
   recursive true
 end
 
+
 execute 'duplicate keys' do
-  #cwd '/home/vagrant/.ssh' # somehow out of synch in templated version, suspect startup.sh issue
-  #command 'cp id_rsa* /home/jenkins/.ssh'   # includes authorized hosts
   command 'cp /mnt/shared/keys/* /home/jenkins/.ssh'  # this should be the source - fixes part of problem
 end
 
@@ -30,9 +29,6 @@ execute 'correct Jenkins directory ownership' do
             chgrp -R jenkins /home/jenkins'
 end
 
-#execute 'correct tomcat webapps permissions' do
-#  command   'chown -R jenkins /var/lib/tomcat6/webapps &&     \
-#             chgrp -R jenkins /var/lib/tomcat6/webapps'    #
-#end
 
 # when rebuilding brazos it would be nice to let Jenkins know, if Jenkins is running.
+# slave relationship can be manually re-started from web console.

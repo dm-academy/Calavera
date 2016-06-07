@@ -1,18 +1,22 @@
 {
-  "name": "vagrant-080cbf9f",
+  "name": "vagrant-3445df18",
   "override": {
-    "java": {
-      "install_flavor": "openjdk",
-      "jdk_version": "7",
-      "oracle": {
-        "accept_oracle_download_terms": true
+    "jenkins": {
+      "master": {
+        "version": "1.651.2"
       }
     }
   },
   "normal": {
     "tags": [
 
-    ]
+    ],
+    "jenkins": {
+      "master": {
+        "repository": "http://pkg.jenkins-ci.org/debian-stable",
+        "repository_key": "http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key"
+      }
+    }
   },
   "default": {
     "curl": {
@@ -241,243 +245,53 @@
         "install_suggests": false
       }
     },
-    "java": {
-      "jdk_version": "6",
-      "arch": "x86_64",
-      "openjdk_packages": [
-        "openjdk-7-jdk",
-        "openjdk-7-jre-headless"
-      ],
-      "openjdk_version": null,
-      "accept_license_agreement": false,
-      "set_default": true,
-      "alternatives_priority": 1062,
-      "set_etc_environment": false,
-      "use_alt_suffix": true,
-      "reset_alternatives": true,
-      "ark_retries": 0,
-      "ark_retry_delay": 2,
-      "ark_timeout": 600,
-      "ark_download_timeout": 600,
-      "install_flavor": "openjdk",
-      "oracle": {
-        "accept_oracle_download_terms": false,
-        "jce": {
-          "enabled": false,
-          "8": {
-            "url": "http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip",
-            "checksum": "f3020a3922efd6626c2fff45695d527f34a8020e938a49292561f18ad1320b59"
-          },
-          "7": {
-            "url": "http://download.oracle.com/otn-pub/java/jce/7/UnlimitedJCEPolicyJDK7.zip",
-            "checksum": "7a8d790e7bd9c2f82a83baddfae765797a4a56ea603c9150c87b7cdb7800194d"
-          },
-          "6": {
-            "url": "http://download.oracle.com/otn-pub/java/jce_policy/6/jce_policy-6.zip",
-            "checksum": "d0c2258c3364120b4dbf7dd1655c967eee7057ac6ae6334b5ea8ceb8bafb9262"
-          },
-          "home": "/opt/java_jce"
-        }
-      },
-      "jdk": {
-        "6": {
-          "bin_cmds": [
-            "appletviewer",
-            "apt",
-            "ControlPanel",
-            "extcheck",
-            "HtmlConverter",
-            "idlj",
-            "jar",
-            "jarsigner",
-            "java",
-            "javac",
-            "javadoc",
-            "javah",
-            "javap",
-            "javaws",
-            "jconsole",
-            "jcontrol",
-            "jdb",
-            "jhat",
-            "jinfo",
-            "jmap",
-            "jps",
-            "jrunscript",
-            "jsadebugd",
-            "jstack",
-            "jstat",
-            "jstatd",
-            "jvisualvm",
-            "keytool",
-            "native2ascii",
-            "orbd",
-            "pack200",
-            "policytool",
-            "rmic",
-            "rmid",
-            "rmiregistry",
-            "schemagen",
-            "serialver",
-            "servertool",
-            "tnameserv",
-            "unpack200",
-            "wsgen",
-            "wsimport",
-            "xjc"
-          ],
-          "x86_64": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/6u45-b06/jdk-6u45-linux-x64.bin",
-            "checksum": "6b493aeab16c940cae9e3d07ad2a5c5684fb49cf06c5d44c400c7993db0d12e8"
-          },
-          "i586": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/6u45-b06/jdk-6u45-linux-i586.bin",
-            "checksum": "d53b5a2518d80e1d95565f0adda54eee229dc5f4a1d1a3c2f7bf5045b168a357"
-          }
-        },
-        "7": {
-          "bin_cmds": [
-            "appletviewer",
-            "apt",
-            "ControlPanel",
-            "extcheck",
-            "idlj",
-            "jar",
-            "jarsigner",
-            "java",
-            "javac",
-            "javadoc",
-            "javafxpackager",
-            "javah",
-            "javap",
-            "javaws",
-            "jcmd",
-            "jconsole",
-            "jcontrol",
-            "jdb",
-            "jhat",
-            "jinfo",
-            "jmap",
-            "jps",
-            "jrunscript",
-            "jsadebugd",
-            "jstack",
-            "jstat",
-            "jstatd",
-            "jvisualvm",
-            "keytool",
-            "native2ascii",
-            "orbd",
-            "pack200",
-            "policytool",
-            "rmic",
-            "rmid",
-            "rmiregistry",
-            "schemagen",
-            "serialver",
-            "servertool",
-            "tnameserv",
-            "unpack200",
-            "wsgen",
-            "wsimport",
-            "xjc"
-          ],
-          "x86_64": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-x64.tar.gz",
-            "checksum": "6f1f81030a34f7a9c987f8b68a24d139"
-          },
-          "i586": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/7u75-b13/jdk-7u75-linux-i586.tar.gz",
-            "checksum": "e4371a4fddc049eca3bfef293d812b8e"
-          }
-        },
-        "8": {
-          "bin_cmds": [
-            "appletviewer",
-            "apt",
-            "ControlPanel",
-            "extcheck",
-            "idlj",
-            "jar",
-            "jarsigner",
-            "java",
-            "javac",
-            "javadoc",
-            "javafxpackager",
-            "javah",
-            "javap",
-            "javaws",
-            "jcmd",
-            "jconsole",
-            "jcontrol",
-            "jdb",
-            "jdeps",
-            "jhat",
-            "jinfo",
-            "jjs",
-            "jmap",
-            "jmc",
-            "jps",
-            "jrunscript",
-            "jsadebugd",
-            "jstack",
-            "jstat",
-            "jstatd",
-            "jvisualvm",
-            "keytool",
-            "native2ascii",
-            "orbd",
-            "pack200",
-            "policytool",
-            "rmic",
-            "rmid",
-            "rmiregistry",
-            "schemagen",
-            "serialver",
-            "servertool",
-            "tnameserv",
-            "unpack200",
-            "wsgen",
-            "wsimport",
-            "xjc"
-          ],
-          "x86_64": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-x64.tar.gz",
-            "checksum": "196880a42c45ec9ab2f00868d69619c0"
-          },
-          "i586": {
-            "url": "http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jdk-8u65-linux-i586.tar.gz",
-            "checksum": "7b715e1fe2316c94aaa968b23ce49c9a"
-          }
-        }
-      },
-      "java_home": "/usr/lib/jvm/java-7-openjdk-amd64"
+    "packagecloud": {
+      "base_repo_path": "/install/repositories/",
+      "gpg_key_path": "/gpgkey",
+      "hostname_override": null,
+      "default_type": "deb"
     },
-    "ark": {
-      "apache_mirror": "http://apache.mirrors.tds.net",
-      "prefix_root": "/usr/local",
-      "prefix_bin": "/usr/local/bin",
-      "prefix_home": "/usr/local",
-      "tar": "/bin/tar",
-      "package_dependencies": [
-        "libtool",
-        "autoconf",
-        "make",
-        "unzip",
-        "rsync",
-        "gcc",
-        "autogen",
-        "shtool",
-        "pkg-config"
-      ]
+    "runit": {
+      "sv_bin": "/usr/bin/sv",
+      "chpst_bin": "/usr/bin/chpst",
+      "service_dir": "/etc/service",
+      "sv_dir": "/etc/sv",
+      "lsb_init_dir": "/etc/init.d",
+      "executable": "/sbin/runit",
+      "start": "start runsvdir",
+      "stop": "stop runsvdir",
+      "reload": "reload runsvdir"
     },
-    "ant": {
-      "version": "1.9.7",
-      "home": "/usr/local/ant",
-      "url": "http://archive.apache.org/dist/ant/binaries/",
-      "install_method": "package",
-      "libraries": {
-        "ant-contrib": "http://search.maven.org/remotecontent?filepath=ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3.jar"
+    "jenkins": {
+      "java": "/usr/lib/jvm/java-7-openjdk-amd64/bin/java",
+      "executor": {
+        "timeout": 60,
+        "private_key": null,
+        "proxy": null
+      },
+      "master": {
+        "install_method": "package",
+        "version": null,
+        "mirror": "http://mirrors.jenkins-ci.org",
+        "source": "http://mirrors.jenkins-ci.org/war/latest/jenkins.war",
+        "checksum": null,
+        "jvm_options": null,
+        "jenkins_args": null,
+        "user": "jenkins",
+        "group": "jenkins",
+        "use_system_accounts": true,
+        "host": "localhost",
+        "listen_address": "0.0.0.0",
+        "port": 8080,
+        "endpoint": "http://localhost:8080",
+        "home": "/var/lib/jenkins",
+        "log_directory": "/var/log/jenkins",
+        "runit": {
+          "sv_timeout": 7
+        },
+        "repository": "http://pkg.jenkins-ci.org/debian",
+        "repository_key": "http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key",
+        "repository_keyserver": null
       }
     }
   },
@@ -494,15 +308,15 @@
           "size": "49152",
           "refcount": "6"
         },
+        "ppdev": {
+          "size": "20480",
+          "refcount": "0"
+        },
         "dm_crypt": {
           "size": "28672",
           "refcount": "0"
         },
         "joydev": {
-          "size": "20480",
-          "refcount": "0"
-        },
-        "ppdev": {
           "size": "20480",
           "refcount": "0"
         },
@@ -546,6 +360,10 @@
           "size": "49152",
           "refcount": "1"
         },
+        "input_leds": {
+          "size": "16384",
+          "refcount": "0"
+        },
         "ttm": {
           "size": "94208",
           "refcount": "1"
@@ -554,61 +372,17 @@
           "size": "126976",
           "refcount": "1"
         },
-        "nfsd": {
-          "size": "315392",
-          "refcount": "2"
-        },
-        "auth_rpcgss": {
-          "size": "57344",
-          "refcount": "1"
-        },
-        "input_leds": {
-          "size": "16384",
-          "refcount": "0"
-        },
-        "nfs_acl": {
-          "size": "16384",
-          "refcount": "1"
-        },
         "serio_raw": {
           "size": "16384",
           "refcount": "0"
-        },
-        "nfs": {
-          "size": "249856",
-          "refcount": "0"
-        },
-        "lockd": {
-          "size": "94208",
-          "refcount": "2"
-        },
-        "grace": {
-          "size": "16384",
-          "refcount": "2"
-        },
-        "sunrpc": {
-          "size": "331776",
-          "refcount": "6"
         },
         "drm": {
           "size": "360448",
           "refcount": "4"
         },
-        "fscache": {
-          "size": "65536",
-          "refcount": "1"
-        },
         "syscopyarea": {
           "size": "16384",
           "refcount": "1"
-        },
-        "vboxguest": {
-          "size": "274432",
-          "refcount": "3"
-        },
-        "i2c_piix4": {
-          "size": "24576",
-          "refcount": "0"
         },
         "sysfillrect": {
           "size": "16384",
@@ -622,13 +396,53 @@
           "size": "16384",
           "refcount": "0"
         },
+        "mac_hid": {
+          "size": "16384",
+          "refcount": "0"
+        },
         "parport_pc": {
           "size": "32768",
           "refcount": "0"
         },
-        "mac_hid": {
-          "size": "16384",
+        "i2c_piix4": {
+          "size": "24576",
           "refcount": "0"
+        },
+        "nfsd": {
+          "size": "315392",
+          "refcount": "2"
+        },
+        "auth_rpcgss": {
+          "size": "57344",
+          "refcount": "1"
+        },
+        "nfs_acl": {
+          "size": "16384",
+          "refcount": "1"
+        },
+        "nfs": {
+          "size": "249856",
+          "refcount": "0"
+        },
+        "vboxguest": {
+          "size": "274432",
+          "refcount": "3"
+        },
+        "lockd": {
+          "size": "94208",
+          "refcount": "2"
+        },
+        "grace": {
+          "size": "16384",
+          "refcount": "2"
+        },
+        "sunrpc": {
+          "size": "331776",
+          "refcount": "6"
+        },
+        "fscache": {
+          "size": "65536",
+          "refcount": "1"
         },
         "lp": {
           "size": "20480",
@@ -638,13 +452,13 @@
           "size": "49152",
           "refcount": "3"
         },
-        "psmouse": {
-          "size": "126976",
-          "refcount": "0"
-        },
         "ahci": {
           "size": "36864",
           "refcount": "2"
+        },
+        "psmouse": {
+          "size": "126976",
+          "refcount": "0"
         },
         "libahci": {
           "size": "32768",
@@ -770,8 +584,8 @@
         "percent_used": "1%",
         "mount": "/run",
         "total_inodes": "62596",
-        "inodes_used": "373",
-        "inodes_available": "62223",
+        "inodes_used": "375",
+        "inodes_available": "62221",
         "inodes_percent_used": "1%",
         "fs_type": "tmpfs",
         "mount_options": [
@@ -784,13 +598,13 @@
       },
       "/dev/dm-0": {
         "kb_size": "40387156",
-        "kb_used": "2174812",
-        "kb_available": "36137720",
+        "kb_used": "2084004",
+        "kb_available": "36228528",
         "percent_used": "6%",
         "mount": "/",
         "total_inodes": "2575440",
-        "inodes_used": "95287",
-        "inodes_available": "2480153",
+        "inodes_used": "92192",
+        "inodes_available": "2483248",
         "inodes_percent_used": "4%"
       },
       "none": {
@@ -826,9 +640,9 @@
       },
       "mnt_shared": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
         "mount": "/mnt/shared",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -841,12 +655,12 @@
           "rw"
         ]
       },
-      "home_brazos1": {
+      "home_hombros1": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
-        "mount": "/home/brazos1",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
+        "mount": "/home/hombros1",
         "total_inodes": "1000",
         "inodes_used": "0",
         "inodes_available": "1000",
@@ -860,9 +674,9 @@
       },
       "v-csr-3dae78eb2": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
         "mount": "/tmp/vagrant-chef/8963e5bec0fecd51fb76d63c21737fe9/roles",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -877,9 +691,9 @@
       },
       "v-csn-601a658e0": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
         "mount": "/tmp/vagrant-chef/7da5e10ddfe0bde589e61b2d8979c2ba/nodes",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -894,9 +708,9 @@
       },
       "v-csdb-2b4b6c9ce": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
         "mount": "/tmp/vagrant-chef/3887ae4c0d656454733f89f6b850f054/data_bags",
         "total_inodes": "1000",
         "inodes_used": "0",
@@ -909,12 +723,12 @@
           "rw"
         ]
       },
-      "v-csc-50a9df74f": {
+      "v-csc-9896d86fd": {
         "kb_size": "487712924",
-        "kb_used": "439160400",
-        "kb_available": "48552524",
-        "percent_used": "91%",
-        "mount": "/tmp/vagrant-chef/2f922469283e9db7022689e3e15bc852/cookbooks",
+        "kb_used": "435852672",
+        "kb_available": "51860252",
+        "percent_used": "90%",
+        "mount": "/tmp/vagrant-chef/508b4e44746cea1ac982816c36cc9118/cookbooks",
         "total_inodes": "1000",
         "inodes_used": "0",
         "inodes_available": "1000",
@@ -964,6 +778,14 @@
           "nosuid",
           "gid=5",
           "mode=0620"
+        ]
+      },
+      "tracefs": {
+        "mount": "/var/lib/ureadahead/debugfs/tracing",
+        "fs_type": "tracefs",
+        "mount_options": [
+          "rw",
+          "relatime"
         ]
       },
       "rpc_pipefs": {
@@ -1085,17 +907,17 @@
           ],
           "encapsulation": "Ethernet",
           "addresses": {
-            "08:00:27:D3:7F:89": {
+            "08:00:27:89:D9:BC": {
               "family": "lladdr"
             },
-            "10.1.0.11": {
+            "10.1.0.13": {
               "family": "inet",
               "prefixlen": "24",
               "netmask": "255.255.255.0",
               "broadcast": "10.1.0.255",
               "scope": "Global"
             },
-            "fe80::a00:27ff:fed3:7f89": {
+            "fe80::a00:27ff:fe89:d9bc": {
               "family": "inet6",
               "prefixlen": "64",
               "scope": "Link"
@@ -1108,7 +930,7 @@
               "family": "inet",
               "scope": "link",
               "proto": "kernel",
-              "src": "10.1.0.11"
+              "src": "10.1.0.13"
             },
             {
               "destination": "fe80::/64",
@@ -1127,15 +949,15 @@
         "interfaces": {
           "lo": {
             "rx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "1184",
+              "packets": "16",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
             },
             "tx": {
-              "bytes": "0",
-              "packets": "0",
+              "bytes": "1184",
+              "packets": "16",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
@@ -1145,16 +967,16 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "161095",
-              "packets": "1200",
+              "bytes": "187761",
+              "packets": "1393",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "192583",
-              "packets": "1888",
+              "bytes": "219461",
+              "packets": "2160",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -1163,16 +985,16 @@
           "eth1": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "1526",
-              "packets": "17",
+              "bytes": "1596",
+              "packets": "18",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "297",
-              "packets": "1",
+              "bytes": "0",
+              "packets": "0",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -1183,7 +1005,7 @@
     },
     "ipaddress": "10.0.2.15",
     "macaddress": "08:00:27:F8:94:CD",
-    "ip6address": "fe80::a00:27ff:fed3:7f89",
+    "ip6address": "fe80::a00:27ff:fe89:d9bc",
     "filesystem2": {
       "by_device": {
         "udev": {
@@ -1210,8 +1032,8 @@
           "kb_available": "49652",
           "percent_used": "1%",
           "total_inodes": "62596",
-          "inodes_used": "373",
-          "inodes_available": "62223",
+          "inodes_used": "375",
+          "inodes_available": "62221",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1227,12 +1049,12 @@
         },
         "/dev/dm-0": {
           "kb_size": "40387156",
-          "kb_used": "2174812",
-          "kb_available": "36137720",
+          "kb_used": "2084004",
+          "kb_available": "36228528",
           "percent_used": "6%",
           "total_inodes": "2575440",
-          "inodes_used": "95287",
-          "inodes_available": "2480153",
+          "inodes_used": "92192",
+          "inodes_available": "2483248",
           "inodes_percent_used": "4%",
           "mounts": [
             "/"
@@ -1247,9 +1069,10 @@
           "inodes_used": "2",
           "inodes_available": "62594",
           "inodes_percent_used": "1%",
-          "fs_type": "pstore",
+          "fs_type": "debugfs",
           "mount_options": [
-            "rw"
+            "rw",
+            "relatime"
           ],
           "mounts": [
             "/sys/fs/cgroup",
@@ -1259,7 +1082,8 @@
             "/sys/fs/fuse/connections",
             "/sys/kernel/debug",
             "/sys/kernel/security",
-            "/sys/fs/pstore"
+            "/sys/fs/pstore",
+            "/var/lib/ureadahead/debugfs"
           ]
         },
         "/dev/sda1": {
@@ -1282,9 +1106,9 @@
         },
         "mnt_shared": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1299,11 +1123,11 @@
             "/mnt/shared"
           ]
         },
-        "home_brazos1": {
+        "home_hombros1": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1315,14 +1139,14 @@
             "rw"
           ],
           "mounts": [
-            "/home/brazos1"
+            "/home/hombros1"
           ]
         },
         "v-csr-3dae78eb2": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1339,9 +1163,9 @@
         },
         "v-csn-601a658e0": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1358,9 +1182,9 @@
         },
         "v-csdb-2b4b6c9ce": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1375,11 +1199,11 @@
             "/tmp/vagrant-chef/3887ae4c0d656454733f89f6b850f054/data_bags"
           ]
         },
-        "v-csc-50a9df74f": {
+        "v-csc-9896d86fd": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1391,7 +1215,7 @@
             "rw"
           ],
           "mounts": [
-            "/tmp/vagrant-chef/2f922469283e9db7022689e3e15bc852/cookbooks"
+            "/tmp/vagrant-chef/508b4e44746cea1ac982816c36cc9118/cookbooks"
           ]
         },
         "/dev/mapper/vagrant--vg-root": {
@@ -1440,6 +1264,16 @@
           ],
           "mounts": [
             "/dev/pts"
+          ]
+        },
+        "tracefs": {
+          "fs_type": "tracefs",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ],
+          "mounts": [
+            "/var/lib/ureadahead/debugfs/tracing"
           ]
         },
         "rpc_pipefs": {
@@ -1515,8 +1349,8 @@
           "kb_available": "49652",
           "percent_used": "1%",
           "total_inodes": "62596",
-          "inodes_used": "373",
-          "inodes_available": "62223",
+          "inodes_used": "375",
+          "inodes_available": "62221",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1532,12 +1366,12 @@
         },
         "/": {
           "kb_size": "40387156",
-          "kb_used": "2174812",
-          "kb_available": "36137720",
+          "kb_used": "2084004",
+          "kb_available": "36228528",
           "percent_used": "6%",
           "total_inodes": "2575440",
-          "inodes_used": "95287",
-          "inodes_available": "2480153",
+          "inodes_used": "92192",
+          "inodes_available": "2483248",
           "inodes_percent_used": "4%",
           "devices": [
             "/dev/dm-0",
@@ -1569,12 +1403,12 @@
         },
         "/run/lock": {
           "kb_size": "5120",
-          "kb_used": "4",
-          "kb_available": "5116",
+          "kb_used": "16",
+          "kb_available": "5104",
           "percent_used": "1%",
           "total_inodes": "62596",
-          "inodes_used": "3",
-          "inodes_available": "62593",
+          "inodes_used": "6",
+          "inodes_available": "62590",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1649,9 +1483,9 @@
         },
         "/mnt/shared": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1666,11 +1500,11 @@
             "mnt_shared"
           ]
         },
-        "/home/brazos1": {
+        "/home/hombros1": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1682,14 +1516,14 @@
             "rw"
           ],
           "devices": [
-            "home_brazos1"
+            "home_hombros1"
           ]
         },
         "/tmp/vagrant-chef/8963e5bec0fecd51fb76d63c21737fe9/roles": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1706,9 +1540,9 @@
         },
         "/tmp/vagrant-chef/7da5e10ddfe0bde589e61b2d8979c2ba/nodes": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1725,9 +1559,9 @@
         },
         "/tmp/vagrant-chef/3887ae4c0d656454733f89f6b850f054/data_bags": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1742,11 +1576,11 @@
             "v-csdb-2b4b6c9ce"
           ]
         },
-        "/tmp/vagrant-chef/2f922469283e9db7022689e3e15bc852/cookbooks": {
+        "/tmp/vagrant-chef/508b4e44746cea1ac982816c36cc9118/cookbooks": {
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -1758,7 +1592,7 @@
             "rw"
           ],
           "devices": [
-            "v-csc-50a9df74f"
+            "v-csc-9896d86fd"
           ]
         },
         "/proc": {
@@ -1834,6 +1668,16 @@
             "none"
           ]
         },
+        "/var/lib/ureadahead/debugfs/tracing": {
+          "fs_type": "tracefs",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ],
+          "devices": [
+            "tracefs"
+          ]
+        },
         "/run/rpc_pipefs": {
           "fs_type": "rpc_pipefs",
           "mount_options": [
@@ -1855,6 +1699,16 @@
           ],
           "devices": [
             "systemd"
+          ]
+        },
+        "/var/lib/ureadahead/debugfs": {
+          "fs_type": "debugfs",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ],
+          "devices": [
+            "none"
           ]
         }
       },
@@ -1884,8 +1738,8 @@
           "percent_used": "1%",
           "mount": "/run",
           "total_inodes": "62596",
-          "inodes_used": "373",
-          "inodes_available": "62223",
+          "inodes_used": "375",
+          "inodes_available": "62221",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1899,13 +1753,13 @@
         "/dev/dm-0,/": {
           "device": "/dev/dm-0",
           "kb_size": "40387156",
-          "kb_used": "2174812",
-          "kb_available": "36137720",
+          "kb_used": "2084004",
+          "kb_available": "36228528",
           "percent_used": "6%",
           "mount": "/",
           "total_inodes": "2575440",
-          "inodes_used": "95287",
-          "inodes_available": "2480153",
+          "inodes_used": "92192",
+          "inodes_available": "2483248",
           "inodes_percent_used": "4%"
         },
         "none,/sys/fs/cgroup": {
@@ -1927,13 +1781,13 @@
         "none,/run/lock": {
           "device": "none",
           "kb_size": "5120",
-          "kb_used": "4",
-          "kb_available": "5116",
+          "kb_used": "16",
+          "kb_available": "5104",
           "percent_used": "1%",
           "mount": "/run/lock",
           "total_inodes": "62596",
-          "inodes_used": "3",
-          "inodes_available": "62593",
+          "inodes_used": "6",
+          "inodes_available": "62590",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -2003,9 +1857,9 @@
         "mnt_shared,/mnt/shared": {
           "device": "mnt_shared",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "mount": "/mnt/shared",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2018,13 +1872,13 @@
             "rw"
           ]
         },
-        "home_brazos1,/home/brazos1": {
-          "device": "home_brazos1",
+        "home_hombros1,/home/hombros1": {
+          "device": "home_hombros1",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
-          "mount": "/home/brazos1",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
+          "mount": "/home/hombros1",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2039,9 +1893,9 @@
         "v-csr-3dae78eb2,/tmp/vagrant-chef/8963e5bec0fecd51fb76d63c21737fe9/roles": {
           "device": "v-csr-3dae78eb2",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "mount": "/tmp/vagrant-chef/8963e5bec0fecd51fb76d63c21737fe9/roles",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2057,9 +1911,9 @@
         "v-csn-601a658e0,/tmp/vagrant-chef/7da5e10ddfe0bde589e61b2d8979c2ba/nodes": {
           "device": "v-csn-601a658e0",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "mount": "/tmp/vagrant-chef/7da5e10ddfe0bde589e61b2d8979c2ba/nodes",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2075,9 +1929,9 @@
         "v-csdb-2b4b6c9ce,/tmp/vagrant-chef/3887ae4c0d656454733f89f6b850f054/data_bags": {
           "device": "v-csdb-2b4b6c9ce",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
           "mount": "/tmp/vagrant-chef/3887ae4c0d656454733f89f6b850f054/data_bags",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -2090,13 +1944,13 @@
             "rw"
           ]
         },
-        "v-csc-50a9df74f,/tmp/vagrant-chef/2f922469283e9db7022689e3e15bc852/cookbooks": {
-          "device": "v-csc-50a9df74f",
+        "v-csc-9896d86fd,/tmp/vagrant-chef/508b4e44746cea1ac982816c36cc9118/cookbooks": {
+          "device": "v-csc-9896d86fd",
           "kb_size": "487712924",
-          "kb_used": "439160400",
-          "kb_available": "48552524",
-          "percent_used": "91%",
-          "mount": "/tmp/vagrant-chef/2f922469283e9db7022689e3e15bc852/cookbooks",
+          "kb_used": "435852672",
+          "kb_available": "51860252",
+          "percent_used": "90%",
+          "mount": "/tmp/vagrant-chef/508b4e44746cea1ac982816c36cc9118/cookbooks",
           "total_inodes": "1000",
           "inodes_used": "0",
           "inodes_available": "1000",
@@ -2184,6 +2038,15 @@
             "rw"
           ]
         },
+        "tracefs,/var/lib/ureadahead/debugfs/tracing": {
+          "device": "tracefs",
+          "mount": "/var/lib/ureadahead/debugfs/tracing",
+          "fs_type": "tracefs",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ]
+        },
         "rpc_pipefs,/run/rpc_pipefs": {
           "device": "rpc_pipefs",
           "mount": "/run/rpc_pipefs",
@@ -2220,6 +2083,15 @@
           "device": "/dev/mapper/vagrant--vg-swap_1",
           "fs_type": "swap",
           "uuid": "e20433cd-c013-4d7c-9126-43d6e33ccc85"
+        },
+        "none,/var/lib/ureadahead/debugfs": {
+          "device": "none",
+          "mount": "/var/lib/ureadahead/debugfs",
+          "fs_type": "debugfs",
+          "mount_options": [
+            "rw",
+            "relatime"
+          ]
         }
       }
     },
@@ -2230,25 +2102,25 @@
         "free": "524284kB"
       },
       "total": "500772kB",
-      "free": "248652kB",
-      "buffers": "23080kB",
-      "cached": "77784kB",
-      "active": "149648kB",
-      "inactive": "62544kB",
-      "dirty": "112kB",
+      "free": "209692kB",
+      "buffers": "16176kB",
+      "cached": "113656kB",
+      "active": "158344kB",
+      "inactive": "83424kB",
+      "dirty": "2228kB",
       "writeback": "0kB",
-      "anon_pages": "111332kB",
-      "mapped": "18028kB",
-      "slab": "23764kB",
-      "slab_reclaimable": "15256kB",
-      "slab_unreclaim": "8508kB",
-      "page_tables": "3008kB",
+      "anon_pages": "111940kB",
+      "mapped": "17896kB",
+      "slab": "24396kB",
+      "slab_reclaimable": "15724kB",
+      "slab_unreclaim": "8672kB",
+      "page_tables": "3216kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "774668kB",
-      "committed_as": "225780kB",
+      "committed_as": "228072kB",
       "vmalloc_total": "34359738367kB",
-      "vmalloc_used": "19808kB",
+      "vmalloc_used": "19840kB",
       "vmalloc_chunk": "34359705768kB"
     },
     "languages": {
@@ -2339,7 +2211,7 @@
             "Product Name": "VirtualBox",
             "Version": "1.2",
             "Serial Number": "0",
-            "UUID": "BCCFD72B-6A2D-4CF3-A5C6-15FA2D7FE420",
+            "UUID": "1AB4EB56-88FB-4C90-9891-1FBA8A309321",
             "Wake-up Type": "Power Switch",
             "SKU Number": "Not Specified",
             "Family": "Virtual Machine"
@@ -2349,7 +2221,7 @@
         "product_name": "VirtualBox",
         "version": "1.2",
         "serial_number": "0",
-        "uuid": "BCCFD72B-6A2D-4CF3-A5C6-15FA2D7FE420",
+        "uuid": "1AB4EB56-88FB-4C90-9891-1FBA8A309321",
         "wake_up_type": "Power Switch",
         "sku_number": "Not Specified",
         "family": "Virtual Machine"
@@ -2447,9 +2319,9 @@
         "host_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIDhl337Y/kMeNsDphawQ/0iVIKxKhyX+INCt5BNdw8bT"
       }
     },
-    "hostname": "brazos1",
-    "machinename": "brazos1",
-    "fqdn": "brazos1.calavera.biz",
+    "hostname": "hombros1",
+    "machinename": "hombros1",
+    "fqdn": "hombros1.calavera.biz",
     "domain": "calavera.biz",
     "command": {
       "ps": "ps -ef"
@@ -2637,13 +2509,6 @@
           "uid": 105,
           "shell": "/bin/false",
           "gecos": "colord colour management daemon,,,"
-        },
-        "jenkins": {
-          "dir": "/home/jenkins",
-          "gid": 1000,
-          "uid": 1000,
-          "shell": "",
-          "gecos": ""
         }
       },
       "group": {
@@ -2965,12 +2830,6 @@
           "members": [
 
           ]
-        },
-        "jenkins": {
-          "gid": 1000,
-          "members": [
-
-          ]
         }
       }
     },
@@ -3223,12 +3082,6 @@
       },
       "gir1.2-glib-2.0": {
         "version": "1.40.0-1ubuntu0.2"
-      },
-      "git": {
-        "version": "1:1.9.1-1ubuntu0.3"
-      },
-      "git-man": {
-        "version": "1:1.9.1-1ubuntu0.3"
       },
       "gnupg": {
         "version": "1.4.16-1ubuntu2.3"
@@ -3592,9 +3445,6 @@
       },
       "libept1.4.12:amd64": {
         "version": "1.0.12"
-      },
-      "liberror-perl": {
-        "version": "0.17-1.1"
       },
       "libestr0": {
         "version": "0.1.9-0ubuntu2"
@@ -4824,10 +4674,10 @@
         "version": "1:1.2.8.dfsg-1ubuntu1"
       }
     },
-    "uptime_seconds": 30,
-    "uptime": "30 seconds",
-    "idletime_seconds": 14,
-    "idletime": "14 seconds",
+    "uptime_seconds": 35,
+    "uptime": "35 seconds",
+    "idletime_seconds": 9,
+    "idletime": "09 seconds",
     "chef_packages": {
       "chef": {
         "version": "12.11.18",
@@ -4995,31 +4845,22 @@
       }
     },
     "init_package": "init",
-    "ohai_time": 1465253839.015038,
+    "ohai_time": 1465308587.9820485,
     "recipes": [
       "shared::_apt-update",
       "git::default",
-      "localAnt::default",
-      "shared::_junit",
-      "java7::default",
-      "localTomcat::v8",
-      "brazos::default",
+      "localJenkins::default",
+      "hombros::default",
       "git::package",
-      "java::default",
-      "java::set_attributes_from_version",
-      "java::openjdk",
-      "apt::default",
-      "java::default_java_symlink",
-      "java::set_java_home"
+      "jenkins::master",
+      "jenkins::_master_package",
+      "apt::default"
     ],
     "expanded_run_list": [
       "shared::_apt-update",
       "git::default",
-      "localAnt::default",
-      "shared::_junit",
-      "java7::default",
-      "localTomcat::v8",
-      "brazos::default"
+      "localJenkins::default",
+      "hombros::default"
     ],
     "roles": [
 
@@ -5031,16 +4872,10 @@
       "git": {
         "version": "4.5.0"
       },
-      "localAnt": {
+      "localJenkins": {
         "version": "0.3.0"
       },
-      "java7": {
-        "version": "0.3.0"
-      },
-      "localTomcat": {
-        "version": "0.3.0"
-      },
-      "brazos": {
+      "hombros": {
         "version": "0.3.0"
       },
       "curl": {
@@ -5058,14 +4893,11 @@
       "yum-epel": {
         "version": "0.7.0"
       },
-      "java": {
-        "version": "1.39.0"
-      },
       "tomcat": {
         "version": "2.1.3"
       },
-      "ant": {
-        "version": "1.0.3"
+      "jenkins": {
+        "version": "2.5.0"
       },
       "seven_zip": {
         "version": "2.0.1"
@@ -5085,18 +4917,18 @@
       "apt": {
         "version": "2.9.2"
       },
-      "ark": {
-        "version": "1.1.0"
+      "runit": {
+        "version": "1.7.8"
+      },
+      "packagecloud": {
+        "version": "0.2.2"
       }
     }
   },
   "run_list": [
     "recipe[shared::_apt-update]",
     "recipe[git::default]",
-    "recipe[localAnt::default]",
-    "recipe[shared::_junit]",
-    "recipe[java7::default]",
-    "recipe[localTomcat::v8]",
-    "recipe[brazos::default]"
+    "recipe[localJenkins::default]",
+    "recipe[hombros::default]"
   ]
 }

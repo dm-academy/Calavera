@@ -54,7 +54,7 @@ execute 'correct dev directory permissions' do
 end
 
 execute 'correct tomcat webapps permissions' do
-  command   'chown -R vagrant /var/lib/tomcat6/webapps/ && chgrp -R vagrant /var/lib/tomcat6/webapps/'    #
+  command   'chown -R vagrant /var/lib/tomcat8/* && chgrp -R vagrant /var/lib/tomcat8/*'    #
 end
 
 execute 'initial build & dev deploy' do
@@ -109,7 +109,7 @@ execute 'register server' do
   command 'ssh-keyscan cerebro1 >> ~/.ssh/known_hosts'   # prevents interactive dialog
 end
 
-execute 'define remote' do
+execute 'define remote' do   # this really needs a guard. when re-building manos, it errors if cerebro has alredy been built. 
   user "vagrant"
   cwd '/home/hijo'
   environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})

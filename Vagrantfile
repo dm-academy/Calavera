@@ -124,7 +124,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe               "localAnt::default"
       chef.add_recipe               "shared::_junit"
       chef.add_recipe               "java7::default"
-      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "localTomcat::v8"
       chef.add_recipe               "brazos::default"
     end
   end
@@ -199,7 +199,7 @@ Vagrant.configure(2) do |config|
   # Jenkins should appear at http://10.1.0.13:8080
 
 ###############################################################################
-###################################    manos1     ##############################
+###################################    manos1    ##############################
 ###############################################################################
 
   config.vm.define "manos1" do | manos1 |
@@ -224,7 +224,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe               "git::default"
       chef.add_recipe               "localAnt::default"
       chef.add_recipe               "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
-      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "localTomcat::v8"
       chef.add_recipe               "shared::_junit"
       chef.add_recipe               "manos::default"
     end
@@ -232,6 +232,7 @@ Vagrant.configure(2) do |config|
 
   # test: http://10.1.0.14:8080/MainServlet
   # if cerebro is configured:
+  # cd /home/hijo   #make a change 
   # git add .
   # git commit -m "some message"
   # git push origin master
@@ -261,7 +262,7 @@ Vagrant.configure(2) do |config|
       chef.roles_path               = ["./roles/"]      
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "java7::default"
-      chef.add_recipe               "tomcat::default"
+      chef.add_recipe               "localTomcat::v8"
       chef.add_recipe               "cara::default"
     end
   end

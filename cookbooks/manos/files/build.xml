@@ -9,9 +9,9 @@
 	<property name="output" 	value="./target"/>
 	<property name="results" 	value="./target"/>
 	<!--property name="jars" 		value="./jars"/-->
-	<property name="classDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/classes"/>
-	<property name="deploy"		value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/lib"/>
-	<property name="configDeploy"	value="/var/lib/tomcat6/webapps/ROOT/WEB-INF/"/>
+	<property name="classDeploy"	value="/var/lib/tomcat8/webapps/ROOT/WEB-INF/classes"/>
+	<property name="deploy"		value="/var/lib/tomcat8/webapps/ROOT/WEB-INF/lib"/>
+	<property name="configDeploy"	value="/var/lib/tomcat8/webapps/ROOT/WEB-INF/"/>
 
 	<property name="junit.fork" value="true"/>
 
@@ -26,7 +26,7 @@
 	</path>
 	<path id="Calavera.classpath">
 		<pathelement location="."/>
-		<pathelement location="/usr/share/tomcat6/lib/servlet-api.jar"/>
+		<pathelement location="/var/lib/tomcat8/lib/servlet-api.jar"/>
 		<path refid="JUnit 4.libraryclasspath"/>
 	</path>
 
@@ -38,6 +38,7 @@
 	</target>
 
 	<target name="init">
+	        <pathconvert property="classpathProp" refid="Calavera.classpath"/>
 		<echo>
 			Computer name is ${my_env.COMPUTERNAME}
 			Build time is ${time.stamp} UTC (e.g. US CT +6)
@@ -50,6 +51,7 @@
 			Source is ${src}
 			Build target is ${output}
 			Deployment target is ${deploy}
+		        Classpath is ${classpathProp}
 		</echo>
 		<mkdir dir="${output}"/>
 		<mkdir dir="${results}"/>
@@ -100,7 +102,6 @@
 		</copy>
 	</target>
 
-
 	<target name="deploy" >
 		<delete dir="${deploy}"/>
 		<mkdir dir="${deploy}"/>
@@ -129,13 +130,13 @@
 		<!-- could not get preferred syntax to work
 		<exec executable="sh">
 			<arg value = "service"/>
-			<arg value = "tomcat6"/>
-			<arg value = "stop"/>
+			<arg value = "tomcat_ROOT"/>
+			<arg value = "restart"/>
 		</exec-->
 
 		<!-- deprecated -->
-		<exec command="service tomcat6 stop"/>
-		<exec command="service tomcat6 start"/>
+		<exec command="service tomcat_ROOT stop"/>
+		<exec command="service tomcat_ROOT start"/>
 
 	</target>
 

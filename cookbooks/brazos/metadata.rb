@@ -6,6 +6,5 @@ description      'cookbook for Jenkins slave server'
 long_description ''
 version          '0.3.0'
 
-depends           'tomcat'   # which will install java
 depends           'ant'
 depends           'git'
