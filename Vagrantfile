@@ -15,8 +15,8 @@
   # hombros => espina
   # hombros => cerebro
   # cara => espina
-  Vagrant.configure(2) do |config|
-  module OS
+  
+    module OS
       def OS.windows?
           (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
       end
@@ -31,32 +31,32 @@
       end
   end
 
-  is_windows_host = "#{OS.windows?}"
-
-Vagrant.configure(2) do |config|
 
   if OS.windows?
       puts "Vagrant launched from windows."
   elsif OS.mac?
       puts "Vagrant launched from mac."
   elsif OS.unix?
-      puts "Vagrant launched from unix."
+      puts "Vagrant launched from linux/unix."
   elsif OS.linux?
       puts "Vagrant launched from linux."
   else
       puts "Unsupported platform for Calavera."
   end
+  
+  Vagrant.configure(2) do |config|
+
 
 
   if ARGV[1]=='base'
     config.vm.box = "opscode/temp"
   else
-     if OS.linux?
+
        # pull from common location. Supports multiple pipelines.
        config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" # if this errors, you need startup.sh run
-     elsif
+
         config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
-    end
+
   end
   config.berkshelf.enabled = true
 
