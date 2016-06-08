@@ -38,16 +38,17 @@ You also may wish to review the [Vagrantfile](https://github.com/CharlesTBetz/Ca
 
 ## Installation precursors and overview
 
-
 First, you need to install:
 
 * [VirtualBox](https://www.virtualbox.org/)
-* [Chef Development Kit](https://downloads.chef.io/chef-dk/) latest version 
+* [Chef Development Kit](https://downloads.chef.io/chef-dk/) latest version
 * [Vagrant](http://www.vagrantup.com/downloads.html)
   * [Vagrant Berkshelf plugin](https://github.com/berkshelf/vagrant-berkshelf)
   * [Vagrant VBoxGuest plugin](https://github.com/dotless-de/vagrant-vbguest)
 
 And of course you will need [git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), to download from Github.
+
+On Windows: install [Github Desktop for Windows](https://github.com/blog/1127-github-for-windows)
 
 Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
 
@@ -75,24 +76,43 @@ I  am actively monitoring [Github Issues for this project](https://github.com/Ch
 
 ## Installation step by step
 
-Figure out a suitable location to download the repository from Github. It is not large, but I recommend that you not "nest" it too deeply (Windows is especially annoying this way) and that you avoid having spaces in the pathnames (e.g. "My Documents"). Creating a C:\home\myname directory would be a good location example. Open a command window there and type:
+Disclaimner: this is still very early stage work. Many failure modes.
+
+### Linux and Mac OS (see below for Windows)
+
+Open a command prompt.
+
+Figure out a suitable location (e.g. in your home directory) to download the repository from Github.
+
+Open a command window in your chosen location and type:
 
     git clone https://github.com/CharlesTBetz/Calavera.git
 
+### Windows
 
-CD to the new Calavera directory, and run the following, one at a time. They will generate LOTS of console output, but hopefully no errors. This may take you around 20 minutes. It will appear to hang in places (Java related stuff in particular); give it at least 15 minutes before killing anything.
-
-Disclaimner: this is still very early stage work. Many failure modes.
+Open Github Desktop.
 
 ````
 ./startup.sh  (or startup.bat on windows)
+````
+
+### Common steps across all platforms
+
+CD to the new Calavera directory, and run the following, one at a time. They will generate LOTS of console output, but hopefully no errors. This may take you around 20 minutes. It will appear to hang in places (Java related stuff in particular); give it at least 15 minutes before killing anything.
+
+At your shell:
+````
 vagrant up cerebro1
 vagrant up brazos1
 vagrant up espina1
 vagrant up hombros1
 ````
+or (if you are impatient) the following works:
+````
+vagrant up cerebro1 brazos1 espina1 hombros1
+````
 
-All done with those first 5? Good.
+All done with those first 4? Good. 
 
 ### Bringing up manos1
 
