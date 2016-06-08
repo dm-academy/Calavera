@@ -50,12 +50,15 @@
 
   if ARGV[1]=='base'
     config.vm.box = "opscode/temp"
-  else
+  else    # if this errors, you need startup.sh run
+    if OS.windows?
+      config.vm.box = "opscode-ubuntu-14.04a"  # does not support multi-pipeline yet. box stashed local to user.
+    else    
+      # pull from common location. Supports multiple pipelines.
+      config.vm.box = "opscode-ubuntu-14.04a" 
+      config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 
+    end
 
-       # pull from common location. Supports multiple pipelines.
-       config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" # if this errors, you need startup.sh run
-
-        config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
 
   end
   config.berkshelf.enabled = true
