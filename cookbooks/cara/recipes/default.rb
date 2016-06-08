@@ -1,6 +1,5 @@
 # final production build
 
-
 remote_file "/var/lib/tomcat8/webapps/ROOT/WEB-INF/lib/CalaveraMain.jar" do
   source "http://espina1:8081/artifactory/simple/ext-release-local/Calavera/target/CalaveraMain.jar"
   mode '0755'
