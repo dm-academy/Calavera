@@ -30,7 +30,7 @@ You need:
   * [KDirStat](http://kdirstat.sourceforge.net/) for Unix & Linux
   * [DiskInventoryX](http://www.derlien.com/) for Mac
 
-* You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
+* IMPORTANT: You may need to enable [hardware acceleration](http://www.sysprobs.com/disable-enable-virtualization-technology-bios)
 
 The virtual machines use a range of local IP addresses from 192.168.33.29 through 192.168.33.36. Make sure you are not using those for some other project.
 
@@ -104,7 +104,7 @@ Type:
 
 Type:
 ````
-./winstart.sh  (or startup.bat on windows)
+./winstart.sh  (startup.bat is now deprecated)
 ````
 NOTE: On Windows, you will receive multiple User Account Control notifications as Vagrant brings up Virtualbox VMs.
 
