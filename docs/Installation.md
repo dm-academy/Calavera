@@ -10,7 +10,7 @@ In terms of skills, you need to be able to install software on your computer, ed
 
 You also need at least a little Vagrant. It is probably the easiest tool in the box here to familiarize yourself with, and there is good material on the web just a Google search away. Spend an hour with the Vagrant tutorial and vagrant up a simple VM or two and you'll be more or less ready for this.
 
-You'll find yourself learning Chef, but since you are starting with a simple, functioning set of interrelated recipes it's not a bad way to start. This project might make a good adjunct if you're running a Chef tutorial. If you want to modify or extend the system, you'll have to pick up some Ruby. There's also a few *.bash scripts.
+You'll find yourself learning Chef, but since you are starting with a simple, functioning set of interrelated recipes it's not a bad way to start. This project might make a good adjunct if you're running a Chef tutorial. If you want to modify or extend the system, you'll have to pick up some Ruby. There's also a few \*.bash scripts.
 
 You need enough git to clone this repository to your machine. That's just one command, shown below. But it would be nice if you could help improve the project by forking your own repo, making enhancements, and sending up pull requests. They will be reviewed and acted upon.
 
@@ -48,7 +48,7 @@ First, you need to install:
 
 And of course you will need [git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), to download from Github.
 
-On Windows: install [Github Desktop for Windows](https://github.com/blog/1127-github-for-windows)
+On Windows: install [Git for Windows](https://git-scm.com/download/win), accepting defaults. Github for Windows is not recommended.
 
 Calavera starts with a script, "startup.sh" or "startup.bat", which takes a standard Opscode image and adds:
 
@@ -78,19 +78,28 @@ I  am actively monitoring [Github Issues for this project](https://github.com/Ch
 
 Disclaimner: this is still very early stage work. Many failure modes.
 
-### Linux and Mac OS (see below for Windows)
+Detailed installations for all precursors are available through their associated sites. Default installations should all work (let me know if this is not the case.)
+
 
 Open a command prompt.
 
 Figure out a suitable location (e.g. in your home directory) to download the repository from Github.
 
-Open a command window in your chosen location and type:
+Open a command window in your chosen location. (On Windows, open Windows Explorer, navigate to the directory you want, right click, and choose "Git Bash Here.")
+
+Type:
 
     git clone https://github.com/CharlesTBetz/Calavera.git
+    cd Calavera
+
+Continue below with your appropriate platform.
+
+### Linux and Mac OS (see below for Windows)
+
+
 
 ### Windows
 
-Open Github Desktop.
 
 ````
 ./startup.sh  (or startup.bat on windows)
@@ -112,7 +121,7 @@ or (if you are impatient) the following works:
 vagrant up cerebro1 brazos1 espina1 hombros1
 ````
 
-All done with those first 4? Good. 
+All done with those first 4? Good.
 
 ### Bringing up manos1
 
