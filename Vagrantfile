@@ -8,8 +8,6 @@
 # currently, need to do startup.sh and then vagrant up the machines one by on in this order
 #  cerebro, brazos, espina, hombros, manos, cara
 
-#Berksfile tweak needed per https://github.com/berkshelf/vagrant-berkshelf/issues/237  **/.git
-
 # dependencies:
   # manos => cerebro
   # manos => hombros
@@ -17,13 +15,48 @@
   # hombros => espina
   # hombros => cerebro
   # cara => espina
+  Vagrant.configure(2) do |config|
+  module OS
+      def OS.windows?
+          (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+      end
+      def OS.mac?
+          (/darwin/ =~ RUBY_PLATFORM) != nil
+      end
+      def OS.unix?
+          !OS.windows?
+      end
+      def OS.linux?
+          OS.unix? and not OS.mac?
+      end
+  end
+
+  is_windows_host = "#{OS.windows?}"
 
 Vagrant.configure(2) do |config|
+
+  if OS.windows?
+      puts "Vagrant launched from windows."
+  elsif OS.mac?
+      puts "Vagrant launched from mac."
+  elsif OS.unix?
+      puts "Vagrant launched from unix."
+  elsif OS.linux?
+      puts "Vagrant launched from linux."
+  else
+      puts "Unsupported platform for Calavera."
+  end
+
+
   if ARGV[1]=='base'
     config.vm.box = "opscode/temp"
   else
-    config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" # if this errors, you need startup.sh run
-    config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
+     if OS.linux?
+       # pull from common location. Supports multiple pipelines.
+       config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" # if this errors, you need startup.sh run
+     elsif
+        config.vm.box = "opscode-ubuntu-14.04a"  # this box will not be on your machine to start
+    end
   end
   config.berkshelf.enabled = true
 
@@ -186,7 +219,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path           = ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       #chef.add_recipe               "jenkins::master"
@@ -219,7 +252,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
       chef.add_recipe               "localAnt::default"
@@ -232,7 +265,7 @@ Vagrant.configure(2) do |config|
 
   # test: http://10.1.0.14:8080/MainServlet
   # if cerebro is configured:
-  # cd /home/hijo   #make a change 
+  # cd /home/hijo   #make a change
   # git add .
   # git commit -m "some message"
   # git push origin master
@@ -259,7 +292,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path         = ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "java7::default"
       chef.add_recipe               "localTomcat::v8"
@@ -291,7 +324,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path =       ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
 
       #chef.add_recipe             "nervios::default"
@@ -328,7 +361,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path =       ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       #chef.add_recipe             "pies::default"
     end
   end
@@ -357,7 +390,7 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path =       ["./cookbooks/"]
       chef.data_bags_path           = ["./data_bags/"]
       chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]      
+      chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "tomcat::default"
       chef.add_recipe             "test::default"
