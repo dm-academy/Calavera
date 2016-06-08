@@ -95,15 +95,22 @@ Type:
 Continue below with your appropriate platform.
 
 ### Linux and Mac OS (see below for Windows)
+Type:
 
-
-
+````
+./startup.sh
+````
 ### Windows
 
+Type:
+````
+./winstart.sh  (or startup.bat on windows)
+````
+NOTE: On Windows, you will receive multiple User Account Control notifications as Vagrant brings up Virtualbox VMs.
 
-````
-./startup.sh  (or startup.bat on windows)
-````
+You also will receive a network security alert.
+
+Authorize all with defaults.
 
 ### Common steps across all platforms
 

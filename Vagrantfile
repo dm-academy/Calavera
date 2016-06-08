@@ -50,10 +50,10 @@ Vagrant.configure(2) do |config|
     config.vm.box = "opscode/temp"
   else    # if this errors, you need startup.sh run
     if OS.windows?
-      puts "Launching base from windows."
+      puts "Launching from windows."
       config.vm.box = "opscode-ubuntu-14.04a"  # does not support multi-pipeline yet. box stashed local to user.
     else
-      puts "Launching base from linux/mac"
+      puts "Launching from linux/mac"
       # pull from common location. Supports multiple pipelines.
       config.vm.box = "opscode-ubuntu-14.04a" 
       #config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 

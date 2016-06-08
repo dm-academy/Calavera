@@ -1,5 +1,10 @@
+REM deprecated, obsolete. To be deleted shortly.
+
+
 REM Windows shell script to initialize base box
 REM not sure how/if this runs as PowerShell
+
+
 
 vagrant destroy base -f
 del package.box
