@@ -56,7 +56,7 @@
     else    
       # pull from common location. Supports multiple pipelines.
       config.vm.box = "opscode-ubuntu-14.04a" 
-      config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 
+      #config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 
     end
 
 
