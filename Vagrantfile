@@ -32,28 +32,28 @@
   end
 
 
-  if OS.windows?
-      puts "Vagrant launched from windows."
-  elsif OS.mac?
-      puts "Vagrant launched from mac."
-  elsif OS.unix?
-      puts "Vagrant launched from linux/unix."
-  elsif OS.linux?
-      puts "Vagrant launched from linux."
-  else
-      puts "Unsupported platform for Calavera."
-  end
+#  if OS.windows?
+#      puts "Vagrant launched from windows."
+#  elsif OS.mac?
+#      puts "Vagrant launched from mac."
+#  elsif OS.unix?
+#      puts "Vagrant launched from linux/unix."
+#  elsif OS.linux?
+#      puts "Vagrant launched from linux."
+#  else
+#      puts "Unsupported platform for Calavera."
+#  end
   
-  Vagrant.configure(2) do |config|
-
-
+Vagrant.configure(2) do |config|
 
   if ARGV[1]=='base'
     config.vm.box = "opscode/temp"
   else    # if this errors, you need startup.sh run
     if OS.windows?
+      puts "Launching base from windows."
       config.vm.box = "opscode-ubuntu-14.04a"  # does not support multi-pipeline yet. box stashed local to user.
-    else    
+    else
+      puts "Launching base from linux/mac"
       # pull from common location. Supports multiple pipelines.
       config.vm.box = "opscode-ubuntu-14.04a" 
       #config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 
