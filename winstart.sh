@@ -17,10 +17,10 @@ vagrant box add http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opsc
 
 vagrant up base
 vagrant package base
-mkdir -p C:/Users/vagrant/boxes/   # shared public location - better enables creating mutiple pipelines
+mkdir -p C:/Users/public/vagrant/boxes/   # shared public location - better enables creating mutiple pipelines
 
-cp package.box C:/Users/vagrant/boxes/opscode-ubuntu-14.04a.box
+cp package.box C:/Users/public/vagrant/boxes/opscode-ubuntu-14.04a.box
 
-vagrant box add opscode-ubuntu-14.04a C:/Users/vagrant/boxes/opscode-ubuntu-14.04a.box -f
+vagrant box add opscode-ubuntu-14.04a C:/Users/public/vagrant/boxes/opscode-ubuntu-14.04a.box -f
 rm -f package.box
 vagrant destroy base -f
