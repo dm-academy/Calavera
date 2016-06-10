@@ -2,9 +2,9 @@ Calavera
 ========
 
 --------------------
-*Status 7 June 2016*
+*Status 10 June 2016*
 
-Calavera fixes tested this AM and working on Mac OS. Currently testing on Windows and Ubuntu. 
+Calavera fixes tested Mac OS, Windows, Ubuntu.
 
 -------------------
 
