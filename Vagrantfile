@@ -15,7 +15,7 @@
   # hombros => espina
   # hombros => cerebro
   # cara => espina
-  
+
     module OS
       def OS.windows?
           (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
@@ -31,6 +31,13 @@
       end
   end
 
+  if ENV['LAB_NUM']=="lab03"
+  puts "Lab 03 manos configuration"
+  end
+
+  if ENV['LAB_NUM']!="lab03"
+  puts "default configuration"
+  end
 
 #  if OS.windows?
 #      puts "Vagrant launched from windows."
@@ -43,7 +50,7 @@
 #  else
 #      puts "Unsupported platform for Calavera."
 #  end
-  
+
 Vagrant.configure(2) do |config|
 
   if ARGV[1]=='base'
@@ -55,8 +62,8 @@ Vagrant.configure(2) do |config|
     else
       puts "Launching from linux/mac"
       # pull from common location. Supports multiple pipelines.
-      config.vm.box = "opscode-ubuntu-14.04a" 
-      #config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box" 
+      config.vm.box = "opscode-ubuntu-14.04a"
+      #config.vm.box_url = "/var/vagrant/boxes/opscode-ubuntu-14.04a.box"
     end
 
 
@@ -263,6 +270,11 @@ Vagrant.configure(2) do |config|
       chef.add_recipe               "localTomcat::v8"
       chef.add_recipe               "shared::_junit"
       chef.add_recipe               "manos::default"
+      if ENV['LAB_NUM']=="lab03"
+        puts "Skipping remote git"
+      else
+        chef.add_recipe               "manos::git-remote.rb"
+      end
     end
   end
 
