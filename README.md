@@ -2,9 +2,9 @@ Calavera
 ========
 
 --------------------
-*Status 10 June 2016*
+*Status 25 Sep 2016*
 
-Calavera fixes tested Mac OS, Windows, Ubuntu.
+Jenkins issues - not working on any platform. 
 
 -------------------
 
