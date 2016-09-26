@@ -4,7 +4,9 @@ Calavera
 --------------------
 *Status 25 Sep 2016*
 
-Jenkins issues - not working on any platform. 
+Calavera v1 is now deprecated. New approach necessary to overcome volatility of upstream sources. Switching efforts to Calavera2, complete rewrite - many lessons learned - also reconsidering pedagogy, so labs will change as well - apologies for any inconvenience.
+
+Jenkins/Chef issues - not working on any platform. 
 
 -------------------
 
