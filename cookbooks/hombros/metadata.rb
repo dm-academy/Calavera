@@ -7,4 +7,3 @@ long_description ''
 version          '0.3.0'
 
 depends           'tomcat'
-depends           'jenkins'

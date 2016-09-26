@@ -6,5 +6,4 @@ description      'wrapper cookbook to install earlier Jenkins version'
 long_description ''
 version          '0.3.0'
 
-
-
+depends           'jenkins'

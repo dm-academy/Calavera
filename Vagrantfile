@@ -398,6 +398,12 @@ Vagrant.configure(2) do |config|
 # not part of the pipeline
 
   config.vm.define "test" do | test |
+
+    config.vm.provider :virtualbox do |virtualbox|
+      virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
+      virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+    end
+
     test.vm.host_name              ="test.calavera.biz"
     test.vm.network                 "private_network", ip: "192.168.33.99"
     test.vm.network                 "forwarded_port", guest: 22, host: 2299, auto_correct: true
@@ -408,17 +414,18 @@ Vagrant.configure(2) do |config|
 
       test.vm.synced_folder         ".", "/home/test"
       test.vm.synced_folder         "./shared", "/mnt/shared"
-    #test.vm.provision       :shell, path: "./shell/test.sh"
 
-    test.vm.provision :chef_zero do |chef|
-      chef.cookbooks_path =       ["./cookbooks/"]
-      chef.data_bags_path           = ["./data_bags/"]
-      chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]
-      chef.add_recipe               "shared::_apt-update"
-      chef.add_recipe               "tomcat::default"
-      chef.add_recipe             "test::default"
-    end
+    test.vm.provision       :shell, path: "./shell/test.sh"
+    test.vm.provision       :shell, path: "./shell/test2.sh"
+    # test.vm.provision :chef_zero do |chef|
+    #   chef.cookbooks_path =       ["./cookbooks/"]
+    #   chef.data_bags_path           = ["./data_bags/"]
+    #   chef.nodes_path               = ["./nodes/"]
+    #   chef.roles_path               = ["./roles/"]
+    #   chef.add_recipe               "shared::_apt-update"
+    #   chef.add_recipe               "java7::default"
+    #   chef.add_recipe             "test::default"
+    # end
   end
 ###############################################################################
 
