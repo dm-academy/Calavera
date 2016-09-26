@@ -11,7 +11,7 @@ Berksfile.lock
 
 *.gz
 *.box
-vagrant*.json
+*.json
 
 #################
 ## vagrant
