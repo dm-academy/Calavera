@@ -247,13 +247,20 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "manos1" do | manos1 |
     manos1.vm.host_name            ="manos1.calavera.biz"
-    manos1.vm.network              "private_network", ip: "10.1.0.14"
+
+    if ENV['LAB_NUM']=="lab03"
+      puts "Lab 03 - dhcp, many instances of manos1 only"
+      manos1.vm.network              "private_network", type: "dhcp"  # don't need to specify; we use 127.0.0.1:port for access for this lab
+      config.vm.usable_port_range = (8000..8999) # essential for a large lab
+    else
+      puts "static IP, limited number pipelines"
+      manos1.vm.network              "private_network", ip: "10.1.0.14"
+    end
+
     manos1.vm.network              "forwarded_port", guest: 22, host: 2114, auto_correct: true
     manos1.vm.network              "forwarded_port", guest: 80, host: 8114, auto_correct: true
     manos1.vm.network              "forwarded_port", guest: 8080, host: 9114, auto_correct: true
-
     manos1.ssh.forward_agent        =true
-
     manos1.vm.synced_folder        ".",         "/home/manos1"
     manos1.vm.synced_folder        "./shared", "/mnt/shared"
     #manos1.vm.provision         :shell, path: "./shell/manos1.sh"
@@ -270,6 +277,7 @@ Vagrant.configure(2) do |config|
       chef.add_recipe               "localTomcat::v8"
       chef.add_recipe               "shared::_junit"
       chef.add_recipe               "manos::default"
+
       if ENV['LAB_NUM']=="lab03"
         puts "Skipping remote git"
       else
@@ -277,6 +285,7 @@ Vagrant.configure(2) do |config|
       end
     end
   end
+
 
   # test: http://10.1.0.14:8080/MainServlet
   # if cerebro is configured:

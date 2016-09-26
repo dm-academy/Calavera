@@ -1,9 +1,9 @@
-# local Tomcat recipe for v8 
+# local Tomcat recipe for v8
 # see https://github.com/chef-cookbooks/tomcat
 
 
 tomcat_install 'ROOT' do
-  version '8.0.35'
+  version '8.0.36'
   install_path '/var/lib/tomcat8/'
   exclude_manager true
   exclude_hostmanager true
@@ -26,7 +26,7 @@ end
   end
 end
 
-#open up 
+#open up
 directory "/var/lib/tomcat8"  do
   mode 00755
   recursive true

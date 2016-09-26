@@ -127,17 +127,18 @@
 
 		<!-- !!!! need to add test if this is running -->
 		<!-- if run too quickly in succession, will fail with unpredictable results-->
-		<!-- could not get preferred syntax to work
-		<exec executable="sh">
-			<arg value = "service"/>
-			<arg value = "tomcat_ROOT"/>
-			<arg value = "restart"/>
-		</exec-->
+		<!-- could not get preferred syntax to work -->
+		<exec executable="bash">
+						<arg value = "/var/lib/tomcat8/bin/shutdown.sh"/>
+		</exec>
 
-		<!-- deprecated -->
-		<exec command="service tomcat_ROOT stop"/>
-		<exec command="service tomcat_ROOT start"/>
+		<exec executable="bash">
+						<arg value = "/var/lib/tomcat8/bin/startup.sh"/>
+		</exec>
 
+		<!-- deprecated
+		<exec command="/var/lib/tomcat8/bin/shutdown.sh"/>
+		<exec command="/var/lib/tomcat8/bin/startup.sh"/>
+    -->
 	</target>
-
 </project>
