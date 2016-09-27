@@ -8,6 +8,7 @@ authorized_keys
 result.txt
 result.xml
 Berksfile.lock
+*.war
 
 *.gz
 *.box

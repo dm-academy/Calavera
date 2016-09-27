@@ -281,7 +281,7 @@ Vagrant.configure(2) do |config|
       if ENV['LAB_NUM']=="lab03"
         puts "Skipping remote git"
       else
-        chef.add_recipe               "manos::git-remote.rb"
+        chef.add_recipe               "manos::git-remote"
       end
     end
   end
