@@ -8,6 +8,8 @@
 # currently, need to do startup.sh and then vagrant up the machines one by on in this order
 #  cerebro, brazos, espina, hombros, manos, cara
 
+# Berksfile tip: if dependency issues, delete Berksfile.lock. Note it's in .gitignore.
+
 # dependencies:
   # manos => cerebro
   # manos => hombros
@@ -232,7 +234,7 @@ Vagrant.configure(2) do |config|
       chef.roles_path               = ["./roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "git::default"
-      #chef.add_recipe               "jenkins::master"
+
       chef.add_recipe               "localJenkins::default"
       chef.add_recipe               "hombros::default"
     end

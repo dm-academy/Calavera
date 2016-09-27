@@ -7,9 +7,8 @@ id_rsa*
 authorized_keys
 result.txt
 result.xml
-Berksfile.lock
 *.war
-
+Berksfile.lock
 *.gz
 *.box
 *.json
