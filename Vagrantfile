@@ -118,7 +118,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cerebro1" do | cerebro1 |
     cerebro1.vm.host_name           ="cerebro1.calavera.biz"
-    cerebro1.vm.network             "private_network", ip: "10.1.0.10"
+    cerebro1.vm.network             "private_network", ip: "10.1.0.10", virtualbox__intnet: "Cala01"
     cerebro1.vm.network            "forwarded_port", guest: 22, host: 2110, auto_correct: true
     cerebro1.vm.network            "forwarded_port", guest: 80, host: 8110, auto_correct: true
     cerebro1.vm.network             "forwarded_port", guest: 8080, host: 9110, auto_correct: true
@@ -149,7 +149,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "brazos1" do | brazos1 |
     brazos1.vm.host_name            ="brazos1.calavera.biz"
-    brazos1.vm.network               "private_network", ip: "10.1.0.11"
+    brazos1.vm.network               "private_network", ip: "10.1.0.11", virtualbox__intnet: "Cala01"
     brazos1.vm.network               "forwarded_port", guest: 22, host: 2111, auto_correct: true
     brazos1.vm.network               "forwarded_port", guest: 80, host: 8111, auto_correct: true
     brazos1.vm.network              "forwarded_port", guest: 8080, host: 9111, auto_correct: true
@@ -180,7 +180,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "espina1" do | espina1 |
     espina1.vm.host_name            ="espina1.calavera.biz"
-    espina1.vm.network               "private_network", ip: "10.1.0.12"
+    espina1.vm.network               "private_network", ip: "10.1.0.12", virtualbox__intnet: "Cala01"
     espina1.vm.network               "forwarded_port", guest: 22, host: 2112, auto_correct: true
     espina1.vm.network               "forwarded_port", guest: 80, host: 8112, auto_correct: true
     espina1.vm.network              "forwarded_port", guest: 8080, host: 9112, auto_correct: true
@@ -215,7 +215,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "hombros1" do | hombros1 |
     hombros1.vm.host_name          ="hombros1.calavera.biz"
-    hombros1.vm.network             "private_network", ip: "10.1.0.13"
+    hombros1.vm.network             "private_network", ip: "10.1.0.13", virtualbox__intnet: "Cala01"
     hombros1.vm.network            "forwarded_port", guest: 22, host: 2113, auto_correct: true
     hombros1.vm.network            "forwarded_port", guest: 80, host: 8113, auto_correct: true
     hombros1.vm.network            "forwarded_port", guest: 8080, host: 9113, auto_correct: true
@@ -256,7 +256,7 @@ Vagrant.configure(2) do |config|
       config.vm.usable_port_range = (8000..8999) # essential for a large lab
     else
       puts "static IP, limited number pipelines"
-      manos1.vm.network              "private_network", ip: "10.1.0.14"
+      manos1.vm.network              "private_network", ip: "10.1.0.14", virtualbox__intnet: "Cala01"
     end
 
     manos1.vm.network              "forwarded_port", guest: 22, host: 2114, auto_correct: true
@@ -303,7 +303,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cara1" do | cara1 |
     cara1.vm.host_name              ="cara1.calavera.biz"
-    cara1.vm.network                 "private_network", ip: "10.1.0.15"
+    cara1.vm.network                 "private_network", ip: "10.1.0.15", virtualbox__intnet: "Cala01"
     cara1.vm.network                 "forwarded_port", guest: 22, host: 2115, auto_correct: true
     cara1.vm.network                 "forwarded_port", guest: 80, host: 8115, auto_correct: true
     cara1.vm.network                "forwarded_port", guest: 8080, host: 9115, auto_correct: true
@@ -335,7 +335,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "nervios1" do | nervios1 |
     nervios1.vm.host_name              ="nervios1.calavera.biz"
-    nervios1.vm.network                 "private_network", ip: "10.1.0.16"
+    nervios1.vm.network                 "private_network", ip: "10.1.0.16", virtualbox__intnet: "Cala01"
     nervios1.vm.network                 "forwarded_port", guest: 22, host: 2116, auto_correct: true
     nervios1.vm.network                 "forwarded_port", guest: 80, host: 8116, auto_correct: true
     nervios1.vm.network                 "forwarded_port", guest: 8080, host: 9116, auto_correct: true

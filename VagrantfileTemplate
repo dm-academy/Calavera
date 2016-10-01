@@ -70,7 +70,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cerebroxx" do | cerebroxx |
     cerebroxx.vm.host_name           ="cerebroxx.calavera.biz"
-    cerebroxx.vm.network             "private_network", ip: "10.xx.0.10"
+    cerebroxx.vm.network             "private_network", ip: "10.xx.0.10", virtualbox__intnet: "CalaXX"
     cerebroxx.vm.network            "forwarded_port", guest: 22, host: 2xx10, auto_correct: true
     cerebroxx.vm.network            "forwarded_port", guest: 80, host: 8xx10, auto_correct: true
     cerebroxx.vm.network             "forwarded_port", guest: 8080, host: 9xx10, auto_correct: true
@@ -98,7 +98,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "brazosxx" do | brazosxx |
     brazosxx.vm.host_name            ="brazosxx.calavera.biz"
-    brazosxx.vm.network               "private_network", ip: "10.xx.0.11"
+    brazosxx.vm.network               "private_network", ip: "10.xx.0.11", virtualbox__intnet: "CalaXX"
     brazosxx.vm.network               "forwarded_port", guest: 22, host: 2xx11, auto_correct: true
     brazosxx.vm.network               "forwarded_port", guest: 80, host: 8xx11, auto_correct: true
     brazosxx.vm.network              "forwarded_port", guest: 8080, host: 9xx11, auto_correct: true
@@ -126,7 +126,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "espinaxx" do | espinaxx |
     espinaxx.vm.host_name            ="espinaxx.calavera.biz"
-    espinaxx.vm.network               "private_network", ip: "10.xx.0.12"
+    espinaxx.vm.network               "private_network", ip: "10.xx.0.12", virtualbox__intnet: "CalaXX"
     espinaxx.vm.network               "forwarded_port", guest: 22, host: 2xx12, auto_correct: true
     espinaxx.vm.network               "forwarded_port", guest: 80, host: 8xx12, auto_correct: true
     espinaxx.vm.network              "forwarded_port", guest: 8080, host: 9xx12, auto_correct: true
@@ -158,7 +158,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "hombrosxx" do | hombrosxx |
     hombrosxx.vm.host_name          ="hombrosxx.calavera.biz"
-    hombrosxx.vm.network             "private_network", ip: "10.xx.0.13"
+    hombrosxx.vm.network             "private_network", ip: "10.xx.0.13", virtualbox__intnet: "CalaXX"
     hombrosxx.vm.network            "forwarded_port", guest: 22, host: 2xx13, auto_correct: true
     hombrosxx.vm.network            "forwarded_port", guest: 80, host: 8xx13, auto_correct: true
     hombrosxx.vm.network            "forwarded_port", guest: 8080, host: 9xx13, auto_correct: true
@@ -188,7 +188,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "manosxx" do | manosxx |
     manosxx.vm.host_name            ="manosxx.calavera.biz"
-    manosxx.vm.network              "private_network", ip: "10.xx.0.14"
+    manosxx.vm.network              "private_network", ip: "10.xx.0.14", virtualbox__intnet: "CalaXX"
     manosxx.vm.network              "forwarded_port", guest: 22, host: 2xx14, auto_correct: true
     manosxx.vm.network              "forwarded_port", guest: 80, host: 8xx14, auto_correct: true
     manosxx.vm.network              "forwarded_port", guest: 8080, host: 9xx14, auto_correct: true
@@ -224,7 +224,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "caraxx" do | caraxx |
     caraxx.vm.host_name              ="caraxx.calavera.biz"
-    caraxx.vm.network                 "private_network", ip: "10.xx.0.15"
+    caraxx.vm.network                 "private_network", ip: "10.xx.0.15", virtualbox__intnet: "CalaXX"
     caraxx.vm.network                 "forwarded_port", guest: 22, host: 2xx15, auto_correct: true
     caraxx.vm.network                 "forwarded_port", guest: 80, host: 8xx15, auto_correct: true
     caraxx.vm.network                "forwarded_port", guest: 8080, host: 9xx15, auto_correct: true
@@ -253,7 +253,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "nerviosxx" do | nerviosxx |
     nerviosxx.vm.host_name              ="nerviosxx.calavera.biz"
-    nerviosxx.vm.network                 "private_network", ip: "10.xx.0.16"
+    nerviosxx.vm.network                 "private_network", ip: "10.xx.0.16", virtualbox__intnet: "CalaXX"
     nerviosxx.vm.network                 "forwarded_port", guest: 22, host: 2xx16, auto_correct: true
     nerviosxx.vm.network                 "forwarded_port", guest: 80, host: 8xx16, auto_correct: true
     nerviosxx.vm.network                 "forwarded_port", guest: 8080, host: 9xx16, auto_correct: true
