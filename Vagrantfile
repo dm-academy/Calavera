@@ -329,7 +329,6 @@ Vagrant.configure(2) do |config|
         chef.add_recipe               "manos::default"
         chef.add_recipe               "manos::git-remote"
         end
-      end
     end
 
 
@@ -370,7 +369,8 @@ Vagrant.configure(2) do |config|
     end
   end
 
-    # test: http://10.1.0.15:8080/MainServlet
+    # test: curl http://10.1.0.15:8080/MainServlet
+    # or curl http://127.0.0.1:9115/MainServlet
 
 ###############################################################################
 ###################################    nervios1     ##############################
