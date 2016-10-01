@@ -307,9 +307,9 @@ Vagrant.configure(2) do |config|
 
         manos02.vm.network              "private_network", ip: "10.1.0.22", virtualbox__intnet: "Cala01"
 
-      manos02.vm.network              "forwarded_port", guest: 22,   host: 2222, auto_correct: true
-      manos02.vm.network              "forwarded_port", guest: 80,   host: 8222, auto_correct: true
-      manos02.vm.network              "forwarded_port", guest: 8080, host: 9222, auto_correct: true
+      manos02.vm.network              "forwarded_port", guest: 22,   host: 2122, auto_correct: true
+      manos02.vm.network              "forwarded_port", guest: 80,   host: 8122, auto_correct: true
+      manos02.vm.network              "forwarded_port", guest: 8080, host: 9122, auto_correct: true
       manos02.ssh.forward_agent        =true
       manos02.vm.synced_folder        ".",         "/home/manos02"
       manos02.vm.synced_folder        "./shared", "/mnt/shared"
