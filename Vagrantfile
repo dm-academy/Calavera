@@ -241,7 +241,8 @@ Vagrant.configure(2) do |config|
 
   end
 
-  # Jenkins should appear at http://10.1.0.13:8080
+  # Jenkins should appear at curl http://10.1.0.13:8080
+  # alternately curl http://127.0.0.1:9113
 
 ###############################################################################
 ###################################    manos1    ##############################
@@ -296,6 +297,49 @@ Vagrant.configure(2) do |config|
   # git commit -m "some message"
   # git push origin master
 
+  ###############################################################################
+  ###################################    manos02    ##############################
+  ###############################################################################
+
+    config.vm.define "manos02" do | manos02 |
+      manos02.vm.host_name            ="manos02.calavera.biz"
+
+
+        manos02.vm.network              "private_network", ip: "10.2.0.2", virtualbox__intnet: "Cala01"
+
+      manos02.vm.network              "forwarded_port", guest: 22,   host: 2202, auto_correct: true
+      manos02.vm.network              "forwarded_port", guest: 80,   host: 8202, auto_correct: true
+      manos02.vm.network              "forwarded_port", guest: 8080, host: 9202, auto_correct: true
+      manos02.ssh.forward_agent        =true
+      manos02.vm.synced_folder        ".",         "/home/manos02"
+      manos02.vm.synced_folder        "./shared", "/mnt/shared"
+      #manos02.vm.provision         :shell, path: "./shell/manos02.sh"
+
+      manos02.vm.provision :chef_zero do |chef|
+        chef.cookbooks_path         = ["./cookbooks/"]
+        chef.data_bags_path           = ["./data_bags/"]
+        chef.nodes_path               = ["./nodes/"]
+        chef.roles_path               = ["./roles/"]
+        chef.add_recipe               "shared::_apt-update"
+        chef.add_recipe               "git::default"
+        chef.add_recipe               "localAnt::default"
+        chef.add_recipe               "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
+        chef.add_recipe               "localTomcat::v8"
+        chef.add_recipe               "shared::_junit"
+        chef.add_recipe               "manos::default"
+        chef.add_recipe               "manos::git-remote"
+        end
+      end
+    end
+
+
+    # test: http://10.1.0.14:8080/MainServlet
+    # or http://127.0.0.1:9202/MainServlet
+    # if cerebro is configured:
+    # cd /home/hijo   #make a change
+    # git add .
+    # git commit -m "some message"
+    # git push origin master
 
 ###############################################################################
 ###################################    cara1     ##############################
