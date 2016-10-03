@@ -2,11 +2,9 @@ Calavera
 ========
 
 --------------------
-*Status 25 Sep 2016*
+*Status 3 Oct 2016*
 
-Calavera v1 is now deprecated. New approach necessary to overcome volatility of upstream sources. Switching efforts to Calavera2, complete rewrite - many lessons learned - also reconsidering pedagogy, so labs will change as well - apologies for any inconvenience.
-
-Jenkins/Chef issues - not working on any platform. 
+New approach necessary to overcome volatility of upstream sources. Reconsidering overhead of Chef approach. Jenkins 2 is not behaving with automated install, so an older version is still in use. Currently working on Ubuntu platform. 
 
 -------------------
 
