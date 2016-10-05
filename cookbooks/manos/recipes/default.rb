@@ -54,7 +54,7 @@ execute 'correct dev directory permissions' do
 end
 
 execute 'correct tomcat webapps permissions' do
-  command   'chown -R vagrant /var/lib/tomcat8/* && chgrp -R vagrant /var/lib/tomcat8/*'    #
+  command  'chown -R vagrant /var/lib/tomcat8/* && chgrp -R vagrant /var/lib/tomcat8/*'    #
 end
 
 execute 'initial build & dev deploy' do
@@ -90,7 +90,7 @@ execute 'initialize git 4' do
   group "git"
   cwd '/home/hijo'
   environment ({'HOME' => '/home/vagrant', 'USER' => 'vagrant'})
-  command 'git add .'   # needs to be idempotent
+  command 'git add . -A'   # needs to be idempotent
 end
 
 execute 'initialize git 5' do

@@ -327,13 +327,13 @@ Vagrant.configure(2) do |config|
         chef.add_recipe               "localTomcat::v8"
         chef.add_recipe               "shared::_junit"
         chef.add_recipe               "manos::default"
-        chef.add_recipe               "manos::git-remote"
+        #chef.add_recipe               "manos::git-remote"
         end
     end
 
 
     # test: http://10.1.0.14:8080/MainServlet
-    # or http://127.0.0.1:9202/MainServlet
+    # or http://127.0.0.1:9122/MainServlet
     # if cerebro is configured:
     # cd /home/hijo   #make a change
     # git add .
