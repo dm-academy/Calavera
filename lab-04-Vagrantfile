@@ -103,39 +103,83 @@ Vagrant.configure(2) do |config|
     # git push origin master
 
 
+###############################################################################
+###################################    manos03    ##############################
+###############################################################################
+
+    config.vm.define "manos03" do | manos03 |
+      manos03.vm.host_name            ="manos03.calavera.biz"
+
+
+      manos03.vm.network              "private_network", ip: "10.1.0.23", virtualbox__intnet: "Cala01"
+
+      manos03.vm.network              "forwarded_port", guest: 22,   host: 2123, auto_correct: true
+      manos03.vm.network              "forwarded_port", guest: 80,   host: 8123, auto_correct: true
+      manos03.vm.network              "forwarded_port", guest: 8080, host: 9123, auto_correct: true
+      manos03.ssh.forward_agent        =true
+      manos03.vm.synced_folder        ".",         "/home/manos03"
+ #     manos03.vm.synced_folder        "./shared", "/mnt/shared"
+      #manos03.vm.provision         :shell, path: "./shell/manos03.sh"
+
+      manos03.vm.provision :chef_zero do |chef|
+        chef.cookbooks_path         = ["~/Calavera/cookbooks/"]
+        chef.data_bags_path           = ["~/Calavera/data_bags/"]
+        chef.nodes_path               = ["~/Calavera/nodes/"]
+        chef.roles_path               = ["~/Calavera/roles/"]
+        chef.add_recipe               "shared::_apt-update"
+        chef.add_recipe               "git::default"
+        chef.add_recipe               "localAnt::default"
+        chef.add_recipe               "java7::default"   #   this is redundant. we already installed this in base and tomcat also installs Java. but won't work w/o it.
+        chef.add_recipe               "localTomcat::v8"
+        chef.add_recipe               "shared::_junit"
+        chef.add_recipe               "manos::default"
+        #chef.add_recipe               "manos::git-remote"
+        end
+    end
+
+
+    # test: http://10.1.0.14:8080/MainServlet
+    # or http://127.0.0.1:9122/MainServlet
+    # if cerebro is configured:
+    # cd /home/hijo   #make a change
+    # git add .
+    # git commit -m "some message"
+    # git push origin master
+
+
 
 
 ###############################################################################
-###################################    cara02     ##############################
+###################################    cara03     ##############################
 ###############################################################################
 
-  config.vm.define "cara02" do | cara02 |
-    cara02.vm.host_name              ="cara02.calavera.biz"
-    cara02.vm.network                 "private_network", ip: "10.1.0.62", virtualbox__intnet: "Cala01"
-    cara02.vm.network                 "forwarded_port", guest: 22, host: 2162, auto_correct: true
-    cara02.vm.network                 "forwarded_port", guest: 80, host: 8162, auto_correct: true
-    cara02.vm.network                "forwarded_port", guest: 8080, host: 9162, auto_correct: true
+  config.vm.define "cara03" do | cara03 |
+    cara03.vm.host_name              ="cara03.calavera.biz"
+    cara03.vm.network                 "private_network", ip: "10.1.0.62", virtualbox__intnet: "Cala01"
+    cara03.vm.network                 "forwarded_port", guest: 22, host: 2163, auto_correct: true
+    cara03.vm.network                 "forwarded_port", guest: 80, host: 8163, auto_correct: true
+    cara03.vm.network                "forwarded_port", guest: 8080, host: 9163, auto_correct: true
 
-    cara02.ssh.forward_agent        =true
+    cara03.ssh.forward_agent        =true
 
-    cara02.vm.synced_folder          ".",         "/home/cara02"
-    cara02.vm.synced_folder          "./shared", "/mnt/shared"
-    #cara02.vm.provision       :shell, path: "./shell/cara02.sh"]
+    cara03.vm.synced_folder          ".",         "/home/cara03"
+#    cara03.vm.synced_folder          "./shared", "/mnt/shared"
+    #cara03.vm.provision       :shell, path: "./shell/cara03.sh"]
 
-    cara02.vm.provision :chef_zero do |chef|
-      chef.cookbooks_path         = ["./cookbooks/"]
-      chef.data_bags_path           = ["./data_bags/"]
-      chef.nodes_path               = ["./nodes/"]
-      chef.roles_path               = ["./roles/"]
+    cara03.vm.provision :chef_zero do |chef|
+      chef.cookbooks_path         = ["~/Calavera/cookbooks/"]
+      chef.data_bags_path           = ["~/Calavera/data_bags/"]
+      chef.nodes_path               = ["~/Calavera/nodes/"]
+      chef.roles_path               = ["~/Calavera/roles/"]
       chef.add_recipe               "shared::_apt-update"
       chef.add_recipe               "java7::default"
       chef.add_recipe               "localTomcat::v8"
-      chef.add_recipe               "cara::cara02"
+      chef.add_recipe               "cara::cara03"
     end
   end
 
     # test: curl http://10.1.0.62:8080/MainServlet
-    # or curl http://127.0.0.1:9162/MainServlet
+    # or curl http://127.0.0.1:91XX/MainServlet (8080 forwarded port, see above)
 
 
 
@@ -176,5 +220,3 @@ Vagrant.configure(2) do |config|
     # end
   end
 ###############################################################################
-
-end
