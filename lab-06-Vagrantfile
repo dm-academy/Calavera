@@ -111,7 +111,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cara02" do | cara02 |
     cara02.vm.host_name              ="cara02.calavera.biz"
-    cara02.vm.network                 "private_network", ip: "10.1.0.62", virtualbox__intnet: "Cala01"
+    cara02.vm.network                 "private_network", ip: "10.1.0.52", virtualbox__intnet: "Cala01"
     cara02.vm.network                 "forwarded_port", guest: 22, host: 2162, auto_correct: true
     cara02.vm.network                 "forwarded_port", guest: 80, host: 8162, auto_correct: true
     cara02.vm.network                "forwarded_port", guest: 8080, host: 9162, auto_correct: true
@@ -137,7 +137,36 @@ Vagrant.configure(2) do |config|
     # test: curl http://10.1.0.62:8080/MainServlet
     # or curl http://127.0.0.1:9162/MainServlet
 
+###############################################################################
+###################################    nervios02     ##############################
+###############################################################################
+# monitoring
 
+  config.vm.define "nervios02" do | nervios02 |
+    nervios02.vm.host_name              ="nervios02.calavera.biz"
+    nervios02.vm.network                 "private_network", ip: "10.1.0.82", virtualbox__intnet: "Cala01"
+    nervios02.vm.network                 "forwarded_port", guest: 22, host: 2182, auto_correct: true
+    nervios02.vm.network                 "forwarded_port", guest: 80, host: 8182, auto_correct: true
+    nervios02.vm.network                 "forwarded_port", guest: 8080, host: 9182, auto_correct: true
+
+    nervios02.ssh.forward_agent        =true
+
+      nervios02.vm.synced_folder         ".", "/home/nervios1"
+      nervios02.vm.synced_folder         "./shared", "/mnt/shared"
+      #nervios02.vm.provision       :shell, path: "./shell/nervios02.sh"
+
+      nervios02.vm.provision :chef_zero do |chef|
+      chef.cookbooks_path =       ["./cookbooks/"]
+      chef.data_bags_path           = ["./data_bags/"]
+      chef.nodes_path               = ["./nodes/"]
+      chef.roles_path               = ["./roles/"]
+      chef.add_recipe               "shared::_apt-update"
+
+      #chef.add_recipe             "nervios::default"
+    end
+  end
+
+# test: http://10.1.0.82/nagios
 
 ###############################################################################
 ###################################    test     ##############################

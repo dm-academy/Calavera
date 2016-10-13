@@ -205,6 +205,7 @@ Vagrant.configure(2) do |config|
   end
 
   # test: x-windows http://10.1.0.12:8081/artifactory, admin/password
+  # or http://127.0.0.1:7112/artifactory
   # curl not working
   # artifactory / jenkins config is stored in cookbooks/hombros/files/org.jfrog.hudson.ArtifactoryBuilder.xml
   # select "target repository" in hijoInit setup (defaults to ext-release-local) - this probably will show up in xml export
