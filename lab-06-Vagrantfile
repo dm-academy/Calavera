@@ -138,24 +138,24 @@ Vagrant.configure(2) do |config|
     # or curl http://127.0.0.1:9162/MainServlet
 
 ###############################################################################
-###################################    nervios02     ##############################
+###################################    nervios00     ##############################
 ###############################################################################
 # monitoring
 
-  config.vm.define "nervios02" do | nervios02 |
-    nervios02.vm.host_name              ="nervios02.calavera.biz"
-    nervios02.vm.network                 "private_network", ip: "10.1.0.82", virtualbox__intnet: "Cala01"
-    nervios02.vm.network                 "forwarded_port", guest: 22, host: 2182, auto_correct: true
-    nervios02.vm.network                 "forwarded_port", guest: 80, host: 8182, auto_correct: true
-    nervios02.vm.network                 "forwarded_port", guest: 8080, host: 9182, auto_correct: true
+  config.vm.define "nervios00" do | nervios00 |
+    nervios00.vm.host_name              ="nervios00.calavera.biz"
+    nervios00.vm.network                 "private_network", ip: "10.1.0.90", virtualbox__intnet: "Cala01"
+    nervios00.vm.network                 "forwarded_port", guest: 22, host: 2190, auto_correct: true
+    nervios00.vm.network                 "forwarded_port", guest: 80, host: 8190, auto_correct: true
+    nervios00.vm.network                 "forwarded_port", guest: 8080, host: 9190, auto_correct: true
 
-    nervios02.ssh.forward_agent        =true
+    nervios00.ssh.forward_agent        =true
 
-      nervios02.vm.synced_folder         ".", "/home/nervios1"
-      #nervios02.vm.synced_folder         "./shared", "/mnt/shared"
-      #nervios02.vm.provision       :shell, path: "./shell/nervios02.sh"
+      nervios00.vm.synced_folder         ".", "/home/nervios1"
+      #nervios00.vm.synced_folder         "./shared", "/mnt/shared"
+      #nervios00.vm.provision       :shell, path: "./shell/nervios00.sh"
 
-      nervios02.vm.provision :chef_zero do |chef|
+      nervios00.vm.provision :chef_zero do |chef|
       chef.cookbooks_path =       ["~/Calavera/cookbooks/"]
       chef.data_bags_path           = ["~/Calavera/data_bags/"]
       chef.nodes_path               = ["~/Calavera/nodes/"]
@@ -166,7 +166,7 @@ Vagrant.configure(2) do |config|
     end
   end
 
-# test: http://10.1.0.82/nagios
+# test: http://10.1.0.90/nagios
 
 ###############################################################################
 ###################################    test     ##############################
