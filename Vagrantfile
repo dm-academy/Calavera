@@ -412,8 +412,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "pies" do | pies |
 
     config.vm.provider :virtualbox do |virtualbox|
-      virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
-      virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+      virtualbox.customize ["modifyvm", :id, "--memory", "4096"]
+      virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
     end
 
     pies.vm.host_name              ="pies.calavera.biz"
