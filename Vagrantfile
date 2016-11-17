@@ -410,7 +410,7 @@ Vagrant.configure(2) do |config|
 # monitoring
 
   config.vm.define "pies" do | pies |
-
+# beefed this up again after fall 2016
     config.vm.provider :virtualbox do |virtualbox|
       virtualbox.customize ["modifyvm", :id, "--memory", "4096"]
       virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "75"]
@@ -447,8 +447,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "test" do | test |
 
     config.vm.provider :virtualbox do |virtualbox|
-      virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
-      virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+      #virtualbox.customize ["modifyvm", :id, "--memory", "2048"]
+      #virtualbox.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
     end
 
     test.vm.host_name              ="test.calavera.biz"
@@ -462,8 +462,8 @@ Vagrant.configure(2) do |config|
       test.vm.synced_folder         ".", "/home/test"
       test.vm.synced_folder         "./shared", "/mnt/shared"
 
-    test.vm.provision       :shell, path: "./shell/test.sh"
-    test.vm.provision       :shell, path: "./shell/test2.sh"
+    #test.vm.provision       :shell, path: "./shell/test.sh"
+    #test.vm.provision       :shell, path: "./shell/test2.sh"
     # test.vm.provision :chef_zero do |chef|
     #   chef.cookbooks_path =       ["./cookbooks/"]
     #   chef.data_bags_path           = ["./data_bags/"]
