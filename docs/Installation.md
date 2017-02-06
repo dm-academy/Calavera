@@ -63,9 +63,9 @@ The VMs need to be instantiated in a particular order:
 
 1. cerebro1 (Remote git repo)
 1. brazos1 (Slave build environment)
-1. espina1 (Artifactory)
-1. hombros1 (Jenkins)
-1. manos1 (Development environment)
+1. espina1 (Artifactory-repository manager)
+1. hombros1 (Jenkins-build automation environment)
+1. manos1 (Vagrant-development environment)
 1. cara1 (Production environment)
 
 Any other order will likely result in errors and a "cluster" in another sense of that word.
