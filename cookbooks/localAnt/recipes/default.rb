@@ -11,7 +11,7 @@
 # what if Ant is corrupted? can't test for a perfect install
 # downloading and reinstallilng is not that costly
 
-ENV['ANT_VERSION'] = "apache-ant-1.10.1"
+ENV['ANT_VERSION'] = "apache-ant-1.9.9"
 # mirrors are flakey
 ENV['ANT_MIRROR'] = "http://apache.mirrors.hoobly.com//ant/binaries/"
 #ENV['ANT_MIRROR'] = "http://mirror.nexcess.net/apache//ant/binaries/"
