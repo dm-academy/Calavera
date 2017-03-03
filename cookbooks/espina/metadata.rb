@@ -6,4 +6,4 @@ description      'Installs/Configures package repo'
 long_description ''
 version          '0.3.0'
 
-depends         'java7'
+#depends         'java7'

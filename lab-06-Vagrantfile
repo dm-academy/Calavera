@@ -67,7 +67,7 @@ Vagrant.configure(2) do |config|
       manos02.vm.host_name            ="manos02.calavera.biz"
 
 
-      manos02.vm.network              "private_network", ip: "10.1.0.22", virtualbox__intnet: "Cala01"
+      manos02.vm.network              "private_network", ip: "10.1.0.22", virtualbox__intnet: "Cala1"
 
       manos02.vm.network              "forwarded_port", guest: 22,   host: 2122, auto_correct: true
       manos02.vm.network              "forwarded_port", guest: 80,   host: 8122, auto_correct: true
@@ -111,7 +111,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cara02" do | cara02 |
     cara02.vm.host_name              ="cara02.calavera.biz"
-    cara02.vm.network                 "private_network", ip: "10.1.0.52", virtualbox__intnet: "Cala01"
+    cara02.vm.network                 "private_network", ip: "10.1.0.52", virtualbox__intnet: "Cala1"
     cara02.vm.network                 "forwarded_port", guest: 22, host: 2162, auto_correct: true
     cara02.vm.network                 "forwarded_port", guest: 80, host: 8162, auto_correct: true
     cara02.vm.network                "forwarded_port", guest: 8080, host: 9162, auto_correct: true
@@ -144,7 +144,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "nervios00" do | nervios00 |
     nervios00.vm.host_name              ="nervios00.calavera.biz"
-    nervios00.vm.network                 "private_network", ip: "10.1.0.90", virtualbox__intnet: "Cala01"
+    nervios00.vm.network                 "private_network", ip: "10.1.0.90", virtualbox__intnet: "Cala1"
     nervios00.vm.network                 "forwarded_port", guest: 22, host: 2190, auto_correct: true
     nervios00.vm.network                 "forwarded_port", guest: 80, host: 8190, auto_correct: true
     nervios00.vm.network                 "forwarded_port", guest: 8080, host: 9190, auto_correct: true
