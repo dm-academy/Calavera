@@ -114,10 +114,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "cara03" do | cara03 |
     cara03.vm.host_name              ="cara03.calavera.biz"
-    cara03.vm.network                 "private_network", ip: "10.1.0.62", virtualbox__intnet: "Cala1"
-    cara03.vm.network                 "forwarded_port", guest: 22, host: 2163, auto_correct: true
-    cara03.vm.network                 "forwarded_port", guest: 80, host: 8163, auto_correct: true
-    cara03.vm.network                "forwarded_port", guest: 8080, host: 9163, auto_correct: true
+    cara03.vm.network                 "private_network", ip: "10.1.0.53", virtualbox__intnet: "Cala1"
+    cara03.vm.network                 "forwarded_port", guest: 22, host: 2153, auto_correct: true
+    cara03.vm.network                 "forwarded_port", guest: 80, host: 8153, auto_correct: true
+    cara03.vm.network                "forwarded_port", guest: 8080, host: 9153, auto_correct: true
 
     cara03.ssh.forward_agent        =true
 
