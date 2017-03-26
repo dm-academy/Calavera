@@ -151,7 +151,7 @@ Vagrant.configure(2) do |config|
 
     nervios00.ssh.forward_agent        =true
 
-      nervios00.vm.synced_folder         ".", "/home/nervios1"
+      nervios00.vm.synced_folder         ".", "/home/nervios00"
       #nervios00.vm.synced_folder         "./shared", "/mnt/shared"
       #nervios00.vm.provision       :shell, path: "./shell/nervios00.sh"
 
